@@ -114,7 +114,7 @@ Template.newDrone.events({
                     model:  model,
                     rpas : rpas,
                     radiocommand : radiocommandVar,
-                    idBattery1 : battery1,         
+                    idBattery1 : battery1,               
                     weight : weightVar,
                     flightHours : flightHoursVar,
                     insurance : insuranceVar,
