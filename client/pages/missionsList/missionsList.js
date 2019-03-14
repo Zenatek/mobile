@@ -29,19 +29,19 @@ Template.missionsList.events({
         Session.set('missionId', this._id);
         missionId = Session.get('missionId')
         swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this mission!",
+            title: "Sei sicuro?",
+            text: "Se elimini questa missioni cancellerai anche il qtb e il logbook associat",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Si, cancella!",
             closeOnConfirm: false,
             html: false
           },function(isConfirm){
                 if (isConfirm) {
                     Missions.remove({ _id: missionId });
-                    swal("Deleted!",
-                        "Your mission has been deleted.",
+                    swal("Cancellata!",
+                        "La tua missione è stata eliminata",
                         "success");
           }
           else{return;}
