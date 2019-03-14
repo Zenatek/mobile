@@ -81,8 +81,6 @@ Template.newDrone.events({
             var rpas = template.find('#rpas').value;
             var radiocommandVar = template.find('#radiocommand').value;
             var battery1 = template.find('#battery1').value;
-            var battery2 = template.find('#battery2').value;
-            var battery3 = template.find('#battery3').value;
             var weightVar = template.find('#weight').value;
             var flightHoursVar = template.find('#flight_hours').value;
             var deadlineInsuranceVar = template.find('#deadline_insurance').value;
@@ -116,9 +114,7 @@ Template.newDrone.events({
                     model:  model,
                     rpas : rpas,
                     radiocommand : radiocommandVar,
-                    idBattery1 : battery1,
-                    idBattery2 : battery2,
-                    idBattery3 : battery3,                
+                    idBattery1 : battery1,         
                     weight : weightVar,
                     flightHours : flightHoursVar,
                     insurance : insuranceVar,
@@ -145,8 +141,6 @@ Template.newDrone.events({
                         "rpas":  rpas,
                         "radiocommand":  radiocommandVar,
                         "idBattery1": battery1,
-                        "idBattery2": battery2,
-                        "idBattery3": battery3,
                         "weight": weightVar,
                         "flightHours" : flightHoursVar,
                         "insurance" : insuranceVar,
