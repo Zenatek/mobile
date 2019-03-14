@@ -1,0 +1,35 @@
+<template name="missionsList">
+    {{#if isInRole 'operator-user'}}
+        <h1 class="page-title">Missioni</h1>
+        <table>
+            <tr>
+                <th>Numero volo</th>
+                <th>Luogo</th>
+                <th>Equipaggio</th>
+                <th>Data</th>
+                <th>Compila QTB/Logbook</th>
+                <th>Modifica/Rimuovi</th>
+            </tr>
+                {{#each mission}}
+                <tr>    
+                    <td>{{flightNumber}}</td>
+                    <td>{{place}}</td>
+                    <td>{{pilotsLName}}</td>
+                    <td>{{flightDate}}</td>
+                    <td><a class="btn btn-blu qtbButton" href="#">
+                        <i class="fa fa-book fa-fw"></i></a>
+                    </td>
+                    <td><a class="btn btn-lg btn-success btn-green editButton" href="#">
+                            <i class="fa fa-pencil "></i></a>
+                        <a class="btn btn-danger deleteButton" href="#">
+                            <i class="fa fa-trash-o fa-lg"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+
+        </table>
+        <ion-button color="primary" class="newMission">Nuova</ion-button>
+    {{else}}
+        <!-- {{> myDrones}} -->
+    {{/if}}
+</template>

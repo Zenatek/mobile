@@ -1,0 +1,31 @@
+<template name="Pilots">
+    {{#if isInRole 'operator-user'}}
+        <h1 class="page-title">Pilots</h1>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Edit/Delete</th>
+            </tr>
+            {{#each pilots}}
+                {{#if $not isOperator}}
+                    <tr>
+                        <td>{{_id}}</td>
+                        <td>{{pilotsEmail}}</td>
+                        <td>{{profile.firstname}}</td>
+                        <td>{{profile.lastname}}</td>
+                        <td><a class="btn btn-lg btn-success btn-green editButton" href="#">
+                                <i class="fa fa-pencil "></i></a>
+                            <a class="btn btn-danger deletePilot" href="#">
+                                <i class="fa fa-trash-o fa-lg"></i></a></td>
+                    </tr>
+                {{/if}}
+            {{/each}}
+        </table>
+    {{else}}
+        {{> infoPilot}}
+    {{/if}}
+</template>
+

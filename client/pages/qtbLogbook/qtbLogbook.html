@@ -1,0 +1,48 @@
+<template name="qtbLogbook">
+    <h5>Scheda tecnica</h5>
+    <form>
+        <input type="text" id="constructor" placeholder="Costruttore">
+        <input type="text" id="model" placeholder="Modello">
+        <input type="text" id="nation" placeholder="Nazione">
+        <input type="text" id="APR_plate" placeholder="Targa APR">
+        <input type="text" id="SPR_plate" placeholder="Targa SPR">
+        <br>
+        <br>
+        <label for="configuration_date">Data configurazione</label>
+        <input type="date" id="configuration_date">
+        <br>
+        <br>
+        <label for="QTB_start_date">Data inizio QTB</label>
+        <input type="date" id="QTB_start_date">
+        <label for="QTB_end_date">Data fine QTB</label>
+        <input type="date" id="QTB_end_date">
+        <br>
+        <br>
+        <label for="total_flight_time">Tempo di volo totale dal libretto precedente</label>
+        <input type="text" id="total_flight_time" placeholder="00000">
+        <br>
+        <br>
+        <input type="text" id="operator" placeholder="operatore">
+        <input type="text" id="enac_basic" placeholder="Rif Enac basico">
+        <input type="text" id="enac_critic" placeholder="Rif Enac critico">
+        <br>
+        <h5>Tipologia di attività</h5>
+        <input type="checkbox" name="certB" value="true" unchecked>B
+        <input type="checkbox" name="certC" value="true" unchecked>C
+        <br>
+        <h5>Classe</h5>
+        <input type="checkbox" name="VLclass" value="true" unchecked>VL
+        <input type="checkbox" name="Lclass" value="true" unchecked>L
+        <input type="checkbox" name="Hclass" value="true" unchecked>H
+        <br>
+        <h5>Categoria</h5>
+        <input type="checkbox" name="Bcategory" value="true" unchecked>MC
+        <input type="checkbox" name="APcategory" value="true" unchecked>AP
+        <input type="checkbox" name="Hcategory" value="true" unchecked>H
+        <input type="checkbox" name="AScategory" value="true" unchecked>AS
+    </form>
+    <br>
+    <br>
+    <Button class="back">Annulla</Button>
+    <Button class="insert">Salva</Button>
+</template>

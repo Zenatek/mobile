@@ -1,0 +1,19 @@
+<template name="autoCompleteOperators">
+    {{#if CampoVisibile}}
+        <div class="well">
+            <p>Seleziona il tuo operatore</p>
+            {{> inputAutocomplete settings=settings id="operatorSelect" class="form-control" name="operatorSelect" placeholder="Eurodrone" }}
+        </div>
+        <pre>
+            {{#each operators}}
+                {{operator}}
+            {{/each}}
+        </pre>
+    {{/if}}
+</template>
+
+<template name="selectOperator">
+    <div id= "selectOperator">
+    {{profile.lastname}} <span style="color: {{color}}; background-color: {{bg}};"><L><br>{{operatorEmail}}</L></span>
+    </div>
+</template>

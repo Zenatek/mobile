@@ -1,0 +1,66 @@
+<template name="infoPilot">
+    <h1 class="page-title">Dati personali</h1>
+    <form>
+            <h5>Anagrafica</h5>
+            {{#with pilots}}
+            <input type="text" id="firstname" placeholder="Nome" value="{{profile.firstname}}">
+            <input type="text" id="lastname" placeholder="Cognome" value="{{profile.lastname}}">
+            <input type="text" id="state" placeholder="Nazione" value="{{profile.state}}">
+            <input type="text" id="comune" placeholder="Comune" value="{{profile.address.comune}}">
+            <input type="text" id="reference" placeholder="Via XX settembre" value="{{profile.address.reference}}">
+            <input type="text" id="civNum" placeholder="Civico" value="{{profile.address.civNum}}">
+            <input type="text" id="intNum" placeholder="Interno" value="{{profile.address.intNum}}">
+            <input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}">
+            <input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}">
+            {{#if isInRole 'operator-user'}}
+            <h5>Certificazioni</h5>
+            {{#if profile.certification.certB}}
+            <input type="checkbox" name="certB" value="true" checked>B
+            {{else}}
+            <input type="checkbox" name="certB" value="true" unchecked>B
+            {{/if}}
+            {{#if profile.certification.certC}}
+            <input type="checkbox" name="certC" value="true" checked>C
+            {{else}}
+            <input type="checkbox" name="certC" value="true" unchecked>C
+            {{/if}}
+            {{#if profile.certification.certL}}
+            <input type="checkbox" name="certL" value="true" checked>L
+            {{else}}
+            <input type="checkbox" name="certL" value="true" unchecked>L
+            {{/if}}
+            {{#if profile.certification.certVL}}
+            <input type="checkbox" name="certVL" value="true" checked>VL
+            {{else}}
+            <input type="checkbox" name="certVL" value="true" unchecked>VL
+            {{/if}}
+            <br><br>
+            <input type="text" id="numBrev" placeholder="Numero brevetto" value="{{profile.brevetto.numBrev}}">
+            <input type="text" id="luogoBrev" placeholder="Luogo rilascio" value="{{profile.brevetto.luogoBrev}}"><br><br>
+            <label for="release_date">Data di rilascio</label><br>
+            <input type="date" id="release_date" value="{{profile.brevetto.release_date}}"><br>
+            {{/if}}
+            <br>
+            <label for="expiration_date">Data di scadanza brevetto</label><br>
+            <input type="date" id="expiration_date" value="{{profile.brevetto.exp_date}}">
+            {{#if isInRole 'operator-user'}}
+            <h5>Abilitazioni</h5>
+            {{#if profile.ability.istr}}                        
+            <input type="checkbox" name="instructor" value="true" checked>Istruttore <br>
+            {{else}}
+            <input type="checkbox" name="instructor" value="true" unchecked>Istruttore <br>
+            {{/if}}
+            {{#if profile.ability.exam}}
+            <input type="checkbox" name="examiner" value="true" checked>Esaminatore
+            {{else}}
+            <input type="checkbox" name="examiner" value="true" unchecked>Esaminatore
+            {{/if}}
+            {{/if}}
+            {{/with}}
+            <br>
+            <br>
+            <br>
+            <button class="back">Indietro</button>
+            <button class="submit">Registra</button>                                                      
+        </form>
+</template>

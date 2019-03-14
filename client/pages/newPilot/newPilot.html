@@ -1,0 +1,8 @@
+<template name="newPilot">
+        {{#if isInRole 'operator-user'}}
+            <h1 class="page-title">Dashboard</h1>
+            {{> atForm state='signUp'}}
+        {{else}}
+            <h1>Non autorizzato</h1>
+        {{/if}}
+</template>
