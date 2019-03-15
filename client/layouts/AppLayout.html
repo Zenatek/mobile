@@ -1,8 +1,15 @@
 <template name="AppLayout">
     <ion-app>
+        <ion-content>
+            <main class="app-layout">    
+                {{> Template.dynamic template=main}}
+            </main>
+        </ion-content>
     {{> AppNav}}
-    <main class="app-layout">
-        {{> Template.dynamic template=main}}
-    </main>
     </ion-app>
+    <script>
+        var content = document.querySelector('ion-content');
+        content.scrollEvents = true;
+        content.addEventListener('ionScroll', (ev) => console.log('scroll', ev.detail));
+    </script>
 </template>
