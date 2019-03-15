@@ -139,11 +139,13 @@ input[type="password"] {
 
 // Homepage
 .billboard {
-    background-image: url('/login.jpg'), linear-gradient(#202023, #19283f);
-    color: rgb(0, 0, 0);
     text-align: center;
     border-bottom: 1px solid $dgrey;
     padding: 40px 5%;
+}
+.backgroundLogin{
+    background-image: url('/login.jpg'), linear-gradient(#202023, #19283f);
+    color: rgb(0, 0, 0);
 }
 
 

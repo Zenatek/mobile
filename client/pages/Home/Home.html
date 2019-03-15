@@ -1,5 +1,6 @@
 <template name="Home">
     {{#if $not currentUser}}
+    {{changeBackground}}
     <div class="billboard">
         <div>{{> atForm}}</div>
     </div>
