@@ -1,3 +1,26 @@
+<template name="Pilots">
+    {{#if isInRole 'operator-user'}}
+    <ion-text color="primary"><h1 class="page-title">Piloti</h1></ion-text>
+        <ion-list>
+            {{#each pilots}}
+                {{#if $not isOperator}}
+                    <ion-item-sliding>
+                        <ion-item>
+                            <ion-label>{{profile.firstname}} | {{profile.lastname}}</ion-label>
+                        </ion-item>
+                        <ion-item-options side="end">
+                            <ion-item-option color="danger" class="deleteButton">Elimina</ion-item-option>
+                        </ion-item-options>
+                        <ion-item-options side="start">
+                            <ion-item-option color="success" class="editButton">Modifica</ion-item-option>
+                        </ion-item-options>
+                    </ion-item-sliding>
+                {{/if}}
+            {{/each}}
+        </ion-list>
+    {{/if}}
+</template>
+
 <!-- <template name="Pilots">
     {{#if isInRole 'operator-user'}}
         <h1 class="page-title">Pilots</h1>
@@ -28,28 +51,4 @@
         {{> infoPilot}}
     {{/if}}
 </template> -->
-
-<template name="Pilots">
-    {{#if isInRole 'operator-user'}}
-        <h1 class="page-title">Pilots</h1>
-        <ion-list>
-            {{#each pilots}}
-                {{#if $not isOperator}}
-                    <ion-item-sliding>
-                        <ion-item>
-                            <ion-label>{{profile.firstname}} | {{profile.lastname}}</ion-label>
-                        </ion-item>
-                        <ion-item-options side="end">
-                            <ion-item-option color="danger" class="deleteButton">Elimina</ion-item-option>
-                        </ion-item-options>
-                        <ion-item-options side="start">
-                            <ion-item-option color="success" class="editButton">Modifica</ion-item-option>
-                        </ion-item-options>
-                    </ion-item-sliding>
-                {{/if}}
-            {{/each}}
-        </ion-list>
-    {{/if}}
-    <br>
-</template>
 

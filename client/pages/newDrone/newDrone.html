@@ -1,6 +1,7 @@
 <template name = "newDrone">
-    <h5>Scheda tecnica</h5>
+        <ion-text color="primary"><h1 class="page-title">Nuovo drone</h1></ion-text>
     <form>
+            <h5>Scheda tecnica</h5>
         {{#if editSession}}
             {{#with drones}}
                 <ion-grid>
@@ -144,22 +145,18 @@
                 <br>
                 {{#if $not editPilots}}
                 <p><b>Piloti inseriti in precedenza : riselezionare i piloti</b></p>
-                <table>
-                    <tr>
-                        <th>Piloti scelti</th>
-                    </tr>
+                <ion-list>
+                        <ion-label>Piloti scelti</ion-label>
                         {{#unless update}}
                             {{#with drones}}
                                 {{#each pilotsLName}}
-                                <tr>
-                                    <td>
+                                <ion-item>
                                         <div class="pilotsSelected">{{this}}</div>
-                                    </td>
-                                </tr>
+                                </ion-item>
                                 {{/each}}
                             {{/with}}
                         {{/unless}}
-                </table>
+                </ion-list>
                 {{else}}
                 <div>{{> pilotsLIST}}</div>
                 {{/if}}
@@ -245,10 +242,8 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button color="primary" class="back">Annulla</ion-button>
-            </ion-col>
-            <ion-col>
-                <ion-button color="primary" class="insert">Salva</ion-button>
+                <ion-button expand="block" color="primary" class= "insert">Nuovo</ion-button>
+                <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>

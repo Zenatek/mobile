@@ -1,5 +1,5 @@
 <template name="infoPilot">
-    <h1 class="page-title">Dati personali</h1>
+        <ion-text color="primary"><h1 class="page-title">Dati personali</h1></ion-text>
     <form>
             <h5>Anagrafica</h5>
             {{#with pilots}}
@@ -58,9 +58,13 @@
             {{/if}}
             {{/with}}
             <br>
-            <br>
-            <br>
-            <button class="back">Indietro</button>
-            <button class="submit">Registra</button>                                                      
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-button expand="block" color="primary" class= "submit">Salva</ion-button>
+                        <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>                                               
         </form>
 </template>

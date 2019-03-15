@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<template name="pilotsLIST">
+<!-- <template name="pilotsLIST">
     <table>
         <tr>
             <th>Piloti scelti</th>
@@ -35,10 +35,27 @@
                 {{/each}}
             {{/unless}}
     </table>
+</template> -->
+
+<template name="pilotsLIST">
+        <ion-list>
+            {{#unless update}}
+                {{#each pilotsList}}
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-label><div class="pilotsSelected">{{this.profile.firstname}} {{this.profile.lastname}}</div></ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option color="danger" class="delete">Elimina</ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+                {{/each}}
+            {{/unless}}
+    </ion-list>
 </template>
 
 <template name = "newMission">
-    <h5>Scheda tecnica</h5>
+        <ion-text color="primary"><h1 class="page-title">Nuova missione</h1></ion-text>
     <form>
         {{#if $not editSession}}
         <ion-grid>
@@ -197,22 +214,18 @@
             <br>
             {{#if $not editPilots}}
             <p><b>Piloti inseriti in precedenza : riselezionare i piloti</b></p>
-            <table>
-                <tr>
-                    <th>Piloti scelti</th>
-                </tr>
+            <ion-list>
+                    <ion-label>Piloti scelti</ion-label>
                     {{#unless update}}
                         {{#with missions}}
                             {{#each pilotsLName}}
-                            <tr>
-                                <td>
+                            <ion-item>
                                     <div class="pilotsSelected">{{this}}</div>
-                                </td>
-                            </tr>
+                            </ion-item>
                             {{/each}}
                         {{/with}}
                     {{/unless}}
-            </table>
+            </ion-list>
             {{else}}
             <div>{{> pilotsLIST}}</div>
             {{/if}}
@@ -223,11 +236,9 @@
     <ion-grid>
             <ion-row>
                 <ion-col>
-                    <ion-button color="primary" class="back">Annulla</ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button color="primary" class="insert">Salva</ion-button>
+                    <ion-button expand="block" color="primary" class= "insert">Salva</ion-button>
+                    <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
                 </ion-col>
             </ion-row>
-        </ion-grid>
+        </ion-grid>      
 </template>

@@ -1,29 +1,3 @@
-<!-- 
-<template name="AppNav">
-    <div class="app-nav">
-        {{#if isInRole 'operator-user'}}
-            <ul>
-                <li><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                <li><a href="/operator/pilots"><i class="fa fa-users"></i> <span>Gestione piloti</span></a></li>
-            </ul>
-        {{/if}}
-        {{#if isInRole 'pilot-user'}}
-            <ul>
-                <li><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                <li><a href="/operator/pilots"><i class="fa fa-users"></i> <span>Dati personali</span></a></li>
-            </ul>
-        {{/if}}
-        <ul>
-        {{#if currentUser}}
-                <li><br></li>
-                <li class="logout"><a> <i class="fa fa-sign-out" aria-hidden="true"></i><span>Logout</span></a></li>
-        {{else}}
-                <li class="login-toggle"><a><i class="fa fa-sign-in" aria-hidden="true"></i><span>Login/Sign-Up</span></a></li>
-        {{/if}}
-        </ul>
-    </div>
-</template> -->
-
 <template name="AppNav">
     <ion-footer>
         <ion-toolbar>
@@ -80,3 +54,30 @@
             </ion-toolbar>
           </ion-footer>
 </template>
+
+
+<!-- 
+<template name="AppNav">
+    <div class="app-nav">
+        {{#if isInRole 'operator-user'}}
+            <ul>
+                <li><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                <li><a href="/operator/pilots"><i class="fa fa-users"></i> <span>Gestione piloti</span></a></li>
+            </ul>
+        {{/if}}
+        {{#if isInRole 'pilot-user'}}
+            <ul>
+                <li><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                <li><a href="/operator/pilots"><i class="fa fa-users"></i> <span>Dati personali</span></a></li>
+            </ul>
+        {{/if}}
+        <ul>
+        {{#if currentUser}}
+                <li><br></li>
+                <li class="logout"><a> <i class="fa fa-sign-out" aria-hidden="true"></i><span>Logout</span></a></li>
+        {{else}}
+                <li class="login-toggle"><a><i class="fa fa-sign-in" aria-hidden="true"></i><span>Login/Sign-Up</span></a></li>
+        {{/if}}
+        </ul>
+    </div>
+</template> -->
