@@ -126,10 +126,17 @@
                         <ion-label>V150</ion-label>
                 </ion-col>
             </ion-row>
-    </ion-grid>
-            <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
-            <br>
-            <div>{{> pilotsLIST}}</div>
+            <ion-row>
+                <ion-col>
+                    <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <div>{{> pilotsLIST}}</div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
         {{else}}
         {{#with missions}}
             <input type="text" id="flight_number" placeholder="Num volo" value="{{flightNumber}}">
