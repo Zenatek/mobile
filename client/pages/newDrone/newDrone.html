@@ -1,165 +1,172 @@
 <template name = "newDrone">
         <ion-text color="primary"><h1 class="page-title">Nuovo drone</h1></ion-text>
     <form>
-            <h5>Scheda tecnica</h5>
+        <h5>Scheda tecnica</h5>
         {{#if editSession}}
             {{#with drones}}
                 <ion-grid>
-                <ion-row>
+                    <ion-row>
                         <ion-col>
                             <ion-input type="text" id="model" placeholder="Modello" value="{{model}}"></ion-input>
                         </ion-col>
                         <ion-col>
                             <ion-input type="text" id="rpas" placeholder="EGM-001" value="{{rpas}}"></ion-input>
                         </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col>
-                        <ion-input type="text" id="radiocommand" placeholder="radiocomando" value="{{radiocommand}}"></ion-input>
-                    </ion-col>
-                    <ion-col>
-                        <ion-input type="text" id="battery1" placeholder="id batteria" value="{{idBattery1}}"></ion-input>
-                     </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col>
-                        <ion-label for="weight">Peso in kg</ion-label><br>
-                        <ion-input type="text" id="weight" placeholder="10" value="{{weight}}"></ion-input>
-                    </ion-col>
-                    <ion-col>
-                        <ion-label for="flight_hours">Ore di volo</ion-label><br>
-                        <ion-input type="text" id="flight_hours" placeholder="2" value="{{flightHours}}"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col>
-                        <ion-label>Assicurazione</ion-label><br>
-                        {{#if insurance}}
-                        <ion-checkbox name="insurance" value="true" checked></ion-checkbox>
-                        <ion-label>Sì</ion-label>
-                        {{else}}
-                        <ion-checkbox name="insurance" value="true" unchecked></ion-checkbox>
-                        <ion-label>Sì</ion-label>
-                        {{/if}}
-                    </ion-col> 
-                    <ion-col> 
-                        <ion-label for="deadline_insurance">Data di scadenza</ion-label><br>
-                        <ion-input type="date" id="deadline_insurance" value="{{deadlineInsurance}}"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col>
-                        <ion-label>Certificazione</ion-label><br>
-                        {{#if certB}}
-                        <ion-checkbox name="certB" value="true" checked></ion-checkbox>
-                        <ion-label>B</ion-label>
-                        {{else}}
-                        <ion-checkbox name="certB" value="true" unchecked></ion-checkbox>
-                        <ion-label>B</ion-label>
-                        {{/if}}
-                        {{#if certC}}
-                        <ion-checkbox name="certC" value="true" checked></ion-checkbox>
-                        <ion-label>C</ion-label>
-                        {{else}}
-                        <ion-checkbox name="certC" value="true" unchecked></ion-checkbox>
-                        <ion-label>C</ion-label>
-                        {{/if}}
-                        {{#if certL}}
-                        <ion-checkbox name="certL" value="true" checked></ion-checkbox>
-                        <ion-label>L</ion-label>
-                        {{else}}
-                        <ion-checkbox name="certL" value="true" unchecked></ion-checkbox>
-                        <ion-label>L</ion-label>
-                        {{/if}}
-                        {{#if certVL}}
-                        <ion-checkbox name="certVL" value="true" checked></ion-checkbox>
-                        <ion-label>VL</ion-label>
-                        {{else}}
-                        <ion-checkbox name="certVL" value="true" unchecked></ion-checkbox>
-                        <ion-label>VL</ion-label>
-                        {{/if}}
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col>
-                        <ion-row>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-input type="text" id="radiocommand" placeholder="radiocomando" value="{{radiocommand}}"></ion-input>
+                        </ion-col>
+                        <ion-col>
+                            <ion-input type="text" id="battery1" placeholder="id batteria" value="{{idBattery1}}"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label for="weight">Peso in kg</ion-label><br>
+                            <ion-input type="text" id="weight" placeholder="10" value="{{weight}}"></ion-input>
+                        </ion-col>
+                        <ion-col>
+                            <ion-label for="flight_hours">Ore di volo</ion-label><br>
+                            <ion-input type="text" id="flight_hours" placeholder="2" value="{{flightHours}}"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label>Assicurazione</ion-label><br>
+                            {{#if insurance}}
+                                <ion-checkbox name="insurance" value="true" checked></ion-checkbox>
+                                <ion-label>Sì</ion-label>
+                            {{else}}
+                                <ion-checkbox name="insurance" value="true" unchecked></ion-checkbox>
+                                <ion-label>Sì</ion-label>
+                            {{/if}}
+                        </ion-col> 
+                        <ion-col> 
+                            <ion-label for="deadline_insurance">Data di scadenza</ion-label><br>
+                            <ion-input type="date" id="deadline_insurance" value="{{deadlineInsurance}}"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label>Certificazione</ion-label><br>
+                            {{#if certB}}
+                                <ion-checkbox name="certB" value="true" checked></ion-checkbox>
+                                <ion-label>B</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certB" value="true" unchecked></ion-checkbox>
+                                <ion-label>B</ion-label>
+                            {{/if}}
+                            {{#if certC}}
+                                <ion-checkbox name="certC" value="true" checked></ion-checkbox>
+                                <ion-label>C</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certC" value="true" unchecked></ion-checkbox>
+                                <ion-label>C</ion-label>
+                            {{/if}}
+                            {{#if certL}}
+                                <ion-checkbox name="certL" value="true" checked></ion-checkbox>
+                                <ion-label>L</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certL" value="true" unchecked></ion-checkbox>
+                                <ion-label>L</ion-label>
+                            {{/if}}
+                            {{#if certVL}}
+                                <ion-checkbox name="certVL" value="true" checked></ion-checkbox>
+                                <ion-label>VL</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certVL" value="true" unchecked></ion-checkbox>
+                                <ion-label>VL</ion-label>
+                            {{/if}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-row>
                                 <ion-label>Scenari consentiti</ion-label><br>
-                        </ion-row>
-                        <ion-row>
+                            </ion-row>
+                            <ion-row>
                                 {{#if s1}}
-                                <ion-checkbox name="s1" value="true" checked></ion-checkbox>
-                                <ion-label>S1</ion-label>
+                                    <ion-checkbox name="s1" value="true" checked></ion-checkbox>
+                                    <ion-label>S1</ion-label>
                                 {{else}}
-                                <ion-checkbox name="s1" value="true" unchecked></ion-checkbox>
-                                <ion-label>S1</ion-label>
+                                    <ion-checkbox name="s1" value="true" unchecked></ion-checkbox>
+                                    <ion-label>S1</ion-label>
                                 {{/if}}
                                 {{#if s2}}
-                                <ion-checkbox name="s2" value="true" checked></ion-checkbox>
-                                <ion-label>S2</ion-label>
+                                    <ion-checkbox name="s2" value="true" checked></ion-checkbox>
+                                    <ion-label>S2</ion-label>
                                 {{else}}
-                                <ion-checkbox name="s2" value="true" unchecked></ion-checkbox>
-                                <ion-label>S2</ion-label>
+                                    <ion-checkbox name="s2" value="true" unchecked></ion-checkbox>
+                                    <ion-label>S2</ion-label>
                                 {{/if}}
                                 {{#if s3}}
-                                <ion-checkbox name="s3" value="true" checked></ion-checkbox>
-                                <ion-label>S3</ion-label>
+                                    <ion-checkbox name="s3" value="true" checked></ion-checkbox>
+                                    <ion-label>S3</ion-label>
                                 {{else}}
-                                <ion-checkbox name="s3" value="true" unchecked></ion-checkbox>
-                                <ion-label>S3</ion-label>
+                                    <ion-checkbox name="s3" value="true" unchecked></ion-checkbox>
+                                    <ion-label>S3</ion-label>
                                 {{/if}}
                                 {{#if s4}}
-                                <ion-checkbox name="s4" value="true" checked></ion-checkbox>
-                                <ion-label>S4</ion-label>
+                                    <ion-checkbox name="s4" value="true" checked></ion-checkbox>
+                                    <ion-label>S4</ion-label>
                                 {{else}}
-                                <ion-checkbox name="s4" value="true" unchecked></ion-checkbox>
-                                <ion-label>S4</ion-label>
+                                    <ion-checkbox name="s4" value="true" unchecked></ion-checkbox>
+                                    <ion-label>S4</ion-label>
                                 {{/if}}
-                        </ion-row>
-                        <ion-row>
+                            </ion-row>
+                            <ion-row>
                                 {{#if s5}}
-                                <ion-checkbox name="s5" value="true" checked></ion-checkbox>
-                                <ion-label>S5</ion-label>
+                                    <ion-checkbox name="s5" value="true" checked></ion-checkbox>
+                                    <ion-label>S5</ion-label>
                                 {{else}}
-                                <ion-checkbox name="s5" value="true" unchecked></ion-checkbox>
-                                <ion-label>S5</ion-label>
+                                    <ion-checkbox name="s5" value="true" unchecked></ion-checkbox>
+                                    <ion-label>S5</ion-label>
                                 {{/if}}
                                 {{#if s6}}
-                                <ion-checkbox name="s6" value="true" checked></ion-checkbox>
-                                <ion-label>S6</ion-label>
+                                    <ion-checkbox name="s6" value="true" checked></ion-checkbox>
+                                    <ion-label>S6</ion-label>
                                 {{else}}
-                                <ion-checkbox name="s6" value="true" unchecked></ion-checkbox>
-                                <ion-label>S6</ion-label>
+                                    <ion-checkbox name="s6" value="true" unchecked></ion-checkbox>
+                                    <ion-label>S6</ion-label>
                                 {{/if}}
                                 {{#if s7}}
-                                <ion-checkbox name="s7" value="true" checked></ion-checkbox>
-                                <ion-label>S7</ion-label>
+                                    <ion-checkbox name="s7" value="true" checked></ion-checkbox>
+                                    <ion-label>S7</ion-label>
                                 {{else}}
-                                <ion-checkbox name="s7" value="true" unchecked></ion-checkbox>
-                                <ion-label>S7</ion-label>
+                                    <ion-checkbox name="s7" value="true" unchecked></ion-checkbox>
+                                    <ion-label>S7</ion-label>
                                 {{/if}}
-                        </ion-row>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-                <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
-                <br>
-                {{#if $not editPilots}}
-                <p><b>Piloti inseriti in precedenza : riselezionare i piloti</b></p>
-                <ion-list>
-                        <ion-label>Piloti scelti</ion-label>
-                        {{#unless update}}
-                            {{#with drones}}
-                                {{#each pilotsLName}}
-                                <ion-item>
-                                        <div class="pilotsSelected">{{this}}</div>
-                                </ion-item>
-                                {{/each}}
-                            {{/with}}
-                        {{/unless}}
-                </ion-list>
-                {{else}}
-                <div>{{> pilotsLIST}}</div>
-                {{/if}}
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            {{#if $not editPilots}}
+                            <p><b>Piloti inseriti in precedenza : riselezionare i piloti</b></p>
+                            <ion-list>
+                                <ion-label>Piloti scelti</ion-label>
+                                {{#unless update}}
+                                    {{#with drones}}
+                                        {{#each pilotsLName}}
+                                        <ion-item>
+                                            <div class="pilotsSelected">{{this}}</div>
+                                        </ion-item>
+                                        {{/each}}
+                                    {{/with}}
+                                {{/unless}}
+                            </ion-list>
+                            {{else}}
+                                <div>{{> pilotsLIST}}</div>
+                            {{/if}}
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
             {{/with}}
         {{else}}
             <ion-grid>
@@ -232,10 +239,17 @@
                         <ion-label>S7</ion-label>
                     </ion-col>
                 </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div>{{> pilotsLIST}}</div>
+                    </ion-col>
+                </ion-row>
             </ion-grid>
-            <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
-            <br>
-            <div>{{> pilotsLIST}}</div>
         {{/if}}
     </form>
     <br>
