@@ -139,113 +139,161 @@
         </ion-grid>
         {{else}}
         {{#with missions}}
-            <input type="text" id="flight_number" placeholder="Num volo" value="{{flightNumber}}">
-            <input type="text" id="place" placeholder="Luogo" value="{{place}}">
-            <br>
-            <label for="flight_date">Data volo</label><br>
-            <input type="date" id="flight_date" value="{{flightDate}}">
-            <br>
-            <br>
-            <input type="text" id="wind" placeholder="vento" value="{{wind}}">
-            <input type="text" id="weather" placeholder="Meteo" value="{{weather}}">
-            <br>
-            <label for="take_off_time">Ora decollo</label><br>
-            <input type="time" id="take_off_time" placeholder="10:00" value="{{takeOffTime}}">
-            <br>
-            <label for="landing_time">Ora atterraggio</label><br>
-            <input type="time" id="landing_time" placeholder="12:00" value="{{landingTime}}">
-            <br>
-            <br>
-            <input type="text" id="rpas" placeholder="EGM-001" value="{{rpas}}">
-            <input type="text" id="battery1" placeholder="id batteria" value="{{battery1}}">
-            <br>
-            <h5>Simulazione</h5>
-            {{#if simulation}}
-                <input type="checkbox" name="insurance" value="true" checked>Si
-                {{else}}
-                <input type="checkbox" name="simulation" value="true" unchecked>Si
-            {{/if}}
-            <br>
-            <h5>Volume di volo</h5>
-            {{#if v70}}
-            <input type="checkbox" name="v70" value="true" checked>V70
-            {{else}}
-            <input type="checkbox" name="v70" value="true" unchecked>V70
-            {{/if}}
-            {{#if v150}}
-            <input type="checkbox" name="v150" value="true" checked>V150
-            {{else}}
-            <input type="checkbox" name="v150" value="true" unchecked>V150
-            {{/if}}
-            <br>
-            <h5>Regole di volo</h5>
-            {{#if vlos}}
-            <input type="checkbox" name="vlos" value="true" checked>VLOS
-            {{else}}
-            <input type="checkbox" name="vlos" value="true" unchecked>VLOS
-            {{/if}}
-            {{#if blos}}
-            <input type="checkbox" name="blos" value="true" checked>BLOS
-            {{else}}
-            <input type="checkbox" name="blos" value="true" unchecked>BLOS
-            {{/if}}
-            {{#if evlos}}
-            <input type="checkbox" name="evlos" value="true" checked>EVLOS
-            {{else}}
-            <input type="checkbox" name="evlos" value="true" unchecked>EVLOS
-            {{/if}}
-            <br>
-            <h5>Certificazione</h5>
-            {{#if certB}}
-            <input type="checkbox" name="certB" value="true" checked>B
-            {{else}}
-            <input type="checkbox" name="certB" value="true" unchecked>B
-            {{/if}}
-            {{#if certC}}
-            <input type="checkbox" name="certC" value="true" checked>C
-            {{else}}
-            <input type="checkbox" name="certC" value="true" unchecked>C
-            {{/if}}
-            {{#if certL}}
-            <input type="checkbox" name="certL" value="true" checked>L
-            {{else}}
-            <input type="checkbox" name="certL" value="true" unchecked>L
-            {{/if}}
-            {{#if certVL}}
-            <input type="checkbox" name="certVL" value="true" checked>VL
-            {{else}}
-            <input type="checkbox" name="certVL" value="true" unchecked>VL
-            {{/if}}
-            <br>
-            <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
-            <br>
-            {{#if $not editPilots}}
-            <p><b>Piloti inseriti in precedenza : riselezionare i piloti</b></p>
-            <ion-list>
-                    <ion-label>Piloti scelti</ion-label>
-                    {{#unless update}}
-                        {{#with missions}}
-                            {{#each pilotsLName}}
-                            <ion-item>
-                                    <div class="pilotsSelected">{{this}}</div>
-                            </ion-item>
-                            {{/each}}
-                        {{/with}}
-                    {{/unless}}
-            </ion-list>
-            {{else}}
-            <div>{{> pilotsLIST}}</div>
-            {{/if}}
+        <ion-grid>
+            <ion-row>
+                <ion-col><ion-input type="text" id="flight_number" placeholder="Num volo" value="{{flightNumber}}"></ion-input></ion-col>
+                <ion-col><ion-input type="text" id="place" placeholder="Luogo" value="{{place}}"></ion-input></ion-col>
+                <ion-col><ion-datetime id="flight_date" placeholder="Seleziona data volo" display-format="MMM DD, YYYY" value="{{flightDate}}"></ion-datetime></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><ion-input type="text" id="wind" placeholder="vento" value="{{wind}}"></ion-input></ion-col>
+                <ion-col><ion-input type="text" id="weather" placeholder="Meteo" value="{{weather}}"></ion-input></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><ion-label>Ora decollo</ion-label><br>
+                    <ion-datetime id="take_off_time" placeholder="10:00" value="{{takeOffTime}}"></ion-datetime></ion-col>
+                <ion-col><ion-label>Ora atterraggio</ion-label><br>
+                    <ion-datetime id="landing_time" placeholder="12:00" value="{{landingTime}}"></ion-datetime></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><ion-input type="text" id="rpas" placeholder="EGM-001" value="{{rpas}}"></ion-input></ion-col>
+                <ion-col><ion-input type="text" id="battery1" placeholder="id batteria" value="{{battery1}}"></ion-input></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label>Simulazione</ion-label><br>
+                            {{#if simulation}}
+                                <ion-checkbox name="insurance" value="true" checked></ion-checkbox>
+                                <ion-label>Volo sim</ion-label>
+                            {{else}}
+                                <ion-checkbox name="simulation" value="true" unchecked></ion-checkbox>
+                                <ion-label>Volo sim</ion-label>
+                            {{/if}}
+                        </ion-col>
+                    </ion-row>          
+                </ion-col>
+                <ion-col>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label>Certificazione</ion-label><br>
+                            {{#if certB}}
+                                <ion-checkbox name="certB" value="true" checked></ion-checkbox>
+                                <ion-label>B</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certB" value="true" unchecked></ion-checkbox>
+                                <ion-label>B</ion-label>
+                            {{/if}}
+                            {{#if certC}}
+                                <ion-checkbox name="certC" value="true" checked></ion-checkbox>
+                                <ion-label>C</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certC" value="true" unchecked></ion-checkbox>
+                                <ion-label>C</ion-label>
+                            {{/if}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            {{#if certL}}
+                                <ion-checkbox name="certL" value="true" checked></ion-checkbox>
+                                <ion-label>L</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certL" value="true" unchecked></ion-checkbox>
+                                <ion-label>L</ion-label>
+                            {{/if}}
+                            {{#if certVL}}
+                                <ion-checkbox name="certVL" value="true" checked></ion-checkbox>
+                                <ion-label>VL</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certVL" value="true" unchecked></ion-checkbox>
+                                <ion-label>VL</ion-label>
+                            {{/if}}
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label>Regole di volo</ion-label><br>
+                    {{#if vlos}}
+                        <ion-checkbox name="vlos" value="true" checked></ion-checkbox>
+                        <ion-label>VLOS</ion-label>
+                    {{else}}
+                        <ion-checkbox name="vlos" value="true" unchecked></ion-checkbox>
+                        <ion-label>VLOS</ion-label>
+                    {{/if}}
+                    {{#if blos}}
+                        <ion-checkbox name="blos" value="true" checked></ion-checkbox>
+                        <ion-label>BLOS</ion-label>
+                    {{else}}
+                        <ion-checkbox name="blos" value="true" unchecked></ion-checkbox>
+                        <ion-label>BLOS</ion-label>
+                    {{/if}}
+                    {{#if evlos}}
+                        <ion-checkbox name="evlos" value="true" checked></ion-checkbox>
+                        <ion-label>EVLOS</ion-label>
+                    {{else}}
+                        <ion-checkbox name="evlos" value="true" unchecked></ion-checkbox>
+                        <ion-label>EVLOS</ion-label>
+                    {{/if}}
+                </ion-col>
+                <ion-col>
+                    <ion-label>Volume di volo</ion-label><br>
+                    {{#if v70}}
+                        <ion-checkbox name="v70" value="true" checked></ion-checkbox>
+                        <ion-label>V70</ion-label>
+                    {{else}}
+                        <ion-checkbox name="v70" value="true" unchecked></ion-checkbox>
+                        <ion-label>V70</ion-label>
+                    {{/if}}
+                    {{#if v150}}
+                        <ion-checkbox name="v150" value="true" checked></ion-checkbox>
+                        <ion-label>V150</ion-label>
+                    {{else}}
+                        <ion-checkbox name="v150" value="true" unchecked></ion-checkbox>
+                        <ion-label>V150</ion-label>
+                    {{/if}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    {{#if $not editPilots}}
+                    <p><b>Piloti inseriti in precedenza : riselezionare i piloti</b></p>
+                    <ion-list>
+                            <ion-label>Piloti scelti</ion-label>
+                            {{#unless update}}
+                                {{#with missions}}
+                                    {{#each pilotsLName}}
+                                    <ion-item>
+                                            <div class="pilotsSelected">{{this}}</div>
+                                    </ion-item>
+                                    {{/each}}
+                                {{/with}}
+                            {{/unless}}
+                    </ion-list>
+                    {{else}}
+                    <div>{{> pilotsLIST}}</div>
+                    {{/if}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
         {{/with}}
         {{/if}}
         <br>
     </form>
     <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <ion-button expand="block" color="primary" class= "insert">Salva</ion-button>
-                    <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>      
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="primary" class= "insert">Salva</ion-button>
+                <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>      
 </template>
