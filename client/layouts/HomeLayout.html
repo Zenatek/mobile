@@ -1,5 +1,14 @@
 <template name="HomeLayout">
-    <main class="main-layout">
-            {{> Template.dynamic template=main}}
-    </main>
+    <ion-app>
+        <ion-content>
+            <main class="main-layout">
+                    {{> Template.dynamic template=main}}
+            </main>
+        </ion-content>
+    </ion-app>
+    <script>
+        var content = document.querySelector('ion-content');
+        content.scrollEvents = true;
+        content.addEventListener('ionScroll', (ev) => console.log('scroll', ev.detail));
+    </script>
 </template>

@@ -1,6 +1,6 @@
 Template.Home.helpers({
-    redirectDashboard : function () {
-        FlowRouter.go("/dashboard")
+    redirectMissions : function () {
+        FlowRouter.go("/missionsList")
     },
     changeBackground : function () {
             $('body').css('background-image','url(/login.jpg)');
