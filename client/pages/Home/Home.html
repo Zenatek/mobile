@@ -1,11 +1,11 @@
 <template name="Home">
     {{#if $not currentUser}}
-    {{changeBackground}}
+  <!--       {{changeBackground}} -->
     <div class="billboard">
         <div>{{> atForm}}</div>
     </div>
     {{else}}
-        {{redirectDashboard}}
+        {{redirectMissions}}
     {{/if}}
 </template>
 

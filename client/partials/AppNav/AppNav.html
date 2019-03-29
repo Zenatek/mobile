@@ -2,10 +2,6 @@
     <ion-footer>
         <ion-toolbar>
         <ion-tabs>
-                <ion-tab tab="tab-dashboard">
-                    <ion-nav></ion-nav>
-                </ion-tab>
-
                 <ion-tab tab="tab-missions">
                   <ion-nav></ion-nav>
                 </ion-tab>
@@ -17,17 +13,16 @@
                 <ion-tab tab="tab-drones" component="page-map">
                   <ion-nav></ion-nav>
                 </ion-tab>
-              
+
+                <ion-tab tab="tab-archive">
+                    <ion-nav></ion-nav>
+                </ion-tab>
+
                 <ion-tab tab="tab-about" component="page-about">
                   <ion-nav></ion-nav>
                 </ion-tab>
               
                 <ion-tab-bar slot="bottom">
-                    <ion-tab-button tab="tab-dashboard" class="dashboard">
-                        <ion-icon name="speedometer"></ion-icon>
-                        <ion-label>Dashboard</ion-label>
-                    </ion-tab-button>
-
                   <ion-tab-button tab="tab-missions" class="missions">
                     <ion-icon name="calendar"></ion-icon>
                     <ion-label>Missioni</ion-label>
@@ -42,6 +37,11 @@
                   <ion-tab-button tab="tab-drones" class="drones">
                     <ion-icon name="jet"></ion-icon>
                     <ion-label>Droni</ion-label>
+                  </ion-tab-button>
+
+                  <ion-tab-button tab="tab-archive" class="dashboard">
+                      <ion-icon name="filing"></ion-icon>
+                      <ion-label>Archivio</ion-label>
                   </ion-tab-button>
               
                   <ion-tab-button tab="tab-about" class="logout">
