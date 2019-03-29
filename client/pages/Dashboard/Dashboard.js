@@ -1,15 +1,26 @@
-Template.Dashboard.events({
-    'click .dronesList': ()=> {
-        event.preventDefault();
-        delete Session.keys['droneId']
-        FlowRouter.go('/operator/dronesList');
-    },
-    'click .newMission': ()=> {
-        event.preventDefault();
-        FlowRouter.go('/operator/newMission');
-    },
-    'click .missionsList': ()=> {
-        event.preventDefault();
-        FlowRouter.go('/operator/missionsList');
+Template.Dashboard.onCreated(function () {
+    this.autorun(()=> {
+        this.subscribe('allMissions');
+    });
+});
+
+Template.Dashboard.helpers({
+    mission : function(){
+        return Missions.find();
     }
 });
+
+
+Template.Dashboard.events({
+    'click .editButton': function() {
+        Session.set('missionId', this._id);
+        Session.set('editSession', true); 
+        Session.set('editPilots',false)
+        FlowRouter.go('/operator/newMission');
+    },
+    'click .qtbButton': function() {
+        Session.set('missionId', this._id);
+        FlowRouter.go('/newMission/qtbLogbook');
+    }
+});
+

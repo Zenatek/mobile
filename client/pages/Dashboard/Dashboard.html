@@ -1,19 +1,22 @@
 <template name="Dashboard">
     {{#if isInRole 'operator-user'}}
-        <ion-text color="primary"><h1 class="page-title">Archivio missioni</h1></ion-text>
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <ion-button color="primary" class= "dronesList">Lista droni</ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button color="primary" class= "newMission">Nuova missione</ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button color="primary" class= "missionsList">Lista missioni</ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+    <ion-text color="primary"><h1 class="page-title">Archivio missioni</h1></ion-text>
+    <p><b>Slide -&gt; per vedere il Qtb della missione, slide &lt;- per eliminare la missione e click per mostrare le info missione</b></p>
+        <ion-list>
+            {{#each mission}}
+            <ion-item-sliding>
+                    <ion-item class="editButton" detail>
+                        <ion-label>{{pilotsLName}} | {{flightDate}}</ion-label>
+                    </ion-item>
+                    <ion-item-options side="end">
+                        <ion-item-option color="danger" class="deleteButton">Elimina</ion-item-option>
+                    </ion-item-options>
+                    <ion-item-options side="start">
+                        <ion-item-option color="success" class="qtbButton">Qtb/Log</ion-item-option>
+                    </ion-item-options>
+            </ion-item-sliding>
+            {{/each}}
+        </ion-list>
     {{else}}
         {{> Dashboard_Pilot}}
     {{/if}}
@@ -29,4 +32,3 @@
         <h1 class="page-title">Effettua l'accesso per visualizzare la pagina</h1>
     {{/if}}
 </template>
-
