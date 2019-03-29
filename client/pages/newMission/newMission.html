@@ -55,7 +55,7 @@
 </template>
 
 <template name = "newMission">
-        <ion-text color="primary"><h1 class="page-title">Nuova missione</h1></ion-text>
+        <ion-text color="primary"><h1 class="page-title">Missione</h1></ion-text>
     <form>
         {{#if $not editSession}}
         <ion-grid>
@@ -118,6 +118,8 @@
                     <ion-checkbox  name="evlos" value="true" ></ion-checkbox>
                     <ion-label>EVLOS</ion-label>
                 </ion-col>
+            </ion-row>
+            <ion-row>
                 <ion-col>
                     <ion-label>Volume di volo</ion-label><br>
                     <ion-checkbox  name="v70" value="true" ></ion-checkbox>
@@ -239,6 +241,8 @@
                         <ion-label>EVLOS</ion-label>
                     {{/if}}
                 </ion-col>
+            </ion-row>
+            <ion-row>
                 <ion-col>
                     <ion-label>Volume di volo</ion-label><br>
                     {{#if v70}}

@@ -1,48 +1,79 @@
 <template name="infoPilot">
-        <ion-text color="primary"><h1 class="page-title">Dati personali</h1></ion-text>
+    <ion-text color="primary"><h1 class="page-title">Dati personali</h1></ion-text>
     <form>
-            <h5>Anagrafica</h5>
-            {{#with pilots}}
-            <input type="text" id="firstname" placeholder="Nome" value="{{profile.firstname}}">
-            <input type="text" id="lastname" placeholder="Cognome" value="{{profile.lastname}}">
-            <input type="text" id="state" placeholder="Nazione" value="{{profile.state}}">
-            <input type="text" id="comune" placeholder="Comune" value="{{profile.address.comune}}">
-            <input type="text" id="reference" placeholder="Via XX settembre" value="{{profile.address.reference}}">
-            <input type="text" id="civNum" placeholder="Civico" value="{{profile.address.civNum}}">
-            <input type="text" id="intNum" placeholder="Interno" value="{{profile.address.intNum}}">
-            <input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}">
-            <input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}">
+        {{#with pilots}}
+        <ion-grid>
+            <ion-label>Anagrafica</ion-label><br>
+            <ion-row>
+                <ion-col><ion-input type="text" id="firstname" placeholder="Nome" value="{{profile.firstname}}">Nome:</ion-input></ion-col>
+                <ion-col><ion-input type="text" id="lastname" placeholder="Cognome" value="{{profile.lastname}}">Cognome:</ion-input></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><ion-input type="text" id="state" placeholder="Nazione" value="{{profile.state}}">Nazione:</ion-input></ion-col>
+                <ion-col><ion-input type="text" id="comune" placeholder="Comune" value="{{profile.address.comune}}">Comune:</ion-input></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><ion-input type="text" id="reference" placeholder="Via XX settembre" value="{{profile.address.reference}}">Via:</ion-input></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><ion-input type="text" id="civNum" placeholder="Civico" value="{{profile.address.civNum}}">Civ:</ion-input></ion-col>
+                <ion-col><ion-input type="text" id="intNum" placeholder="Interno" value="{{profile.address.intNum}}">Int:</ion-input></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><ion-input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}"></ion-input></ion-col>
+                <ion-col><ion-input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}"></ion-input></ion-col>
+            </ion-row>
             {{#if isInRole 'operator-user'}}
-            <h5>Certificazioni</h5>
-            {{#if profile.certification.certB}}
-            <input type="checkbox" name="certB" value="true" checked>B
-            {{else}}
-            <input type="checkbox" name="certB" value="true" unchecked>B
+                <ion-row>
+                    <ion-col>
+                        <ion-label>Certificazione</ion-label><br>
+                        {{#if profile.certification.certB}}
+                        <ion-checkbox  name="certB" value="true" checked></ion-checkbox>
+                        <ion-label>B</ion-label>
+                        {{else}}
+                        <ion-checkbox  name="certB" value="true" unchecked></ion-checkbox>
+                        <ion-label>B</ion-label>
+                        {{/if}}
+                        {{#if profile.certification.certC}}
+                        <ion-checkbox name="certC" value="true" checked></ion-checkbox>
+                        <ion-label>C</ion-label>
+                        {{else}}
+                        <ion-checkbox name="certC" value="true" unchecked></ion-checkbox>
+                        <ion-label>C</ion-label>
+                        {{/if}}
+                        {{#if profile.certification.certL}}
+                        <ion-checkbox name="certL" value="true" checked></ion-checkbox>
+                        <ion-label>L</ion-label>
+                        {{else}}
+                        <ion-checkbox name="certL" value="true" unchecked></ion-checkbox>
+                        <ion-label>L</ion-label>
+                        {{/if}}
+                        {{#if profile.certification.certVL}}
+                        <ion-checkbox name="certVL" value="true" checked></ion-checkbox>
+                        <ion-label>VL</ion-label>
+                        {{else}}
+                        <ion-checkbox name="certVL" value="true" unchecked></ion-checkbox>
+                        <ion-label>VL</ion-label>
+                        {{/if}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col><ion-input type="text" id="numBrev" placeholder="Numero brevetto" value="{{profile.brevetto.numBrev}}">Num brevetto:</ion-input></ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col><ion-input type="text" id="luogoBrev" placeholder="Luogo rilascio" value="{{profile.brevetto.luogoBrev}}">Luogo rilascio:</ion-input></ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-label>Data di rilascio:</ion-label><ion-datetime id="release_date" display-format="MMM DD, YYYY" value="{{profile.brevetto.release_date}}"></ion-datetime>
+                    </ion-col>
+                </ion-row>
             {{/if}}
-            {{#if profile.certification.certC}}
-            <input type="checkbox" name="certC" value="true" checked>C
-            {{else}}
-            <input type="checkbox" name="certC" value="true" unchecked>C
-            {{/if}}
-            {{#if profile.certification.certL}}
-            <input type="checkbox" name="certL" value="true" checked>L
-            {{else}}
-            <input type="checkbox" name="certL" value="true" unchecked>L
-            {{/if}}
-            {{#if profile.certification.certVL}}
-            <input type="checkbox" name="certVL" value="true" checked>VL
-            {{else}}
-            <input type="checkbox" name="certVL" value="true" unchecked>VL
-            {{/if}}
-            <br><br>
-            <input type="text" id="numBrev" placeholder="Numero brevetto" value="{{profile.brevetto.numBrev}}">
-            <input type="text" id="luogoBrev" placeholder="Luogo rilascio" value="{{profile.brevetto.luogoBrev}}"><br><br>
-            <label for="release_date">Data di rilascio</label><br>
-            <input type="date" id="release_date" value="{{profile.brevetto.release_date}}"><br>
-            {{/if}}
-            <br>
-            <label for="expiration_date">Data di scadanza brevetto</label><br>
-            <input type="date" id="expiration_date" value="{{profile.brevetto.exp_date}}">
+            <ion-row>
+                    <ion-col>
+                        <ion-label>Data scadenza:</ion-label><ion-datetime id="expiration_date" display-format="MMM DD, YYYY"  value="{{profile.brevetto.exp_date}}"></ion-datetime>
+                    </ion-col>
+                </ion-row>
             {{#if isInRole 'operator-user'}}
             <h5>Abilitazioni</h5>
             {{#if profile.ability.istr}}                        
@@ -56,15 +87,16 @@
             <input type="checkbox" name="examiner" value="true" unchecked>Esaminatore
             {{/if}}
             {{/if}}
-            {{/with}}
-            <br>
-            <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <ion-button expand="block" color="primary" class= "submit">Salva</ion-button>
-                        <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>                                               
-        </form>
+        </ion-grid>
+        {{/with}}
+        <br>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" color="primary" class= "submit">Salva</ion-button>
+                    <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>                                               
+    </form>
 </template>
