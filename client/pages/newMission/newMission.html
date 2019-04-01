@@ -65,11 +65,15 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-label position="stacked">Aeromobile</ion-label>
-                    <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input></ion-col>
+                    <!-- <ion-label position="stacked">Aeromobile</ion-label> -->
+                    <!-- <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input> -->
+                    {{>selectDrone}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
                 <ion-col>
-                    <ion-label position="stacked">Batteria</ion-label>
-                    <ion-input type="text" id="battery1" placeholder="id batteria"></ion-input></ion-col>
+                        <ion-label position="stacked">Batteria</ion-label>
+                        <ion-input type="text" id="battery1" placeholder="id batteria"></ion-input></ion-col>
             </ion-row>
             <ion-row>
                 <ion-col>
@@ -151,7 +155,13 @@
                     <ion-datetime id="landing_time" placeholder="12:00" value="{{landingTime}}"></ion-datetime></ion-col>
             </ion-row>
             <ion-row>
-                <ion-col><ion-input type="text" id="rpas" placeholder="EGM-001" value="{{rpas}}"></ion-input></ion-col>
+                    <ion-col>
+                        <!-- <ion-label position="stacked">Aeromobile</ion-label> -->
+                        <!-- <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input> -->
+                        {{>selectDrone}}
+                    </ion-col>
+            </ion-row>
+            <ion-row>
                 <ion-col><ion-input type="text" id="battery1" placeholder="id batteria" value="{{battery1}}"></ion-input></ion-col>
             </ion-row>
             <ion-row>
@@ -323,5 +333,4 @@
             <ion-label position= "fixed" id="wind">{{wind}}</ion-label>
         {{/with}}
     {{/if}}
-    
 </template>

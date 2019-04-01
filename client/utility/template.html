@@ -17,3 +17,27 @@
     {{profile.lastname}} <span style="color: {{color}}; background-color: {{bg}};"><L><br>{{operatorEmail}}</L></span>
     </div>
 </template>
+
+<template name="selectDrone">
+    <ion-list>
+        {{#if $not editSession}}    
+            <ion-item>
+                    <ion-label position="stacked">Aeremobile</ion-label>
+                <ion-select id="rpas" value="{{rpas}}" ok-text="Seleziona" cancel-text="Annulla">
+                    {{#each drone}}
+                    <ion-select-option value="{{rpas}}">{{rpas}} | {{model}}</ion-select-option>
+                    {{/each}}
+                </ion-select>
+            </ion-item>
+        {{else}}
+                <ion-item>
+                        <ion-label position="stacked">Aeremobile</ion-label>
+                    <ion-select id="rpas" value="{{missions.rpas}}" ok-text="Seleziona" cancel-text="Annulla">
+                        {{#each drone}}
+                        <ion-select-option value="{{rpas}}">{{rpas}} | {{model}}</ion-select-option>
+                        {{/each}}
+                    </ion-select>
+                </ion-item>
+        {{/if}}
+    </ion-list>
+</template>

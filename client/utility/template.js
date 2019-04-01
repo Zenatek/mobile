@@ -4,6 +4,27 @@ Template.Home.onCreated(function () {
     });
 });
 
+Template.selectDrone.onCreated(function () {
+  this.autorun(()=> {
+      this.subscribe('allDrones');
+      this.subscribe('allMissions');
+  });
+});
+
+Template.selectDrone.helpers({
+  drone : function(){
+      return Drones.find();
+  },
+  missions : function(){
+    missionId = Session.get('missionId')
+    return Missions.findOne({_id : missionId})
+  },
+  editSession : function(){
+      return  Session.get('updatePilots', true);
+
+  }
+});
+
 Template.autoCompleteOperators.helpers({
   settings: function() {
     return {
