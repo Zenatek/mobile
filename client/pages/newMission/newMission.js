@@ -1,9 +1,71 @@
+Template.slideMeteo.onCreated(function () {
+    this.autorun(()=> {
+        this.subscribe('allMissions')
+    });
+});
+
+Template.slideVento.onCreated(function () {
+    this.autorun(()=> {
+        this.subscribe('allMissions')
+    });
+});
+
 Template.newMission.onCreated(function () {
     this.autorun(()=> {
         this.subscribe('allPilots');
         this.subscribe('allMissions')
     });
 });
+
+Template.slideMeteo.helpers({
+    missions : function(){
+        missionId = Session.get('missionId')
+        return Missions.findOne({_id : missionId})
+    },
+    editSession : function(){
+        return  Session.get('editSession')
+
+    }
+});
+
+Template.slideMeteo.events({
+    'ionChange' : function(event,template,value){
+        value = template.find('#rangeMeteo').value;
+        if(value == 0){return template.find('#weather').innerHTML = "Sereno" }
+        if(value == 1){return template.find('#weather').innerHTML = "Poco nuvoloso" }
+        if(value == 2){return template.find('#weather').innerHTML = "Nuvoloso" }
+        if(value == 3){return template.find('#weather').innerHTML = "Pioggia debole" }
+        if(value == 4){return template.find('#weather').innerHTML = "Pioggia" }
+        if(value == 5){return template.find('#weather').innerHTML = "Temporale" }
+    }
+});
+
+Template.slideVento.helpers({
+    missions : function(){
+        missionId = Session.get('missionId')
+        return Missions.findOne({_id : missionId})
+    },
+    editSession : function(){
+        return  Session.get('editSession')
+
+    }
+});
+
+Template.slideVento.events({
+    'ionChange' : function(event,template,value){
+        value = template.find('#rangeVento').value;
+        if(value == 0){return template.find('#wind').innerHTML = "Calmo [1 km/h]" }
+        if(value == 1){return template.find('#wind').innerHTML = "Bava di vento [5 km/h]" }
+        if(value == 2){return template.find('#wind').innerHTML = "Brezza leggera [11 km/h]" }
+        if(value == 3){return template.find('#wind').innerHTML = "Brezza [19 km/h]" }
+        if(value == 4){return template.find('#wind').innerHTML = "Brezza vivace [28 km/h]" }
+        if(value == 5){return template.find('#wind').innerHTML = "Brezza tesa [39 km/h]" }
+        if(value == 6){return template.find('#wind').innerHTML = "Vento fresco [49 km/h]" }
+        if(value == 7){return template.find('#wind').innerHTML = "Vento forte [61 km/h]" }
+    }
+});
+
+
 
 Template.pilotsLIST.onCreated(function () {
     this.autorun(()=> {
@@ -86,8 +148,8 @@ Template.newMission.events({
         var flightNumberVar = template.find('#flight_number').value;
         var placeVar = template.find('#place').value;
         var flightDateVar = template.find('#flight_date').value;
-        var windVar = template.find('#wind').value;
-        var weatherVar = template.find('#weather').value;
+        var windVar = template.find('#wind').innerHTML;
+        var weatherVar = template.find('#weather').innerHTML;
         var takeOffTimeVar = template.find('#take_off_time').value;
         var landingTimeVar = template.find('#landing_time').value;
         var rpasVar = template.find('#rpas').value;

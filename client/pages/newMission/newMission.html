@@ -16,26 +16,6 @@
     </div>
 </template>
 
-<!-- <template name="pilotsLIST">
-    <table>
-        <tr>
-            <th>Piloti scelti</th>
-            <th>Rimuovere</th>
-        </tr>
-            {{#unless update}}
-                {{#each pilotsList}}
-                    <tr>
-                        <td>
-                            <div class="pilotsSelected">{{this.profile.firstname}} {{this.profile.lastname}}</div>
-                        </td>
-                        <td>
-                            <i class="fa fa-times delete" aria-hidden="true"></i>
-                        </td>
-                    </tr>
-                {{/each}}
-            {{/unless}}
-    </table>
-</template> -->
 
 <template name="pilotsLIST">
         <ion-list>
@@ -64,10 +44,10 @@
                 <ion-col><ion-input type="text" id="place" placeholder="Luogo"></ion-input></ion-col>
                 <ion-col><ion-datetime id="flight_date" placeholder="Seleziona data volo" display-format="MMM DD, YYYY"></ion-datetime></ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col><ion-input type="text" id="wind" placeholder="Vento"></ion-input></ion-col>
-                <ion-col><ion-input type="text" id="weather" placeholder="Meteo"></ion-input></ion-col>
-            </ion-row>
+                <ion-list>
+                    <ion-col>{{>slideMeteo}}</ion-col>
+                    <ion-col>{{>slideVento}}</ion-col>
+                </ion-list>
             <ion-row>
                 <ion-col><ion-label>Ora decollo</ion-label><br>
                     <ion-datetime id="take_off_time" placeholder="Seleziona ora" display-format="HH:mm a"></ion-datetime></ion-col>
@@ -147,10 +127,10 @@
                 <ion-col><ion-input type="text" id="place" placeholder="Luogo" value="{{place}}"></ion-input></ion-col>
                 <ion-col><ion-datetime id="flight_date" placeholder="Seleziona data volo" display-format="MMM DD, YYYY" value="{{flightDate}}"></ion-datetime></ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col><ion-input type="text" id="wind" placeholder="vento" value="{{wind}}"></ion-input></ion-col>
-                <ion-col><ion-input type="text" id="weather" placeholder="Meteo" value="{{weather}}"></ion-input></ion-col>
-            </ion-row>
+            <ion-list>
+                <ion-col>{{>slideMeteo}}</ion-col>
+                <ion-col>{{>slideVento}}</ion-col>
+            </ion-list>
             <ion-row>
                 <ion-col><ion-label>Ora decollo</ion-label><br>
                     <ion-datetime id="take_off_time" placeholder="10:00" value="{{takeOffTime}}"></ion-datetime></ion-col>
@@ -300,4 +280,34 @@
             </ion-col>
         </ion-row>
     </ion-grid>      
+</template>
+
+<template name="slideMeteo">
+        <ion-item>
+            <ion-range id="rangeMeteo" min="0" max="5" step="1" snaps="true" color="primary"></ion-range>
+            <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+            <ion-icon slot="end" name="thunderstorm"></ion-icon>
+        </ion-item>
+        {{#if $not editSession}}
+            <ion-label id="weather">Sereno</ion-label>
+        {{else}}
+            {{#with missions}}
+                <ion-label id="weather">{{weather}}</ion-label>
+            {{/with}}
+        {{/if}}
+</template>
+
+<template name="slideVento"> 
+    <ion-item>
+        <ion-range id="rangeVento" min="0" max="7" step="1" snaps="true" color="primary"></ion-range>
+        <ion-icon slot="start" src="/wind_minus.svg"></ion-icon>
+        <ion-icon slot="end" src="/wind_max.svg"></ion-icon>
+    </ion-item>
+    {{#if $not editSession}}
+    <ion-label id="wind">Calmo [1 km/h]</ion-label>
+    {{else}}
+        {{#with missions}}
+            <ion-label id="wind">{{wind}}</ion-label>
+        {{/with}}
+    {{/if}}
 </template>
