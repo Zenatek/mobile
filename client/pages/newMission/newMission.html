@@ -40,38 +40,51 @@
         {{#if $not editSession}}
         <ion-grid>
             <ion-row>
-                <ion-col><ion-input type="text" id="flight_number" placeholder="Num volo"></ion-input></ion-col>
-                <ion-col><ion-input type="text" id="place" placeholder="Luogo"></ion-input></ion-col>
-                <ion-col><ion-datetime id="flight_date" placeholder="Seleziona data volo" display-format="MMM DD, YYYY"></ion-datetime></ion-col>
+                <ion-col>
+                    <ion-label position="stacked">Missione</ion-label>
+                    <ion-input type="text" id="flight_number" placeholder="ID volo"></ion-input>
+                </ion-col>
+                <ion-col>
+                    <ion-label position="stacked">Luogo</ion-label>
+                    <ion-input type="text" id="place" placeholder="Luogo"></ion-input>
+                </ion-col>
+                <ion-col>
+                    <ion-label position="stacked">Data</ion-label>
+                    <ion-datetime id="flight_date" placeholder="Seleziona data volo" display-format="MMM DD, YYYY"></ion-datetime>
+                </ion-col>
             </ion-row>
                 <ion-list>
                     <ion-col>{{>slideMeteo}}</ion-col>
                     <ion-col>{{>slideVento}}</ion-col>
                 </ion-list>
             <ion-row>
-                <ion-col><ion-label>Ora decollo</ion-label><br>
+                <ion-col><ion-label position="stacked">Ora decollo</ion-label><br>
                     <ion-datetime id="take_off_time" placeholder="Seleziona ora" display-format="HH:mm a"></ion-datetime></ion-col>
-                <ion-col><ion-label>Ora atterraggio</ion-label><br>
+                <ion-col><ion-label position="stacked">Ora atterraggio</ion-label><br>
                     <ion-datetime id="landing_time" placeholder="Seleziona ora" display-format="HH:mm a"></ion-datetime></ion-col>
             </ion-row>
             <ion-row>
-                <ion-col><ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input></ion-col>
-                <ion-col><ion-input type="text" id="battery1" placeholder="id batteria"></ion-input></ion-col>
+                <ion-col>
+                    <ion-label position="stacked">Aeromobile</ion-label>
+                    <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input></ion-col>
+                <ion-col>
+                    <ion-label position="stacked">Batteria</ion-label>
+                    <ion-input type="text" id="battery1" placeholder="id batteria"></ion-input></ion-col>
             </ion-row>
             <ion-row>
                 <ion-col>
                     <ion-row>
                         <ion-col>
-                            <ion-label>Simulazione</ion-label><br>
+                            <ion-label position="stacked">Simulazione</ion-label><br>
                             <ion-checkbox name="simulation" value="true"></ion-checkbox>
-                            <ion-label>Volo sim</ion-label>
+                            <ion-label position="stacked">Volo sim</ion-label>
                         </ion-col>
                     </ion-row>          
                 </ion-col>
                 <ion-col>
                     <ion-row>
                         <ion-col>
-                            <ion-label>Certificazione</ion-label><br>
+                            <ion-label position="stacked">Certificazione</ion-label><br>
                             <ion-checkbox  name="certB" value="true" ></ion-checkbox>
                             <ion-label>B</ion-label>
                             <ion-checkbox  name="certC" value="true" ></ion-checkbox>
@@ -90,7 +103,7 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-label>Regole di volo</ion-label><br>
+                    <ion-label position="stacked">Regole di volo</ion-label><br>
                     <ion-checkbox  name="vlos" value="true" ></ion-checkbox>
                     <ion-label>VLOS</ion-label>
                     <ion-checkbox  name="blos" value="true" ></ion-checkbox>
@@ -101,7 +114,7 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-label>Volume di volo</ion-label><br>
+                    <ion-label position="stacked">Volume di volo</ion-label><br>
                     <ion-checkbox  name="v70" value="true" ></ion-checkbox>
                     <ion-label>V70</ion-label>
                     <ion-checkbox  name="v150" value="true" ></ion-checkbox>
@@ -307,7 +320,8 @@
     <ion-label id="wind">Calmo [1 km/h]</ion-label>
     {{else}}
         {{#with missions}}
-            <ion-label id="wind">{{wind}}</ion-label>
+            <ion-label position= "fixed" id="wind">{{wind}}</ion-label>
         {{/with}}
     {{/if}}
+    
 </template>
