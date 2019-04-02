@@ -17,6 +17,24 @@ Template.newMission.onCreated(function () {
     });
 });
 
+Template.dirVento.onCreated(function () {
+    this.autorun(()=> {
+        this.subscribe('allMissions')
+    });
+});
+
+Template.dirVento.helpers({
+    missions : function(){
+        missionId = Session.get('missionId')
+        return Missions.findOne({_id : missionId})
+    },
+    editSession : function(){
+        return  Session.get('editSession')
+
+    }
+});
+
+
 Template.slideMeteo.helpers({
     missions : function(){
         missionId = Session.get('missionId')

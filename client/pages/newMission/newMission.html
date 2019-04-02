@@ -56,6 +56,7 @@
                 <ion-list>
                     <ion-col>{{>slideMeteo}}</ion-col>
                     <ion-col>{{>slideVento}}</ion-col>
+                    <ion-col>{{> dirVento}}</ion-col>
                 </ion-list>
             <ion-row>
                 <ion-col><ion-label position="stacked">Ora decollo</ion-label><br>
@@ -332,5 +333,38 @@
         {{#with missions}}
             <ion-label position= "fixed" id="wind">{{wind}}</ion-label>
         {{/with}}
+    {{/if}}
+</template>
+
+<template name="dirVento">
+    <br>
+    <br>
+    <ion-label position="stacked">Direzione vento</ion-label><br>
+    {{#if $not editSession}}
+        <ion-row>
+            <ion-col><ion-checkbox name="n" value="true" ></ion-checkbox><ion-label>N</ion-label></ion-col>
+            <ion-col><ion-checkbox name="ne" value="true" ></ion-checkbox><ion-label>NE</ion-label></ion-col>
+            <ion-col><ion-checkbox name="e" value="true" ></ion-checkbox><ion-label>E</ion-label></ion-col>
+            <ion-col><ion-checkbox name="se" value="true" ></ion-checkbox><ion-label>SE</ion-label></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><ion-checkbox name="s" value="true" ></ion-checkbox><ion-label>S</ion-label></ion-col>
+            <ion-col><ion-checkbox name="sw" value="true" ></ion-checkbox><ion-label>SW</ion-label></ion-col>
+            <ion-col><ion-checkbox name="w" value="true" ></ion-checkbox><ion-label>W</ion-label></ion-col>
+            <ion-col><ion-checkbox name="nw" value="true" ></ion-checkbox><ion-label>NW</ion-label></ion-col>
+        </ion-row>
+    {{else}}
+<!--         <ion-row>
+            <ion-col>{{#if n}}<ion-checkbox name="n" value="true" checked></ion-checkbox><ion-label>N</ion-label>{{else}}<ion-checkbox name="n" value="true" unchecked></ion-checkbox><ion-label>N</ion-label></ion-col>
+            <ion-col>{{#if ne}}<ion-checkbox name="ne" value="true" checked></ion-checkbox><ion-label>NE</ion-label>{{else}}<ion-checkbox name="ne" value="true" unchecked></ion-checkbox><ion-label>NE</ion-label></ion-col>
+            <ion-col>{{#if e}}<ion-checkbox name="e" value="true" checked></ion-checkbox><ion-label>E</ion-label>{{else}}<ion-checkbox name="e" value="true" unchecked></ion-checkbox><ion-label>E</ion-label></ion-col>
+            <ion-col>{{#if se}}<ion-checkbox name="se" value="true" checked></ion-checkbox><ion-label>SE</ion-label>{{else}}<ion-checkbox name="se" value="true" unchecked></ion-checkbox><ion-label>SE</ion-label></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>{{#if s}}<ion-checkbox name="s" value="true" checked></ion-checkbox><ion-label>S</ion-label>{{else}}<ion-checkbox name="s" value="true" unchecked></ion-checkbox><ion-label>S</ion-label></ion-col>
+            <ion-col>{{#if sw}}<ion-checkbox name="sw" value="true" checked></ion-checkbox><ion-label>SW</ion-label>{{else}}<ion-checkbox name="sw" value="true" unchecked></ion-checkbox><ion-label>SW</ion-label></ion-col>
+            <ion-col>{{#if w}}<ion-checkbox name="w" value="true" checked></ion-checkbox><ion-label>W</ion-label>{{else}}<ion-checkbox name="w" value="true" unchecked></ion-checkbox><ion-label>W</ion-label></ion-col>
+            <ion-col>{{#if nw}}<ion-checkbox name="nw" value="true" checked></ion-checkbox><ion-label>NW</ion-label>{{else}}<ion-checkbox name="nw" value="true" unchecked></ion-checkbox><ion-label>NW</ion-label></ion-col>
+        </ion-row> -->
     {{/if}}
 </template>
