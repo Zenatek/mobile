@@ -229,7 +229,15 @@ Template.newMission.events({
         var certL = Session.get("certL");
         var certVL = Session.get("certVL");
         var userID = Meteor.userId();
-        var missionId = Session.get('missionId')
+        var missionId = Session.get('missionId');
+        var n = Session.get("n");
+        var ne = Session.get("ne");
+        var e = Session.get("e");
+        var se = Session.get("se");
+        var s = Session.get("s");
+        var sw = Session.get("sw");
+        var w = Session.get("w");
+        var nw = Session.get("nw");
                 
 
         var pilotsID = [];
@@ -265,7 +273,15 @@ Template.newMission.events({
             certB : certB,
             certC : certC,
             certL : certL,
-            certVL : certVL
+            certVL : certVL,
+            n : n,
+            ne : ne,
+            e : e,
+            se : se,
+            s : s,
+            sw : sw,
+            w : w,
+            nw : nw
         });
     }else{
         Missions.update({_id : missionId},
