@@ -7,33 +7,37 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col>
+                            <ion-label position="stacked">Modello</ion-label><br>
                             <ion-input type="text" id="model" placeholder="Modello" value="{{model}}"></ion-input>
                         </ion-col>
                         <ion-col>
+                            <ion-label position="stacked">RPAS</ion-label><br>
                             <ion-input type="text" id="rpas" placeholder="EGM-001" value="{{rpas}}"></ion-input>
                         </ion-col>
                     </ion-row>
                     <ion-row>
                         <ion-col>
+                            <ion-label position="stacked">Radiocomando</ion-label><br>
                             <ion-input type="text" id="radiocommand" placeholder="radiocomando" value="{{radiocommand}}"></ion-input>
                         </ion-col>
                         <ion-col>
+                            <ion-label position="stacked">Batteria</ion-label><br>
                             <ion-input type="text" id="battery1" placeholder="id batteria" value="{{idBattery1}}"></ion-input>
                         </ion-col>
                     </ion-row>
                     <ion-row>
                         <ion-col>
-                            <ion-label for="weight">Peso in kg</ion-label><br>
+                            <ion-label position="stacked" for="weight">Peso in kg</ion-label><br>
                             <ion-input type="text" id="weight" placeholder="10" value="{{weight}}"></ion-input>
                         </ion-col>
                         <ion-col>
-                            <ion-label for="flight_hours">Ore di volo</ion-label><br>
+                            <ion-label position="stacked" for="flight_hours">Ore di volo</ion-label><br>
                             <ion-input type="text" id="flight_hours" placeholder="2" value="{{flightHours}}"></ion-input>
                         </ion-col>
                     </ion-row>
                     <ion-row>
                         <ion-col>
-                            <ion-label>Assicurazione</ion-label><br>
+                            <ion-label position="stacked">Assicurazione</ion-label><br>
                             {{#if insurance}}
                                 <ion-checkbox name="insurance" value="true" checked></ion-checkbox>
                                 <ion-label>Sì</ion-label>
@@ -43,13 +47,13 @@
                             {{/if}}
                         </ion-col> 
                         <ion-col> 
-                            <ion-label for="deadline_insurance">Data di scadenza</ion-label><br>
+                            <ion-label position="stacked" for="deadline_insurance">Data di scadenza</ion-label><br>
                             <ion-input type="date" id="deadline_insurance" value="{{deadlineInsurance}}"></ion-input>
                         </ion-col>
                     </ion-row>
                     <ion-row>
                         <ion-col>
-                            <ion-label>Certificazione</ion-label><br>
+                            <ion-label position="stacked">Certificazione</ion-label><br>
                             {{#if certB}}
                                 <ion-checkbox name="certB" value="true" checked></ion-checkbox>
                                 <ion-label>B</ion-label>
@@ -64,13 +68,11 @@
                                 <ion-checkbox name="certC" value="true" unchecked></ion-checkbox>
                                 <ion-label>C</ion-label>
                             {{/if}}
-                            {{#if certL}}
-                                <ion-checkbox name="certL" value="true" checked></ion-checkbox>
-                                <ion-label>L</ion-label>
-                            {{else}}
-                                <ion-checkbox name="certL" value="true" unchecked></ion-checkbox>
-                                <ion-label>L</ion-label>
-                            {{/if}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label position="stacked">Classe</ion-label><br>
                             {{#if certVL}}
                                 <ion-checkbox name="certVL" value="true" checked></ion-checkbox>
                                 <ion-label>VL</ion-label>
@@ -78,11 +80,58 @@
                                 <ion-checkbox name="certVL" value="true" unchecked></ion-checkbox>
                                 <ion-label>VL</ion-label>
                             {{/if}}
+                            {{#if certL}}
+                                <ion-checkbox name="certL" value="true" checked></ion-checkbox>
+                                <ion-label>L</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certL" value="true" unchecked></ion-checkbox>
+                                <ion-label>L</ion-label>
+                            {{/if}}
+                            {{#if certH}}
+                                <ion-checkbox name="certH" value="true" checked></ion-checkbox>
+                                <ion-label>H</ion-label>
+                            {{else}}
+                                <ion-checkbox name="certH" value="true" unchecked></ion-checkbox>
+                                <ion-label>H</ion-label>
+                            {{/if}}
                         </ion-col>
                     </ion-row>
                     <ion-row>
                         <ion-col>
-                            <ion-label>Scenari consentiti</ion-label><br>
+                            <ion-label position="stacked">Categoria</ion-label><br>
+                            {{#if catMC}}
+                                <ion-checkbox name="catMC" value="true" checked></ion-checkbox>
+                                <ion-label>MC</ion-label>
+                            {{else}}
+                                <ion-checkbox name="catMC" value="true" unchecked></ion-checkbox>
+                                <ion-label>MC</ion-label>
+                            {{/if}}
+                            {{#if catAP}}
+                                <ion-checkbox name="catAP" value="true" checked></ion-checkbox>
+                                <ion-label>AP</ion-label>
+                            {{else}}
+                                <ion-checkbox name="catAP" value="true" unchecked></ion-checkbox>
+                                <ion-label>AP</ion-label>
+                            {{/if}}
+                            {{#if catH}}
+                                <ion-checkbox name="catH" value="true" checked></ion-checkbox>
+                                <ion-label>H</ion-label>
+                            {{else}}
+                                <ion-checkbox name="catH" value="true" unchecked></ion-checkbox>
+                                <ion-label>H</ion-label>
+                            {{/if}}
+                            {{#if catAS}}
+                                <ion-checkbox name="catAS" value="true" checked></ion-checkbox>
+                                <ion-label>AS</ion-label>
+                            {{else}}
+                                <ion-checkbox name="catAS" value="true" unchecked></ion-checkbox>
+                                <ion-label>AS</ion-label>
+                            {{/if}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label position="stacked">Scenari consentiti</ion-label><br>
                             {{#if s1}}
                                 <ion-checkbox name="s1" value="true" checked></ion-checkbox>
                                 <ion-label>S1</ion-label>
@@ -166,58 +215,82 @@
         {{else}}
             <ion-grid>
                 <ion-row>
-                        <ion-col>
-                                <ion-input type="text" id="model" placeholder="Modello"></ion-input>
-                        </ion-col>
-                        <ion-col>
-                                <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input>
-                        </ion-col>
-                </ion-row>
-                <ion-row>
                     <ion-col>
-                            <ion-input type="text" id="radiocommand" placeholder="radiocomando"></ion-input>
+                        <ion-label position="stacked">Modello</ion-label><br>
+                        <ion-input type="text" id="model" placeholder="Modello"></ion-input>
                     </ion-col>
                     <ion-col>
-                            <ion-input type="text" id="battery1" placeholder="id batteria"></ion-input>
+                        <ion-label position="stacked">RPAS</ion-label><br>
+                        <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                            <ion-label for="weight">Peso in kg</ion-label><br>
-                            <ion-input type="number" id="weight" placeholder="10"></ion-input>
+                        <ion-label position="stacked">Radiocomando</ion-label><br>
+                        <ion-input type="text" id="radiocommand" placeholder="radiocomando"></ion-input>
                     </ion-col>
                     <ion-col>
-                            <ion-label for="flight_hours">Ore di volo</ion-label><br>
-                            <ion-input type="number" id="flight_hours" placeholder="2"></ion-input>
+                        <ion-label position="stacked">Batteria</ion-label><br>
+                        <ion-input type="text" id="battery1" placeholder="id batteria"></ion-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                            <ion-label>Assicurazione</ion-label><br>
-                            <ion-checkbox name="insurance" value="false" checked>Si</ion-checkbox>
-                            <ion-label>Sì</ion-label>
+                        <ion-label position="stacked" for="weight">Peso in kg</ion-label><br>
+                        <ion-input type="number" id="weight" placeholder="10"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="stacked" for="flight_hours">Ore di volo</ion-label><br>
+                        <ion-input type="number" id="flight_hours" placeholder="2"></ion-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="stacked">Assicurazione</ion-label><br>
+                        <ion-checkbox name="insurance" value="false" checked>Si</ion-checkbox>
+                        <ion-label>Sì</ion-label>
                     </ion-col>  
                     <ion-col>      
-                            <ion-label for="deadline_insurance">Data di scadenza</ion-label><br>
-                            <ion-input type="date" id="deadline_insurance"></ion-input>
+                        <ion-label position="stacked" for="deadline_insurance">Data di scadenza</ion-label><br>
+                        <ion-input type="date" id="deadline_insurance"></ion-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <ion-label>Certificazione</ion-label><br>
+                        <ion-label position="stacked">Certificazione</ion-label><br>
                         <ion-checkbox  name="certB" value="true" ></ion-checkbox>
                         <ion-label>B</ion-label>
                         <ion-checkbox  name="certC" value="true" ></ion-checkbox>
                         <ion-label>C</ion-label>
-                        <ion-checkbox  name="certL" value="true" ></ion-checkbox>
-                        <ion-label>L</ion-label>
-                        <ion-checkbox  name="certVL" value="true" ></ion-checkbox>
-                        <ion-label>VL</ion-label>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <ion-label>Scenari consentiti</ion-label><br>
+                        <ion-label position="stacked">Classe</ion-label><br>
+                        <ion-checkbox  name="certVL" value="true" ></ion-checkbox>
+                        <ion-label>VL</ion-label>
+                        <ion-checkbox  name="certL" value="true" ></ion-checkbox>
+                        <ion-label>L</ion-label>
+                        <ion-checkbox  name="certH" value="true" ></ion-checkbox>
+                        <ion-label>H</ion-label>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="stacked">Categoria</ion-label><br>
+                        <ion-checkbox  name="catMC" value="true" ></ion-checkbox>
+                        <ion-label>MC</ion-label>
+                        <ion-checkbox  name="catAP" value="true" ></ion-checkbox>
+                        <ion-label>AP</ion-label>
+                        <ion-checkbox  name="catH" value="true" ></ion-checkbox>
+                        <ion-label>H</ion-label>
+                        <ion-checkbox  name="catAS" value="true" ></ion-checkbox>
+                        <ion-label>AS</ion-label>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="stacked">Scenari consentiti</ion-label><br>
                         <ion-checkbox  name="s1" value="true" ></ion-checkbox>
                         <ion-label>S1</ion-label>
                         <ion-checkbox  name="s2" value="true" ></ion-checkbox>

@@ -87,8 +87,13 @@ Template.newDrone.events({
             var insuranceVar = Session.get("insurance");
             var certB = Session.get("certB");
             var certC = Session.get("certC");
+            var certH = Session.get("certH");
             var certL = Session.get("certL");
             var certVL = Session.get("certVL");
+            var catMC = Session.get("catMC");
+            var catAP = Session.get("catAP");
+            var catH = Session.get("catH");
+            var catAS = Session.get("catAS");
             var s1 = Session.get("s1");
             var s2 = Session.get("s2");
             var s3 = Session.get("s3");
@@ -121,8 +126,13 @@ Template.newDrone.events({
                     deadlineInsurance : deadlineInsuranceVar,
                     certB : certB,
                     certC : certC,
+                    certH : certH,
                     certL : certL,
                     certVL : certVL,
+                    catMC : catMC,
+                    catAP : catAP,
+                    catH : catH,
+                    catAS : catAS,
                     s1 : s1,
                     s2 : s2,
                     s3 : s3,
@@ -154,8 +164,13 @@ Template.newDrone.events({
                         "s7":s7,
                         "certB": certB,
                         "certC": certC,
+                        "certH": certH,
                         "certL": certL,
                         "certVL": certVL,
+                        "catMC" : catMC,
+                        "catAP" : catAP,
+                        "catH" : catH,
+                        "catAS" : catAS,
                         "pilotsID" : pilotsID,
                         "pilotsFName" : pilotsFName,
                         "pilotsLName" : pilotsLName
@@ -163,7 +178,6 @@ Template.newDrone.events({
                         
                 );
             }
-            pilotsList = []
             delete Session.keys['editSession']
             delete Session.keys['editPilots']
             delete Session.keys['droneId']
@@ -171,8 +185,18 @@ Template.newDrone.events({
             delete Session.keys['certL']
             delete Session.keys['certVL']
             delete Session.keys['certC']
+            delete Session.keys['catMC']
+            delete Session.keys['catAP']
+            delete Session.keys['catH']
+            delete Session.keys['catAS']
             delete Session.keys['s1']
+            delete Session.keys['s2']
+            delete Session.keys['s3']
+            delete Session.keys['s4']
+            delete Session.keys['s5']
+            delete Session.keys['s6']
             delete Session.keys['s7']
+            pilotsList = []
             FlowRouter.go('/operator/dronesList');
             Session.set('showNewDrone', false);
     },
@@ -188,6 +212,11 @@ Template.newDrone.events({
             Session.set("certC", certC);
             console.log(Session.get("certC"));
         }
+        if ($(event.target).prop("name") == "certH"){
+            var certH = event.target.checked;
+            Session.set("certH", certH);
+            console.log(Session.get("certH"));
+        }
         if ($(event.target).prop("name") == "certL"){
             var certL = event.target.checked;
             Session.set("certL", certL);
@@ -197,6 +226,26 @@ Template.newDrone.events({
             var certVL = event.target.checked;
             Session.set("certVL", certVL);
             console.log(Session.get("certVL"));
+        }
+        if ($(event.target).prop("name") == "catMC"){
+            var catMC = event.target.checked;
+            Session.set("catMC", catMC);
+            console.log(Session.get("catMC"));
+        }
+        if ($(event.target).prop("name") == "catAP"){
+            var catAP = event.target.checked;
+            Session.set("catAP", catAP);
+            console.log(Session.get("catAP"));
+        }
+        if ($(event.target).prop("name") == "catH"){
+            var catH = event.target.checked;
+            Session.set("catH", catH);
+            console.log(Session.get("catH"));
+        }
+        if ($(event.target).prop("name") == "catAS"){
+            var catAS = event.target.checked;
+            Session.set("catAS", catAS);
+            console.log(Session.get("catAS"));
         }
         if ($(event.target).prop("name") == "insurance"){
             var insurance = event.target.checked;
@@ -259,11 +308,20 @@ Template.newDrone.events({
         delete Session.keys['certL']
         delete Session.keys['certVL']
         delete Session.keys['certC']
+        delete Session.keys['catMC']
+        delete Session.keys['catAP']
+        delete Session.keys['catH']
+        delete Session.keys['catAS']
         pilotsList = []
         delete Session.keys['editSession']
         delete Session.keys['editPilots']
         delete Session.keys['droneId']
         delete Session.keys['s1']
+        delete Session.keys['s2']
+        delete Session.keys['s3']
+        delete Session.keys['s4']
+        delete Session.keys['s5']
+        delete Session.keys['s6']
         delete Session.keys['s7']
         FlowRouter.go('/operator/dronesList');
     }
