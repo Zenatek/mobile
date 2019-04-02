@@ -1,53 +1,63 @@
 <template name="qtbLogbook">
         <ion-text color="primary"><h1 class="page-title">Qtb/Logbook</h1></ion-text>
     <h5>Scheda tecnica</h5>
-    <form>
-        <input type="text" id="constructor" placeholder="Costruttore">
-        <input type="text" id="model" placeholder="Modello">
-        <input type="text" id="nation" placeholder="Nazione">
-        <input type="text" id="APR_plate" placeholder="Targa APR">
-        <input type="text" id="SPR_plate" placeholder="Targa SPR">
+        <ion-label id="flight_number">Missione: {{mission.flightNumber}}</ion-label>
+        <br>
+        <ion-label id="place">Luogo : {{mission.place}}</ion-label>
+        <br>
+        <ion-label id="flight_date">Data volo : {{mission.flightDate}}</ion-label>
+        <ion-label id="take_off_time">Ora decollo: {{mission.takeOffTime}}</ion-label>
+        <ion-label id="landing_time">Ora atterraggio: {{mission.landingTime}}</ion-label>
+        <br>
+        <ion-label id="weather">Condizioni atmosferiche: {{mission.weather}}</ion-label>
+        <br>
+        <ion-label position="stacked">Condizioni del vento</ion-label>
+        <br>
+        <ion-label id="wind">Vento : {{mission.wind}}</ion-label>
+        <label id="n">N : {{mission.n}}</label>
+        <label id="ne">NE : {{mission.ne}}</label>
+        <label id="e">E : {{mission.e}}</label>
+        <label id="se">SE : {{mission.se}}</label>
+        <label id="s">S : {{mission.s}}</label>
+        <label id="sw">SW : {{mission.sw}}</label>
+        <label id="w">W : {{mission.w}}</label>
+        <label id="nw">NW : {{mission.nw}}</label>
+        <br>
+<!--         <ion-label id="constructor">Costruttore : {{drone.constructor}}</ion-label> -->
+        <br>
+        <ion-label id="model">Modello : {{drone.model}}</ion-label>
+        <br>
+        <ion-label id="rpas">Targa APR : {{mission.rpas}}</ion-label>
+        <br>
+        <ion-label id="radiocommand">Targa SPR : {{drone.radiocommand}}</ion-label>
         <br>
         <br>
-        <label for="configuration_date">Data configurazione</label>
-        <input type="date" id="configuration_date">
+        <label id="flightHours">Tempo di volo totale : {{drone.flightHours}}</label>
         <br>
-        <br>
-        <label for="QTB_start_date">Data inizio QTB</label>
-        <input type="date" id="QTB_start_date">
-        <label for="QTB_end_date">Data fine QTB</label>
-        <input type="date" id="QTB_end_date">
-        <br>
-        <br>
-        <label for="total_flight_time">Tempo di volo totale dal libretto precedente</label>
-        <input type="text" id="total_flight_time" placeholder="00000">
-        <br>
-        <br>
-        <input type="text" id="operator" placeholder="operatore">
-        <input type="text" id="enac_basic" placeholder="Rif Enac basico">
-        <input type="text" id="enac_critic" placeholder="Rif Enac critico">
+   <!--      <br> -->
+<!--         <label id="enac_basic">Riferimento ENAC : {{enac_basic}}</label>
+        <label id="enac_critic">Riferimento ENAC : {{enac_critic}}</label> -->
         <br>
         <h5>Tipologia di attività</h5>
-        <input type="checkbox" name="certB" value="true" unchecked>B
-        <input type="checkbox" name="certC" value="true" unchecked>C
+        <label id="certB">B : {{mission.certB}}</label>
+        <label id="certC">C : {{mission.certC}}</label>
         <br>
-        <h5>Classe</h5>
-        <input type="checkbox" name="VLclass" value="true" unchecked>VL
-        <input type="checkbox" name="Lclass" value="true" unchecked>L
-        <input type="checkbox" name="Hclass" value="true" unchecked>H
+<!--         <h5>Classe</h5>
+        <label id="VLclass">VL : {{drone.VLclass}}</label>
+        <label id="Lclass">L : {{drone.Lclass}}</label>
+        <label id="Hclass">H : {{drone.Hclass}}</label>
         <br>
         <h5>Categoria</h5>
-        <input type="checkbox" name="Bcategory" value="true" unchecked>MC
-        <input type="checkbox" name="APcategory" value="true" unchecked>AP
-        <input type="checkbox" name="Hcategory" value="true" unchecked>H
-        <input type="checkbox" name="AScategory" value="true" unchecked>AS
-    </form>
+        <label id="Bcategory">B : {{drone.Bcategory}}</label>
+        <label id="APcategory">AP : {{drone.APcategory}}</label>
+        <label id="Hcategory">H : {{drone.Hcategory}}</label>
+        <label id="AScategory">AS : {{drone.AScategory}}</label> -->
     <br>
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button expand="block" color="primary" class= "insert">Salva</ion-button>
-                <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
+                <ion-button expand="block" color="success" class= "print">Stampa</ion-button>
+                <ion-button expand="block" color="danger" class="back">Indietro</ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>      

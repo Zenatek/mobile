@@ -193,8 +193,6 @@ Template.newMission.events({
         Session.set("simulation", false);
         Session.set("certB", false);
         Session.set("certC", false);
-        Session.set("certL", false);
-        Session.set("certVL", false);
         Session.set("v70", false);
         Session.set("v150", false);
         Session.set("vlos", false);
@@ -226,8 +224,6 @@ Template.newMission.events({
         var evlos = Session.get("evlos");
         var certB = Session.get("certB");
         var certC = Session.get("certC");
-        var certL = Session.get("certL");
-        var certVL = Session.get("certVL");
         var userID = Meteor.userId();
         var missionId = Session.get('missionId');
         var n = Session.get("n");
@@ -272,8 +268,6 @@ Template.newMission.events({
             evlos : evlos,
             certB : certB,
             certC : certC,
-            certL : certL,
-            certVL : certVL,
             n : n,
             ne : ne,
             e : e,
@@ -307,8 +301,6 @@ Template.newMission.events({
                 "evlos" : evlos,
                 "certB" : certB,
                 "certC" : certC,
-                "certL" : certL,
-                "certVL" : certVL
                 }
             }
                 
@@ -319,8 +311,6 @@ Template.newMission.events({
         delete Session.keys['editPilots']
         delete Session.keys['missionId']
         delete Session.keys['certB']
-        delete Session.keys['certL']
-        delete Session.keys['certVL']
         delete Session.keys['certC']
         delete Session.keys['v70']
         delete Session.keys['v150']
@@ -369,16 +359,6 @@ Template.newMission.events({
             var certC = event.target.checked;
             Session.set("certC", certC);
             console.log(Session.get("certC"));
-        }
-        if ($(event.target).prop("name") == "certL"){
-            var certL = event.target.checked;
-            Session.set("certL", certL);
-            console.log(Session.get("certL"));
-        }
-        if ($(event.target).prop("name") == "certVL"){
-            var certVL = event.target.checked;
-            Session.set("certVL", certVL);
-            console.log(Session.get("certVL")); 
         }
     }
 });
