@@ -23,6 +23,13 @@ Template.dirVento.onCreated(function () {
     });
 });
 
+Template.pilotsLIST.onCreated(function () {
+    this.autorun(()=> {
+        this.subscribe('allMissions')
+    });
+});
+
+
 Template.dirVento.helpers({
     missions : function(){
         missionId = Session.get('missionId')
@@ -33,7 +40,6 @@ Template.dirVento.helpers({
 
     }
 });
-
 
 Template.slideMeteo.helpers({
     missions : function(){
@@ -46,18 +52,6 @@ Template.slideMeteo.helpers({
     }
 });
 
-Template.slideMeteo.events({
-    'ionChange' : function(event,template,value){
-        value = template.find('#rangeMeteo').value;
-        if(value == 0){return template.find('#weather').innerHTML = "Sereno" }
-        if(value == 1){return template.find('#weather').innerHTML = "Poco nuvoloso" }
-        if(value == 2){return template.find('#weather').innerHTML = "Nuvoloso" }
-        if(value == 3){return template.find('#weather').innerHTML = "Pioggia debole" }
-        if(value == 4){return template.find('#weather').innerHTML = "Pioggia" }
-        if(value == 5){return template.find('#weather').innerHTML = "Temporale" }
-    }
-});
-
 Template.slideVento.helpers({
     missions : function(){
         missionId = Session.get('missionId')
@@ -67,28 +61,6 @@ Template.slideVento.helpers({
         return  Session.get('editSession')
 
     }
-});
-
-Template.slideVento.events({
-    'ionChange' : function(event,template,value){
-        value = template.find('#rangeVento').value;
-        if(value == 0){return template.find('#wind').innerHTML = "Calmo [1 km/h]" }
-        if(value == 1){return template.find('#wind').innerHTML = "Bava di vento [5 km/h]" }
-        if(value == 2){return template.find('#wind').innerHTML = "Brezza leggera [11 km/h]" }
-        if(value == 3){return template.find('#wind').innerHTML = "Brezza [19 km/h]" }
-        if(value == 4){return template.find('#wind').innerHTML = "Brezza vivace [28 km/h]" }
-        if(value == 5){return template.find('#wind').innerHTML = "Brezza tesa [39 km/h]" }
-        if(value == 6){return template.find('#wind').innerHTML = "Vento fresco [49 km/h]" }
-        if(value == 7){return template.find('#wind').innerHTML = "Vento forte [61 km/h]" }
-    }
-});
-
-
-
-Template.pilotsLIST.onCreated(function () {
-    this.autorun(()=> {
-        this.subscribe('allMissions')
-    });
 });
 
 Template.newMission.helpers({
@@ -127,6 +99,35 @@ Template.pilotsLIST.helpers({
     }
 });
 
+Template.slideMeteo.events({
+    'ionChange' : function(event,template,value){
+        value = template.find('#rangeMeteo').value;
+        if(value == 0){return template.find('#weather').innerHTML = "Sereno" }
+        if(value == 1){return template.find('#weather').innerHTML = "Poco nuvoloso" }
+        if(value == 2){return template.find('#weather').innerHTML = "Nuvoloso" }
+        if(value == 3){return template.find('#weather').innerHTML = "Pioggia debole" }
+        if(value == 4){return template.find('#weather').innerHTML = "Pioggia" }
+        if(value == 5){return template.find('#weather').innerHTML = "Temporale" }
+    }
+});
+
+
+
+Template.slideVento.events({
+    'ionChange' : function(event,template,value){
+        value = template.find('#rangeVento').value;
+        if(value == 0){return template.find('#wind').innerHTML = "Calmo [1 km/h]" }
+        if(value == 1){return template.find('#wind').innerHTML = "Bava di vento [5 km/h]" }
+        if(value == 2){return template.find('#wind').innerHTML = "Brezza leggera [11 km/h]" }
+        if(value == 3){return template.find('#wind').innerHTML = "Brezza [19 km/h]" }
+        if(value == 4){return template.find('#wind').innerHTML = "Brezza vivace [28 km/h]" }
+        if(value == 5){return template.find('#wind').innerHTML = "Brezza tesa [39 km/h]" }
+        if(value == 6){return template.find('#wind').innerHTML = "Vento fresco [49 km/h]" }
+        if(value == 7){return template.find('#wind').innerHTML = "Vento forte [61 km/h]" }
+    }
+});
+
+
 Template.pilotsLIST.events({
     'click .delete' : function(e,t){
         e.preventDefault();
@@ -137,6 +138,51 @@ Template.pilotsLIST.events({
         Session.set("updatePilots", true);
 
 
+    }
+});
+
+Template.dirVento.events({
+    'ionChange' : function (event,template){
+        if ($(event.target).prop("name") == "n"){
+            var n = event.target.checked;
+            Session.set("n", n);
+            console.log(Session.get("n"));
+        }
+        if ($(event.target).prop("name") == "ne"){
+            var ne = event.target.checked;
+            Session.set("ne", ne);
+            console.log(Session.get("ne"));
+        }
+        if ($(event.target).prop("name") == "e"){
+            var e = event.target.checked;
+            Session.set("e", e);
+            console.log(Session.get("e"));
+        }
+        if ($(event.target).prop("name") == "se"){
+            var se = event.target.checked;
+            Session.set("se", se);
+            console.log(Session.get("se"));
+        }
+        if ($(event.target).prop("name") == "s"){
+            var s = event.target.checked;
+            Session.set("s", s);
+            console.log(Session.get("s"));
+        }
+        if ($(event.target).prop("name") == "sw"){
+            var sw = event.target.checked;
+            Session.set("sw", sw);
+            console.log(Session.get("sw"));
+        }
+        if ($(event.target).prop("name") == "w"){
+            var w = event.target.checked;
+            Session.set("w", w);
+            console.log(Session.get("w"));
+        }
+        if ($(event.target).prop("name") == "nw"){
+            var nw = event.target.checked;
+            Session.set("nw", nw);
+            console.log(Session.get("nw"));
+        }
     }
 });
 
