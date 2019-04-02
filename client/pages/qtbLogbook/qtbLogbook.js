@@ -5,16 +5,22 @@ Template.qtbLogbook.onCreated(function () {
     });
 });
 
-var apr; 
+var thisMission; 
 
 Template.qtbLogbook.helpers({
     mission : function(){
       missionId = Session.get('missionId')
-      apr = Missions.findOne({_id : missionId})
+      thisMission = Missions.findOne({_id : missionId})
       return Missions.findOne({_id : missionId})
     },
-    drone : function(e,template){
-        return Drones.findOne({rpas : apr.rpas});
+    drone : function(){
+        return Drones.findOne({rpas : thisMission.rpas});
+    },
+    formatTakeOff : function(){
+        return moment(thisMission.takeOffTime).format('hh:mm a');
+    },
+    formatLanding : function(){
+        return moment(thisMission.landingTime).format('hh:mm a');
     }
 });
 

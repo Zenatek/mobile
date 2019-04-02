@@ -1,19 +1,19 @@
 <template name="qtbLogbook">
         <ion-text color="primary"><h1 class="page-title">Qtb/Logbook</h1></ion-text>
-    <h5>Scheda tecnica</h5>
+    <h5>Scheda missione</h5>
         <ion-label id="flight_number">Missione: {{mission.flightNumber}}</ion-label>
         <br>
         <ion-label id="place">Luogo : {{mission.place}}</ion-label>
         <br>
-        <ion-label id="flight_date">Data volo : {{mission.flightDate}}</ion-label>
-        <ion-label id="take_off_time">Ora decollo: {{mission.takeOffTime}}</ion-label>
-        <ion-label id="landing_time">Ora atterraggio: {{mission.landingTime}}</ion-label>
+        <ion-label id="flight_date">Data volo : {{mission.flightDate}}</ion-label><br>
+        <ion-label id="take_off_time">Ora decollo: {{formatTakeOff}}</ion-label><br>
+        <ion-label id="landing_time">Ora atterraggio: {{formatLanding}}</ion-label>
         <br>
         <ion-label id="weather">Condizioni atmosferiche: {{mission.weather}}</ion-label>
         <br>
         <ion-label position="stacked">Condizioni del vento</ion-label>
         <br>
-        <ion-label id="wind">Vento : {{mission.wind}}</ion-label>
+        <ion-label id="wind">Vento : {{mission.wind}}</ion-label><br>
         <label id="n">N : {{mission.n}}</label>
         <label id="ne">NE : {{mission.ne}}</label>
         <label id="e">E : {{mission.e}}</label>
@@ -23,7 +23,8 @@
         <label id="w">W : {{mission.w}}</label>
         <label id="nw">NW : {{mission.nw}}</label>
         <br>
-<!--         <ion-label id="constructor">Costruttore : {{drone.constructor}}</ion-label> -->
+        <h5>Scheda aeromobile</h5>
+        <ion-label id="constructor">Marca : {{drone.constructor}}</ion-label>
         <br>
         <ion-label id="model">Modello : {{drone.model}}</ion-label>
         <br>
@@ -31,27 +32,41 @@
         <br>
         <ion-label id="radiocommand">Targa SPR : {{drone.radiocommand}}</ion-label>
         <br>
+        <ion-label id="battery1">Batteria id: {{mission.battery1}}</ion-label><br>
         <br>
-        <label id="flightHours">Tempo di volo totale : {{drone.flightHours}}</label>
+        <label id="flightHours">Tempo di volo totale : {{drone.flightHours}} ore</label>
         <br>
-   <!--      <br> -->
-<!--         <label id="enac_basic">Riferimento ENAC : {{enac_basic}}</label>
-        <label id="enac_critic">Riferimento ENAC : {{enac_critic}}</label> -->
+        <ion-label id="weight">Peso : {{drone.weight}} kg</ion-label>
+        <br>
+        <h5>Riferimenti ENAC</h5>
+        <ion-label id="enacBasic">Riferimento ENAC : {{this.enacBasic}}</ion-label>
+        <ion-label id="enacCritic">Riferimento ENAC : {{this.enacCritic}}</ion-label>
         <br>
         <h5>Tipologia di attività</h5>
-        <label id="certB">B : {{mission.certB}}</label>
-        <label id="certC">C : {{mission.certC}}</label>
+        <ion-label id="certB">B : {{mission.certB}}</ion-label>
+        <ion-label id="certC">C : {{mission.certC}}</ion-label>
         <br>
-<!--         <h5>Classe</h5>
-        <label id="VLclass">VL : {{drone.VLclass}}</label>
-        <label id="Lclass">L : {{drone.Lclass}}</label>
-        <label id="Hclass">H : {{drone.Hclass}}</label>
+        <h5>Classe</h5>
+        <ion-label id="certVL">VL : {{drone.certVL}}</ion-label>
+        <ion-label id="certL">L : {{drone.certL}}</ion-label>
+        <ion-label id="certH">H : {{drone.certH}}</ion-label>
         <br>
         <h5>Categoria</h5>
-        <label id="Bcategory">B : {{drone.Bcategory}}</label>
-        <label id="APcategory">AP : {{drone.APcategory}}</label>
-        <label id="Hcategory">H : {{drone.Hcategory}}</label>
-        <label id="AScategory">AS : {{drone.AScategory}}</label> -->
+        <ion-label id="catMC">MC : {{drone.catMC}}</ion-label>
+        <ion-label id="catAP">AP : {{drone.catAP}}</ion-label>
+        <ion-label id="catH">H : {{drone.catH}}</ion-label>
+        <ion-label id="catAS">AS : {{drone.catAS}}</ion-label>
+        <br>
+        <h5>Regole di volo</h5><br>
+        <ion-label id="vlos">VLOS: {{mission.vlos}}</ion-label>
+        <ion-label id="blos">BLOS: {{mission.blos}}</ion-label>
+        <ion-label id="evlos">EVLOS: {{mission.evlos}}</ion-label>
+        <h5>Volume di volo</h5><br>
+        <ion-label id="v70">V70: {{mission.v70}}</ion-label>
+        <ion-label id="v150">V150: {{mission.v150}}</ion-label>
+        <h5>Equipaggio</h5><br>
+        <ion-label id="pilotsLName">{{mission.pilotsLName}}</ion-label>
+
     <br>
     <ion-grid>
         <ion-row>
