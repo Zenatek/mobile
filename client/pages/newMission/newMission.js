@@ -249,7 +249,7 @@ Template.newMission.events({
         delete Session.keys['evlos']
         FlowRouter.go('/operator/missionsList');
     },
-    'change input[type=checkbox]': function(event, template) {
+    'ionChange': function(event, template) {
         if ($(event.target).prop("name") == "simulation"){
             var simulation = event.target.checked;
             Session.set("simulation", simulation);

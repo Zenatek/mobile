@@ -176,7 +176,7 @@ Template.newDrone.events({
             FlowRouter.go('/operator/dronesList');
             Session.set('showNewDrone', false);
     },
-    'change input[type=checkbox]': function(event, template) {
+    'ionChange': function(event, template) {
         if ($(event.target).prop("name") == "certB"){
                 var certB = event.target.checked;
                 Session.set("certB", certB);

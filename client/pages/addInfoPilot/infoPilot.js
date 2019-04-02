@@ -16,7 +16,7 @@ Template.infoPilot.events({
     'click .back': function() {
         FlowRouter.go('/operator/pilots');
     },
-    'change input[type=checkbox]': function(event, template) {
+    'ionChange': function(event, template) {
         if ($(event.target).prop("name") == "certB"){
                 var certB = event.target.checked;
                 Session.set("certB", certB);
@@ -76,6 +76,6 @@ Template.infoPilot.events({
 
         Meteor.call("updatePilot", pilotID, firstname, lastname, state, comune, reference, civNum, intNum, capNum, telephone, numBrev, luogoBrev, release_date, exp_date, certB, certC, certL, certVL, istr, exam);
 
-        FlowRouter.go('/dashboard'); 
+        FlowRouter.go('/operator/pilots');
     },
 });
