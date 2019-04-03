@@ -9,9 +9,22 @@
         <ion-label id="take_off_time">Ora decollo: {{formatTakeOff}}</ion-label><br>
         <ion-label id="landing_time">Ora atterraggio: {{formatLanding}}</ion-label>
         <br>
-        <ion-label id="weather">Condizioni atmosferiche: {{mission.weather}}</ion-label>
+        <h5>Regole di volo</h5><br>
+        <ion-label id="vlos">VLOS: {{mission.vlos}}</ion-label>
+        <ion-label id="blos">BLOS: {{mission.blos}}</ion-label>
+        <ion-label id="evlos">EVLOS: {{mission.evlos}}</ion-label>
+        <h5>Volume di volo</h5><br>
+        <ion-label id="v70">V70: {{mission.v70}}</ion-label>
+        <ion-label id="v150">V150: {{mission.v150}}</ion-label>
         <br>
-        <ion-label position="stacked">Condizioni del vento</ion-label>
+        <h5>Tipologia di attività</h5>
+        <ion-label id="certB">B : {{mission.certB}}</ion-label>
+        <ion-label id="certC">C : {{mission.certC}}</ion-label>
+        <br>
+        <h5>Condizioni atmosferiche</h5>
+        <ion-label id="weather">Condizioni meteo: {{mission.weather}}</ion-label>
+        <br>
+        <ion-label position="stacked">Condizioni vento</ion-label>
         <br>
         <ion-label id="wind">Vento : {{mission.wind}}</ion-label><br>
         <label id="n">N : {{mission.n}}</label>
@@ -38,14 +51,6 @@
         <br>
         <ion-label id="weight">Peso : {{drone.weight}} kg</ion-label>
         <br>
-        <h5>Riferimenti ENAC</h5>
-        <ion-label id="enacBasic">Riferimento ENAC : {{this.enacBasic}}</ion-label>
-        <ion-label id="enacCritic">Riferimento ENAC : {{this.enacCritic}}</ion-label>
-        <br>
-        <h5>Tipologia di attività</h5>
-        <ion-label id="certB">B : {{mission.certB}}</ion-label>
-        <ion-label id="certC">C : {{mission.certC}}</ion-label>
-        <br>
         <h5>Classe</h5>
         <ion-label id="certVL">VL : {{drone.certVL}}</ion-label>
         <ion-label id="certL">L : {{drone.certL}}</ion-label>
@@ -57,16 +62,13 @@
         <ion-label id="catH">H : {{drone.catH}}</ion-label>
         <ion-label id="catAS">AS : {{drone.catAS}}</ion-label>
         <br>
-        <h5>Regole di volo</h5><br>
-        <ion-label id="vlos">VLOS: {{mission.vlos}}</ion-label>
-        <ion-label id="blos">BLOS: {{mission.blos}}</ion-label>
-        <ion-label id="evlos">EVLOS: {{mission.evlos}}</ion-label>
-        <h5>Volume di volo</h5><br>
-        <ion-label id="v70">V70: {{mission.v70}}</ion-label>
-        <ion-label id="v150">V150: {{mission.v150}}</ion-label>
         <h5>Equipaggio</h5><br>
         <ion-label id="pilotsLName">{{mission.pilotsLName}}</ion-label>
-
+        <br>
+        <h5>Riferimenti ENAC Operatore</h5>
+        <ion-label id="enacBasic">Riferimento ENAC Basico : {{this.enacBasic}}</ion-label>
+        <ion-label id="enacCritic">Riferimento ENAC Critico : {{this.enacCritic}}</ion-label>
+        <br>
     <br>
     <ion-grid>
         <ion-row>
@@ -75,5 +77,5 @@
                 <ion-button expand="block" color="danger" class="back">Indietro</ion-button>
             </ion-col>
         </ion-row>
-    </ion-grid>      
+    </ion-grid>
 </template>

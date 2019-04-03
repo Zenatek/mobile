@@ -1,13 +1,13 @@
-Template.qtbLogbook.onCreated(function () {
+Template.printQTB.onCreated(function () {
     this.autorun(()=> {
         this.subscribe('allDrones');
         this.subscribe('allMissions');
     });
 });
 
-var thisMission;
+var thisMission; 
 
-Template.qtbLogbook.helpers({
+Template.printQTB.helpers({
     mission : function(){
       missionId = Session.get('missionId')
       thisMission = Missions.findOne({_id : missionId})
@@ -21,21 +21,5 @@ Template.qtbLogbook.helpers({
     },
     formatLanding : function(){
         return moment(thisMission.landingTime).format('hh:mm a');
-    }
-});
-
-Template.qtbLogbook.events({
-    'click .back': function(event, template){
-            event.preventDefault();
-            FlowRouter.go('/dashboard');
-    },
-    'click .print' : function(){
-        FlowRouter.go('/newMission/qtbLogbook/printQTB');
-        if (Meteor.isCordova){
-            alert("Mi dispiace, puoi stampare solo da computer")
-        }else{
-            window.print()
-        }
-        FlowRouter.go('/newMission/qtbLogbook/');
     }
 });

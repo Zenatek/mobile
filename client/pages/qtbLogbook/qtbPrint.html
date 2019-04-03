@@ -1,0 +1,71 @@
+<template name="printQTB">
+        <style type="text/css">
+            .tg  {border-collapse:collapse;border-spacing:0;}
+            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+            .tg .tg-vfn0{background-color:#efefef;border-color:#000000;text-align:left;vertical-align:top}
+            .tg .tg-hfk9{background-color:#000000;border-color:#000000;text-align:left;vertical-align:top}
+            .tg .tg-vs2s{background-color:#9b9b9b;border-color:#000000;text-align:left;vertical-align:top}
+            .tg .tg-f7v4{background-color:#c0c0c0;border-color:#000000;text-align:left;vertical-align:top}
+            .tg .tg-nl2w{background-color:#9b9b9b;color:#000000;border-color:#000000;text-align:left;vertical-align:top}
+            .tg .tg-zefg{background-color:#c0c0c0;color:#000000;border-color:#000000;text-align:left;vertical-align:top}
+            </style>
+            <table class="tg">
+              <tr>
+                <th class="tg-hfk9" rowspan="2"><span style="background-color:rgb(255, 255, 255)">logo</span></th>
+                <th class="tg-nl2w">Quaderno tecnico di bordo</th>
+                <th class="tg-zefg" colspan="2">Aereomobile</th>
+              </tr>
+              <tr>
+                <td class="tg-vfn0">ID Missione: {{mission.flightNumber}}</td>
+                <td class="tg-vfn0" colspan="2">Marca: {{drone.constructor}}<br>Modello: {{drone.model}}</td>
+              </tr>
+              <tr>
+                <td class="tg-f7v4" colspan="2">Dati missione</td>
+                <td class="tg-f7v4" colspan="2">Targhe</td>
+              </tr>
+              <tr>
+                <td class="tg-f7v4">Tipologia</td>
+                <td class="tg-vfn0" rowspan="2">Luogo: {{mission.place}}<br>Data: {{mission.flightDate}}<br>Ora decollo: {{formatTakeOff}}<br>Ora atterraggio: {{formatLanding}}</td>
+                <td class="tg-vfn0" colspan="2" rowspan="2">APR: {{mission.rpas}}<br>SPR: {{drone.radiocommand}}</td>
+              </tr>
+              <tr>
+                <td class="tg-vfn0">B: {{mission.certB}}<br>C: {{mission.certC}}</td>
+              </tr>
+              <tr>
+                <td class="tg-zefg">Regole</td>
+                <td class="tg-zefg">Volume</td>
+                <td class="tg-zefg" colspan="2">Batteria</td>
+              </tr>
+              <tr>
+                <td class="tg-vfn0">VLOS: {{mission.vlos}}<br>BLOS: {{mission.Blos}}<br>EVLOS: {{mission.evlos}}</td>
+                <td class="tg-vfn0">V70: {{mission.v70}}<br>V150: {{mission.v150}}</td>
+                <td class="tg-vfn0" colspan="2">ID Bat: {{mission.battery1}}</td>
+              </tr>
+              <tr>
+                <td class="tg-f7v4" colspan="2">Condizioni atmosferiche</td>
+                <td class="tg-f7v4">Classe</td>
+                <td class="tg-f7v4">Categoria</td>
+              </tr>
+              <tr>
+                <td class="tg-vfn0" colspan="2">Meteo: {{mission.weather}}</td>
+                <td class="tg-vfn0">VL: {{drone.certVL}}<br>L: {{drone.certL}}<br>H: {{drone.certH}}</td>
+                <td class="tg-vfn0">MC: {{drone.catMC}}<br>AP: {{drone.catAP}}<br>H: {{drone.catH}}<br>AS: {{drone.catAS}}</td>
+              </tr>
+              <tr>
+                <td class="tg-vfn0">Vento: {{mission.wind}}</td>
+                <td class="tg-vfn0">Direzione: </td> <!-- Da fixare con una sola direzione -->
+                <td class="tg-vfn0" colspan="2">Peso: {{drone.weight}} kg</td>
+              </tr>
+              <tr>
+                <td class="tg-f7v4">Equipaggio</td>
+                <td class="tg-f7v4">Riferimenti Enac </td>
+                <td class="tg-vfn0" colspan="2">Ore di volo totali: {{drone.flightHours}}</td>
+              </tr>
+              <tr>
+                <td class="tg-vfn0">{{mission.pilotsLName}}</td>
+                <td class="tg-vfn0">Basico: {{this.enacBasic}}<br>Critico: {{this.enacCritic}}</td>
+                <td class="tg-vs2s" colspan="2">Firma </td>
+              </tr>
+            </table>
+</template>
