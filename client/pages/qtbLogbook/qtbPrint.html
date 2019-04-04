@@ -30,7 +30,7 @@
                 <td class="tg-vfn0" colspan="2" rowspan="2">APR: {{mission.rpas}}<br>SPR: {{drone.radiocommand}}</td>
               </tr>
               <tr>
-                <td class="tg-vfn0">B: {{mission.certB}}<br>C: {{mission.certC}}</td>
+                <td class="tg-vfn0">B: {{#if mission.certB}}X {{/if}}<br>C: {{#if mission.certC}}X {{/if}}</td>
               </tr>
               <tr>
                 <td class="tg-zefg">Regole</td>
@@ -38,8 +38,8 @@
                 <td class="tg-zefg" colspan="2">Batteria</td>
               </tr>
               <tr>
-                <td class="tg-vfn0">VLOS: {{mission.vlos}}<br>BLOS: {{mission.Blos}}<br>EVLOS: {{mission.evlos}}</td>
-                <td class="tg-vfn0">V70: {{mission.v70}}<br>V150: {{mission.v150}}</td>
+                <td class="tg-vfn0">VLOS: {{#if mission.vlos}}X {{/if}}<br>BLOS: {{#if mission.Blos}}X {{/if}}<br>EVLOS: {{#if mission.evlos}}X {{/if}}</td>
+                <td class="tg-vfn0">V70: {{#if mission.v70}}X {{/if}}<br>V150: {{#if mission.v150}}X {{/if}}</td>
                 <td class="tg-vfn0" colspan="2">ID Bat: {{mission.battery1}}</td>
               </tr>
               <tr>
@@ -49,12 +49,12 @@
               </tr>
               <tr>
                 <td class="tg-vfn0" colspan="2">Meteo: {{mission.weather}}</td>
-                <td class="tg-vfn0">VL: {{drone.certVL}}<br>L: {{drone.certL}}<br>H: {{drone.certH}}</td>
-                <td class="tg-vfn0">MC: {{drone.catMC}}<br>AP: {{drone.catAP}}<br>H: {{drone.catH}}<br>AS: {{drone.catAS}}</td>
+                <td class="tg-vfn0">VL: {{#if drone.certVL}}X {{/if}}<br>L: {{#if drone.certL}}X {{/if}}<br>H: {{#if drone.certH}}X {{/if}}</td>
+                <td class="tg-vfn0">MC: {{#if drone.catMC}}X {{/if}}<br>AP: {{#if drone.catAP}}X {{/if}}<br>H: {{#if drone.catH}}X {{/if}}<br>AS: {{#if drone.catAS}}X {{/if}}</td>
               </tr>
               <tr>
                 <td class="tg-vfn0">Vento: {{mission.wind}}</td>
-                <td class="tg-vfn0">Direzione: </td> <!-- Da fixare con una sola direzione -->
+                <td class="tg-vfn0">Direzione: {{#if mission.n}}N {{/if}}{{#if mission.ne}}NE {{/if}}{{#if mission.e}}E {{/if}}{{#if mission.se}}SE {{/if}}{{#if mission.s}}S {{/if}}{{#if mission.sw}}SW {{/if}}{{#if mission.w}}W {{/if}}{{#if mission.nw}}NW {{/if}}</td>
                 <td class="tg-vfn0" colspan="2">Peso: {{drone.weight}} kg</td>
               </tr>
               <tr>
