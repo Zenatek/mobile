@@ -72,6 +72,27 @@ Template.atSelectInput.events({
       }
 });
 
+var timestamp = new Date(0,0,0,0,0,0);
+var interval = 1;
+var timerID;
+
+Template.timer.events({
+  'click .start': function(event, template){
+    interval = 1;
+    timerID = setInterval(function() {
+      timestamp = new Date(timestamp.getTime() + interval*1000);
+      $('.countdown').text(timestamp.getHours()+'h:'+timestamp.getMinutes()+'m:'+timestamp.getSeconds()+'s');
+    }, 1000);
+  }, 
+  'click .stop': function(event, template){
+    clearInterval(timerID);
+  },
+  'click .reset': function(event, template){
+    timestamp = new Date(0,0,0,0,0,0);
+    $('.countdown').text(timestamp.getHours()+'h:'+timestamp.getMinutes()+'m:'+timestamp.getSeconds()+'s');
+  }
+})
+
 Template.autoCompleteOperators.helpers({
   CampoVisibile(){
       return Session.get('CampoVisibile')
