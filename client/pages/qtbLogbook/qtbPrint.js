@@ -8,6 +8,13 @@ Template.printQTB.onCreated(function () {
 var thisMission; 
 
 Template.printQTB.helpers({
+    currentUser : function(){
+        if(!Meteor.user()){
+            FlowRouter.go('/');
+        }else{
+            return 1
+        }
+    },
     mission : function(){
       missionId = Session.get('missionId')
       thisMission = Missions.findOne({_id : missionId})

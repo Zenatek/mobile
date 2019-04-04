@@ -33,6 +33,7 @@ Template.qtbLogbook.events({
         FlowRouter.go('/newMission/qtbLogbook/printQTB');
         if (Meteor.isCordova){
             alert("Mi dispiace, puoi stampare solo da computer")
+            /* cordova.InAppBrowser.open('/newMission/qtbLogbook/printQTB', '_system', 'location=yes'); */
         }else{
             window.print()
         }
