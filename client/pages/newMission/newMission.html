@@ -144,10 +144,21 @@
                 <ion-col>{{> dirVento}}</ion-col>
             </ion-list>
             <ion-row>
+                {{#if timerUsed}}
                 <ion-col><ion-label>Ora decollo</ion-label><br>
-                    <ion-datetime id="take_off_time" placeholder="10:00" display-format="HH:mm a" value="{{takeOffTime}}"></ion-datetime></ion-col>
+                    <ion-datetime id="take_off_time" placeholder="10:00" display-format="HH:mm a" value="{{timerStar}}"></ion-datetime>
+                </ion-col>
                 <ion-col><ion-label>Ora atterraggio</ion-label><br>
-                    <ion-datetime id="landing_time" placeholder="12:00"  display-format="HH:mm a" value="{{landingTime}}"></ion-datetime></ion-col>
+                    <ion-datetime id="landing_time" placeholder="12:00"  display-format="HH:mm a" value="{{timerEnd}}"></ion-datetime>
+                </ion-col>
+                {{else}}
+                <ion-col><ion-label>Ora decollo</ion-label><br>
+                    <ion-datetime id="take_off_time" placeholder="10:00" display-format="HH:mm a" value="{{takeOffTime}}"></ion-datetime>
+                </ion-col>
+                <ion-col><ion-label>Ora atterraggio</ion-label><br>
+                    <ion-datetime id="landing_time" placeholder="12:00"  display-format="HH:mm a" value="{{landingTime}}"></ion-datetime>
+                </ion-col>
+                {{/if}}
             </ion-row>
             <ion-row>
                     <ion-col>

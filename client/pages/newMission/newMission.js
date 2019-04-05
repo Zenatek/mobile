@@ -75,6 +75,15 @@ Template.newMission.helpers({
     editPilots : function(){
         return  Session.get('editPilots')
 
+    },
+    timerUsed : function(){
+        return Session.get("timerUsed");
+    },
+    timerStar : function(){
+        return Session.get("timerStart");
+    },
+    timerEnd : function(){
+        return Session.get("timerEnd");
     }
 });
 
@@ -202,6 +211,9 @@ Template.newMission.events({
         delete Session.keys['editSession']
         delete Session.keys['editPilots']
         delete Session.keys['missionId']
+        delete Session.keys['timerUsed']
+        delete Session.keys['timerStart']
+        delete Session.keys['timerEnd']
         FlowRouter.go('/operator/missionsList');
     },
     'click .insert': function(event, template){
@@ -317,6 +329,9 @@ Template.newMission.events({
         delete Session.keys['vlos']
         delete Session.keys['blos']
         delete Session.keys['evlos']
+        delete Session.keys['timerUsed']
+        delete Session.keys['timerStart']
+        delete Session.keys['timerEnd']
         FlowRouter.go('/operator/missionsList');
     },
     'ionChange': function(event, template) {

@@ -72,7 +72,7 @@ Template.atSelectInput.events({
       }
 });
 
-var timestamp = new Date(0,0,0,0,0,0);
+var timestamp = new Date(0);
 var interval = 1;
 var timerID;
 
@@ -81,15 +81,22 @@ Template.timer.events({
     interval = 1;
     timerID = setInterval(function() {
       timestamp = new Date(timestamp.getTime() + interval*1000);
-      $('.countdown').text(timestamp.getHours()+'h:'+timestamp.getMinutes()+'m:'+timestamp.getSeconds()+'s');
+      $('.countdown').text(timestamp.getHours()-1+'h:'+timestamp.getMinutes()+'m:'+timestamp.getSeconds()+'s');
     }, 1000);
   }, 
   'click .stop': function(event, template){
     clearInterval(timerID);
+    Session.set("timer",timestamp);
+    var endTimer = new Date();
+    var startTimer = new Date(endTimer.getTime()-timestamp.getTime());
+    Session.set("timerEnd", endTimer);
+    Session.set("timerStart", startTimer);
+    Session.set("timerUsed",true);
   },
   'click .reset': function(event, template){
-    timestamp = new Date(0,0,0,0,0,0);
-    $('.countdown').text(timestamp.getHours()+'h:'+timestamp.getMinutes()+'m:'+timestamp.getSeconds()+'s');
+    timestamp = new Date(0);
+    Session.set("timerUsed",false);
+    $('.countdown').text(timestamp.getHours()-1+'h:'+timestamp.getMinutes()+'m:'+timestamp.getSeconds()+'s');
   }
 })
 
