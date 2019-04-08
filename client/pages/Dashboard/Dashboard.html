@@ -17,12 +17,7 @@
             {{/each}}
         </ion-list>
     {{else}}
-        {{> Dashboard_Pilot}}
-    {{/if}}
-</template>
-
-<template name = "Dashboard_Pilot">
-    {{#if isInRole 'pilot-user'}}
+        {{#if isInRole 'pilot-user'}}
         <ion-text color="primary"><h1 class="page-title">Archivio missioni</h1></ion-text>
         <p><b>Click per mostrare il Qtb della missione</b></p>
             <ion-list>
@@ -34,7 +29,8 @@
                     {{/if}}
                 {{/each}}
             </ion-list>
-    {{else}}
-        <h1 class="page-title">Effettua l'accesso per visualizzare la pagina</h1>
+        {{else}}
+            <h1 class="page-title">Effettua l'accesso per visualizzare la pagina</h1>
+        {{/if}}
     {{/if}}
 </template>

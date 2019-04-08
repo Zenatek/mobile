@@ -404,6 +404,18 @@ Template.newMission.events({
             }
                 
         );
+        pilotsList = []
+        delete Session.keys['editSession']
+        delete Session.keys['editPilots']
+        delete Session.keys['missionId']
+        delete Session.keys['certB']
+        delete Session.keys['certC']
+        delete Session.keys['v70']
+        delete Session.keys['v150']
+        delete Session.keys['vlos']
+        delete Session.keys['blos']
+        delete Session.keys['evlos']
+        FlowRouter.go('/operator/missionsList');
     },
     'ionChange': function(event, template) {
         if ($(event.target).prop("name") == "simulation"){

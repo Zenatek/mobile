@@ -6,7 +6,7 @@ Template.AppNav.onCreated(function () {
 
 Template.AppNav.helpers({
     missionsCount : function () {
-        return Missions.find().count();
+        return Missions.find({completed : false}).count();
     }
 });
 
