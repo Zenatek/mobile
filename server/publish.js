@@ -14,6 +14,9 @@ Meteor.publish('allDrones', function(){
     if(Roles.userIsInRole(this.userId, 'operator-user')){
         return Drones.find({ "owner" : this.userId});
     }
+    if(Roles.userIsInRole(this.userId, 'pilot-user')){
+        return Drones.find({ "pilotsID" : this.userId});
+    }
 });
 
 Meteor.publish('allMissions', function(){
