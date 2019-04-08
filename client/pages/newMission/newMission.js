@@ -309,6 +309,7 @@ Template.newMission.events({
                     "weather" : weatherVar,
                     "takeOffTime" : takeOffTimeVar,
                     "landingTime" : landingTimeVar,
+                    "timeMission" : timeMission,
                     "rpas" : rpasVar,
                     "battery1" : battery1Var,
                     "pilotsID" : pilotsID,
@@ -347,6 +348,7 @@ Template.newMission.events({
         var weatherVar = template.find('#weather').innerHTML;
         var takeOffTimeVar = template.find('#take_off_time').value;
         var landingTimeVar = template.find('#landing_time').value;
+        var timeMission = template.find(".countdown").innerHTML
         var battery1Var = template.find('#battery1').value;
         var simulation = Session.get("simulation");
         var v70 = Session.get("v70");
@@ -391,6 +393,7 @@ Template.newMission.events({
                 "weather" : weatherVar,
                 "takeOffTime" : takeOffTimeVar,
                 "landingTime" : landingTimeVar,
+                "timeMission" : timeMission,
                 "battery1" : battery1Var,
                 "simulation" : simulation,
                 "v70" : v70,

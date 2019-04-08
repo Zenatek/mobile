@@ -74,7 +74,7 @@ Template.atSelectInput.events({
 
 var timestamp = new Date(0);
 var interval = 1;
-var timerID;
+var timerID; 
 
 Template.timer.events({
   'click .start': function(event, template){
@@ -83,7 +83,7 @@ Template.timer.events({
       timestamp = new Date(timestamp.getTime() + interval*1000);
       $('.countdown').text(timestamp.getHours()-1+'h:'+timestamp.getMinutes()+'m:'+timestamp.getSeconds()+'s');
     }, 1000);
-  }, 
+  },
   'click .stop': function(event, template){
     clearInterval(timerID);
     Session.set("timer",timestamp);
