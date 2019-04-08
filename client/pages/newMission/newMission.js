@@ -275,36 +275,45 @@ Template.newMission.events({
             s : s,
             sw : sw,
             w : w,
-            nw : nw
+            nw : nw,
+            completed : false
         });
-    }else{
-        Missions.update({_id : missionId},
-            {$set:
-                {
-                "flightNumber" : flightNumberVar,
-                "place" : placeVar,
-                "flightDate" : flightDateVar,
-                "wind" : windVar,
-                "weather" : weatherVar,
-                "takeOffTime" : takeOffTimeVar,
-                "landingTime" : landingTimeVar,
-                "rpas" : rpasVar,
-                "battery1" : battery1Var,
-                "pilotsID" : pilotsID,
-                "pilotsFName" : pilotsFName,
-                "pilotsLName" : pilotsLName,
-                "simulation" : simulation,
-                "v70" : v70,
-                "v150" : v150,
-                "vlos" : vlos,
-                "blos" : blos,
-                "evlos" : evlos,
-                "certB" : certB,
-                "certC" : certC,
+    }else {
+            Missions.update({_id : missionId},
+                {$set:
+                    {
+                    "flightNumber" : flightNumberVar,
+                    "place" : placeVar,
+                    "flightDate" : flightDateVar,
+                    "wind" : windVar,
+                    "n" : n,
+                    "ne" : ne,
+                    "e" : e,
+                    "se" : se,
+                    "s" : s,
+                    "sw" : sw,
+                    "w" : w,
+                    "nw" : nw,
+                    "weather" : weatherVar,
+                    "takeOffTime" : takeOffTimeVar,
+                    "landingTime" : landingTimeVar,
+                    "rpas" : rpasVar,
+                    "battery1" : battery1Var,
+                    "pilotsID" : pilotsID,
+                    "pilotsFName" : pilotsFName,
+                    "pilotsLName" : pilotsLName,
+                    "simulation" : simulation,
+                    "v70" : v70,
+                    "v150" : v150,
+                    "vlos" : vlos,
+                    "blos" : blos,
+                    "evlos" : evlos,
+                    "certB" : certB,
+                    "certC" : certC,
+                    }
                 }
-            }
-                
-        );
+                    
+            );
     }
         pilotsList = []
         delete Session.keys['editSession']
@@ -318,6 +327,71 @@ Template.newMission.events({
         delete Session.keys['blos']
         delete Session.keys['evlos']
         FlowRouter.go('/operator/missionsList');
+    },
+    'click .update': function(event, template){
+        event.preventDefault();
+        Session.set('editSession',false)
+        var windVar = template.find('#wind').innerHTML;
+        var weatherVar = template.find('#weather').innerHTML;
+        var takeOffTimeVar = template.find('#take_off_time').value;
+        var landingTimeVar = template.find('#landing_time').value;
+        var battery1Var = template.find('#battery1').value;
+        var simulation = Session.get("simulation");
+        var v70 = Session.get("v70");
+        var v150 = Session.get("v150");
+        var vlos = Session.get("vlos");
+        var blos = Session.get("blos");
+        var evlos = Session.get("evlos");
+        var certB = Session.get("certB");
+        var certC = Session.get("certC");
+        var missionId = Session.get('missionId');
+        var n = Session.get("n");
+        var ne = Session.get("ne");
+        var e = Session.get("e");
+        var se = Session.get("se");
+        var s = Session.get("s");
+        var sw = Session.get("sw");
+        var w = Session.get("w");
+        var nw = Session.get("nw");
+                
+
+        var pilotsID = [];
+        var pilotsFName = [];
+        var pilotsLName = [];
+        pilotsList.forEach(element => {
+            pilotsID.push(element._id);
+            pilotsFName.push(element.profile.firstname);
+            pilotsLName.push(element.profile.lastname);
+            console.log(pilotsFName);
+        });
+        Missions.update({_id : missionId},
+            {$set:
+                {
+                "wind" : windVar,
+                "n" : n,
+                "ne" : ne,
+                "e" : e,
+                "se" : se,
+                "s" : s,
+                "sw" : sw,
+                "w" : w,
+                "nw" : nw,
+                "weather" : weatherVar,
+                "takeOffTime" : takeOffTimeVar,
+                "landingTime" : landingTimeVar,
+                "battery1" : battery1Var,
+                "simulation" : simulation,
+                "v70" : v70,
+                "v150" : v150,
+                "vlos" : vlos,
+                "blos" : blos,
+                "evlos" : evlos,
+                "certB" : certB,
+                "certC" : certC,
+                }
+            }
+                
+        );
     },
     'ionChange': function(event, template) {
         if ($(event.target).prop("name") == "simulation"){

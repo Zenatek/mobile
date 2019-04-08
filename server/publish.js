@@ -21,7 +21,6 @@ Meteor.publish('allMissions', function(){
         return Missions.find({ "owner" : this.userId});
     }
     if(Roles.userIsInRole(this.userId, 'pilot-user')){
-        // da sostituire la query appena modifico il salvataggio della missione
-        return Missions.find({ "owner" : this.userId});
+        return Missions.find({ "pilotsID" : this.userId});
     }
 });

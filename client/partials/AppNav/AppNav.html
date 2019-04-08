@@ -28,12 +28,12 @@
                     <ion-label>Missioni</ion-label>
                     <ion-badge>{{missionsCount}}</ion-badge>
                   </ion-tab-button>
-              
+                  {{#if isInRole 'operator-user'}}
                   <ion-tab-button tab="tab-pilots" class="pilots">
                     <ion-icon name="contacts"></ion-icon>
                     <ion-label>Piloti</ion-label>
                   </ion-tab-button>
-              
+                  {{/if}}
                   <ion-tab-button tab="tab-drones" class="drones">
                     <ion-icon name="jet"></ion-icon>
                     <ion-label>Droni</ion-label>

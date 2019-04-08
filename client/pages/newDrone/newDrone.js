@@ -103,6 +103,7 @@ Template.newDrone.events({
             var s7 = Session.get("s7");            
             var userID = Meteor.userId();
             var droneId = Session.get('droneId');
+            var constructor = template.find('#constructor').value;
 
             var pilotsID = [];
             var pilotsFName = [];
@@ -117,6 +118,7 @@ Template.newDrone.events({
                 Drones.insert({createdAt : new Date(),
                     owner : userID,
                     model:  model,
+                    constructor : constructor,
                     rpas : rpas,
                     radiocommand : radiocommandVar,
                     idBattery1 : battery1,               
@@ -148,6 +150,7 @@ Template.newDrone.events({
                 Drones.update({_id:droneId},
                     {$set:
                         {"model":  model,
+                        "constructor": constructor,
                         "rpas":  rpas,
                         "radiocommand":  radiocommandVar,
                         "idBattery1": battery1,

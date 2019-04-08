@@ -13,7 +13,7 @@ var postSignUp = function (userId, info) {
 
 AccountsTemplates.configure({
     postSignUpHook: postSignUp,
-    homeRoutePath: '/dashboard'
+    homeRoutePath: '/operator/missionsList'
 });
 
 //ADD OPERATOR - METODO PER SALVARE ID OPERATORE DENTRO A PILOT -> QUANDO REGISTRO NUOVO PILOTA

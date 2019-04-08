@@ -21,7 +21,7 @@ Template.Dashboard.events({
         missionId = Session.get('missionId')
         swal({
             title: "Sei sicuro?",
-            text: "Se elimini questa missioni cancellerai anche il qtb e il logbook associat",
+            text: "Se elimini questa missione cancellerai anche il qtb e il logbook associato",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",

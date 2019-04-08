@@ -67,6 +67,11 @@
             </ion-row>
             <ion-row>
                 <ion-col>
+                    <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
                     <!-- <ion-label position="stacked">Aeromobile</ion-label> -->
                     <!-- <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input> -->
                     {{>selectDrone}}
@@ -119,11 +124,7 @@
                     <ion-label>V150</ion-label>
                 </ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col>
-                    <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
-                </ion-col>
-            </ion-row>
+
             <ion-row>
                 <ion-col>
                     <div>{{> pilotsLIST}}</div>
@@ -133,11 +134,19 @@
         {{else}}
         {{#with missions}}
         <ion-grid>
-            <ion-row>
-                <ion-col><ion-input type="text" id="flight_number" placeholder="Num volo" value="{{flightNumber}}"></ion-input></ion-col>
-                <ion-col><ion-input type="text" id="place" placeholder="Luogo" value="{{place}}"></ion-input></ion-col>
-                <ion-col><input type="date" id="flight_date" placeholder="Seleziona data volo" value="{{flightDate}}"></ion-col>
-            </ion-row>
+                {{#if isInRole 'operator-user'}}
+                    <ion-row>
+                        <ion-col><ion-input type="text" id="flight_number" placeholder="Num volo" value="{{flightNumber}}"></ion-input></ion-col>
+                        <ion-col><ion-input type="text" id="place" placeholder="Luogo" value="{{place}}"></ion-input></ion-col>
+                        <ion-col><input type="date" id="flight_date" placeholder="Seleziona data volo" value="{{flightDate}}"></ion-col>
+                    </ion-row>
+                {{else}}
+                    <ion-row>
+                        <ion-col><ion-label id="flight_number">Numero missione: {{flightNumber}}</ion-label></ion-col>
+                        <ion-col><ion-label id="place">Luogo: {{place}}</ion-label></ion-col>
+                        <ion-col><ion-label id="flight_date">Data missione: {{flightDate}}</ion-label></ion-col>
+                    </ion-row>
+                {{/if}}
             <ion-list>
                 <ion-col>{{>slideMeteo}}</ion-col>
                 <ion-col>{{>slideVento}}</ion-col>
@@ -149,15 +158,28 @@
                 <ion-col><ion-label>Ora atterraggio</ion-label><br>
                     <ion-datetime id="landing_time" placeholder="12:00"  display-format="HH:mm a" value="{{landingTime}}"></ion-datetime></ion-col>
             </ion-row>
+            {{#if isInRole 'operator-user'}}
             <ion-row>
-                    <ion-col>
-                        <!-- <ion-label position="stacked">Aeromobile</ion-label> -->
-                        <!-- <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input> -->
-                        {{>selectDrone}}
-                    </ion-col>
+                <ion-col>
+                    <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
+                </ion-col>
             </ion-row>
+            {{/if}}
+            {{#if isInRole 'operator-user'}}
+                <ion-row>
+                        <ion-col>
+                            <!-- <ion-label position="stacked">Aeromobile</ion-label> -->
+                            <!-- <ion-input type="text" id="rpas" placeholder="EGM-001"></ion-input> -->
+                            {{>selectDrone}}
+                        </ion-col>
+                </ion-row>
+            {{else}}
+                <ion-row>
+                    <ion-col><ion-label id="rpas">Aeromobile : {{rpas}}</ion-label></ion-col>
+                </ion-row>
+            {{/if}}
             <ion-row>
-                <ion-col><ion-input type="text" id="battery1" placeholder="id batteria" value="{{battery1}}"></ion-input></ion-col>
+                <ion-col><ion-label>ID Batteria:</ion-label><ion-input type="text" id="battery1" placeholder="id batteria" value="{{battery1}}"></ion-input></ion-col>
             </ion-row>
             <ion-row>
                 <ion-col>
@@ -241,17 +263,19 @@
                     {{/if}}
                 </ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col>
-                    <div class="autocompletepilots"><div>{{> autoCompletePilots}}</div></div>
-                </ion-col>
-            </ion-row>
+            
             <ion-row>
                 <ion-col>
                     {{#if $not editPilots}}
+                    {{#if isInRole 'operator-user'}}
                     <p><b>Piloti inseriti in precedenza : riselezionare i piloti</b></p>
+                    {{/if}}
                     <ion-list>
-                        <ion-label>Piloti scelti</ion-label>
+                        {{#if isInRole 'operator-user'}}
+                            <ion-label>Piloti scelti</ion-label>
+                        {{else}}
+                            <ion-label>Equipaggio</ion-label>
+                        {{/if}}
                         {{#unless update}}
                             {{#with missions}}
                                 {{#each pilotsLName}}
@@ -280,7 +304,11 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button expand="block" color="primary" class= "insert">Salva</ion-button>
+                {{#if isInRole 'operator-user'}}
+                    <ion-button expand="block" color="primary" class= "insert">Salva</ion-button>
+                {{else}}
+                    <ion-button expand="block" color="primary" class= "update">Salva</ion-button>
+                {{/if}}
                 <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
             </ion-col>
         </ion-row>

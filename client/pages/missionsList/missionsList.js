@@ -7,6 +7,10 @@ Template.missionsList.onCreated(function () {
 Template.missionsList.helpers({
     mission : function(){
         return Missions.find();
+    },
+    missionPilot : function(){
+        console.log(Meteor.userId())
+        return Missions.find({pilotsID : Meteor.userId()})
     }
 });
 
@@ -25,7 +29,19 @@ Template.missionsList.events({
         Session.set('editPilots',false)
         FlowRouter.go('/operator/newMission');
     },
-    'click .deleteButton': function() {
+    'click .completed': function() {
+        Missions.update({_id : this._id},
+            {$set:
+                {
+                "completed" : true
+                }
+            }
+                
+        );
+    },
+});
+
+    /* 'click .deleteButton': function() {
         Session.set('missionId', this._id);
         missionId = Session.get('missionId')
         swal({
@@ -47,5 +63,4 @@ Template.missionsList.events({
           else{return;}
         });
         delete Session.keys['missionId']
-    }
-});
+    } */

@@ -4,14 +4,16 @@
     <p><b>Slide &lt;- per eliminare la missione e click per mostrare Qtb della missione</b></p>
         <ion-list>
             {{#each mission}}
-            <ion-item-sliding>
-                    <ion-item class="qtbButton" detail>
-                        <ion-label>{{pilotsLName}} | {{flightDate}}</ion-label>
-                    </ion-item>
-                    <ion-item-options side="end">
-                        <ion-item-option color="danger" class="deleteButton">Elimina</ion-item-option>
-                    </ion-item-options>
-            </ion-item-sliding>
+                {{#if completed}}
+                    <ion-item-sliding>
+                            <ion-item class="qtbButton" detail>
+                                <ion-label>{{pilotsLName}} | {{flightDate}}</ion-label>
+                            </ion-item>
+                            <ion-item-options side="end">
+                                <ion-item-option color="danger" class="deleteButton">Elimina</ion-item-option>
+                            </ion-item-options>
+                    </ion-item-sliding>
+                {{/if}}
             {{/each}}
         </ion-list>
     {{else}}
@@ -21,10 +23,17 @@
 
 <template name = "Dashboard_Pilot">
     {{#if isInRole 'pilot-user'}}
-        <h4>Ciao Pilota</h4>
-        <button  class= "dronesList" >Lista droni</button>
-        <button  class= "missionsList" >Lista missioni</button>
-        <button  class= "newLogbook" >Compila Logbook</button>
+        <ion-text color="primary"><h1 class="page-title">Archivio missioni</h1></ion-text>
+        <p><b>Click per mostrare il Qtb della missione</b></p>
+            <ion-list>
+                {{#each mission}}
+                    {{#if completed}}
+                        <ion-item class="qtbButton" detail>
+                            <ion-label>{{pilotsLName}} | {{flightDate}}</ion-label>
+                        </ion-item>
+                    {{/if}}
+                {{/each}}
+            </ion-list>
     {{else}}
         <h1 class="page-title">Effettua l'accesso per visualizzare la pagina</h1>
     {{/if}}

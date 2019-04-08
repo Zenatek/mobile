@@ -7,6 +7,10 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col>
+                            <ion-label position="stacked">Marca</ion-label><br>
+                            <ion-input type="text" id="constructor" placeholder="Marca" value="{{constructor}}"></ion-input>
+                        </ion-col>
+                        <ion-col>
                             <ion-label position="stacked">Modello</ion-label><br>
                             <ion-input type="text" id="model" placeholder="Modello" value="{{model}}"></ion-input>
                         </ion-col>
@@ -28,7 +32,7 @@
                     <ion-row>
                         <ion-col>
                             <ion-label position="stacked" for="weight">Peso in kg</ion-label><br>
-                            <ion-input type="text" id="weight" placeholder="10" value="{{weight}}"></ion-input>
+                            <ion-input type="number" id="weight" placeholder="10" value="{{weight}}"></ion-input>
                         </ion-col>
                         <ion-col>
                             <ion-label position="stacked" for="flight_hours">Ore di volo</ion-label><br>
@@ -215,6 +219,10 @@
         {{else}}
             <ion-grid>
                 <ion-row>
+                    <ion-col>
+                        <ion-label position="stacked">Marca</ion-label><br>
+                        <ion-input type="text" id="constructor" placeholder="Marca"></ion-input>
+                    </ion-col>
                     <ion-col>
                         <ion-label position="stacked">Modello</ion-label><br>
                         <ion-input type="text" id="model" placeholder="Modello"></ion-input>
