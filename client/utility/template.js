@@ -76,6 +76,15 @@ var timestamp = new Date(0);
 var interval = 1;
 var timerID; 
 
+Template.timer.helpers({
+  reset : function(){
+    if(Session.get("resetTimer")){
+      timestamp = new Date(0);
+    }
+    return
+  }
+});
+
 Template.timer.events({
   'click .start': function(event, template){
     interval = 1;
@@ -92,6 +101,8 @@ Template.timer.events({
     Session.set("timerEnd", endTimer);
     Session.set("timerStart", startTimer);
     Session.set("timerUsed",true);
+    Session.set("hoursFly",timestamp.getHours()-1);
+    Session.set("minsFly", timestamp.getMinutes());
   },
   'click .reset': function(event, template){
     timestamp = new Date(0);
