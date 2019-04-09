@@ -433,6 +433,7 @@ Template.newMission.events({
         delete Session.keys['vlos']
         delete Session.keys['blos']
         delete Session.keys['evlos']
+        delete Session.keys['timerUsed']
         FlowRouter.go('/operator/missionsList');
     },
     'ionChange': function(event, template) {
