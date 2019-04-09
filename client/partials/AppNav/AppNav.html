@@ -1,58 +1,58 @@
 <template name="AppNav">
-    <ion-footer>
-        <ion-toolbar>
-        <ion-tabs>
-                <ion-tab tab="tab-missions">
-                  <ion-nav></ion-nav>
-                </ion-tab>
-              
-                <ion-tab tab="tab-pilots">
-                  <ion-nav></ion-nav>
-                </ion-tab>
-              
-                <ion-tab tab="tab-drones" component="page-map">
-                  <ion-nav></ion-nav>
-                </ion-tab>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-tabs>
+        <ion-tab tab="tab-missions">
+          <ion-nav></ion-nav>
+        </ion-tab>
+      
+        <ion-tab tab="tab-pilots">
+          <ion-nav></ion-nav>
+        </ion-tab>
+      
+        <ion-tab tab="tab-drones" component="page-map">
+          <ion-nav></ion-nav>
+        </ion-tab>
 
-                <ion-tab tab="tab-archive">
-                    <ion-nav></ion-nav>
-                </ion-tab>
+        <ion-tab tab="tab-archive">
+            <ion-nav></ion-nav>
+        </ion-tab>
 
-                <ion-tab tab="tab-about" component="page-about">
-                  <ion-nav></ion-nav>
-                </ion-tab>
-              
-                <ion-tab-bar slot="bottom">
-                  <ion-tab-button tab="tab-missions" class="missions">
-                    <ion-icon name="calendar"></ion-icon>
-                    <ion-label>Missioni</ion-label>
-                    <ion-badge>{{missionsCount}}</ion-badge>
-                  </ion-tab-button>
-                  {{#if isInRole 'operator-user'}}
-                  <ion-tab-button tab="tab-pilots" class="pilots">
-                    <ion-icon name="contacts"></ion-icon>
-                    <ion-label>Piloti</ion-label>
-                  </ion-tab-button>
-                  {{/if}}
-                  <ion-tab-button tab="tab-drones" class="drones">
-                    <ion-icon name="jet"></ion-icon>
-                    <ion-label>Droni</ion-label>
-                  </ion-tab-button>
+        <ion-tab tab="tab-about" component="page-about">
+          <ion-nav></ion-nav>
+      </ion-tab>
+      
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="tab-missions" class="missions">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>Missioni</ion-label>
+          <ion-badge>{{missionsCount}}</ion-badge>
+        </ion-tab-button>
+        {{#if isInRole 'operator-user'}}
+        <ion-tab-button tab="tab-pilots" class="pilots">
+          <ion-icon name="contacts"></ion-icon>
+          <ion-label>Piloti</ion-label>
+        </ion-tab-button>
+        {{/if}}
+        <ion-tab-button tab="tab-drones" class="drones">
+          <ion-icon name="jet"></ion-icon>
+          <ion-label>Droni</ion-label>
+        </ion-tab-button>
 
-                  <ion-tab-button tab="tab-archive" class="dashboard">
-                      <ion-icon name="filing"></ion-icon>
-                      <ion-label>Archivio</ion-label>
-                  </ion-tab-button>
-              
-                  <ion-tab-button tab="tab-about" class="logout">
-                    <ion-icon name="log-out"></ion-icon>
-                    <ion-label>Logout</ion-label>
-                  </ion-tab-button>
-                </ion-tab-bar>
-              
-              </ion-tabs>
-            </ion-toolbar>
-          </ion-footer>
+        <ion-tab-button tab="tab-archive" class="dashboard">
+            <ion-icon name="filing"></ion-icon>
+            <ion-label>Archivio</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="tab-about" class="profile">
+          <ion-icon name="contact"></ion-icon>
+          <ion-label>Profilo</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+          
+      </ion-tabs>
+    </ion-toolbar>
+  </ion-footer>
 </template>
 
 

@@ -11,9 +11,9 @@ Template.AppNav.helpers({
 });
 
 Template.AppNav.events({
-    'click .logout': () => {
-        Session.set('operator_id', '');
-        AccountsTemplates.logout();
+    'click .profile': () => {
+        Session.set('pilotId', Meteor.userId());
+        FlowRouter.go('/profile');
     },
     'click .pilots' : () => {
         FlowRouter.go("/operator/pilots");

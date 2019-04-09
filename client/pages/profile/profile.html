@@ -1,4 +1,4 @@
-<template name="infoPilot">
+<template name="profile">
     <ion-text color="primary"><h1 class="page-title">Dati personali</h1></ion-text>
     <form>
         {{#with pilots}}
@@ -23,12 +23,12 @@
                 <ion-col><ion-input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}"></ion-input></ion-col>
                 <ion-col><ion-input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}"></ion-input></ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col>
-                        <p>Ore di volo: {{profile.hoursFly}}h:{{profile.minsFly}}m</p>
-                </ion-col>
-            </ion-row>
-            {{#if isInRole 'operator-user'}}
+            {{#if isInRole 'pilot-user'}}
+                <ion-row>
+                    <ion-col>
+                            <p>Ore di volo: {{profile.hoursFly}}h:{{profile.minsFly}}m</p>
+                    </ion-col>
+                </ion-row>
                 <ion-row>
                     <ion-col>
                         <ion-label>Certificazione</ion-label><br>
@@ -63,34 +63,56 @@
                     </ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col><ion-input type="text" id="numBrev" placeholder="Numero brevetto" value="{{profile.brevetto.numBrev}}">Num brevetto:</ion-input></ion-col>
+                    <ion-col>
+                        <ion-label position="stacked">Numero brevetto:</ion-label>
+                        <ion-input type="text" id="numBrev" placeholder="Numero brevetto" value="{{profile.brevetto.numBrev}}"></ion-input>
+                    </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col><ion-input type="text" id="luogoBrev" placeholder="Luogo rilascio" value="{{profile.brevetto.luogoBrev}}">Luogo rilascio:</ion-input></ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <ion-label>Data di rilascio:</ion-label><ion-datetime id="release_date" display-format="MMM DD, YYYY" value="{{profile.brevetto.release_date}}"></ion-datetime>
+                        <ion-label position="stacked">Data di rilascio</ion-label>
+                        <input id="release_date" placeholder="Seleziona data volo" type="date" value="{{profile.brevetto.release_date}}">
                     </ion-col>
                 </ion-row>
-            {{/if}}
-            <ion-row>
+                <ion-row>
                     <ion-col>
-                        <ion-label>Data scadenza:</ion-label><ion-datetime id="expiration_date" display-format="MMM DD, YYYY"  value="{{profile.brevetto.exp_date}}"></ion-datetime>
+                        <ion-label position="stacked">Data Scadenza</ion-label>
+                        <input id="expiration_date" placeholder="Seleziona data volo" type="date" value="{{profile.brevetto.exp_date}}">
                     </ion-col>
                 </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="stacked">Abilitazioni</ion-label><br>
+                        {{#if profile.ability.istr}}                        
+                        <ion-checkbox name="instructor" value="true" checked></ion-checkbox>
+                        <ion-label position="stacked">Istruttore</ion-label>
+                        {{else}}
+                        <ion-checkbox name="instructor" value="true" unchecked></ion-checkbox>
+                        <ion-label position="stacked">Istruttore</ion-label>
+                        {{/if}}
+                        {{#if profile.ability.exam}}
+                        <ion-checkbox name="examiner" value="true" checked></ion-checkbox>
+                        <ion-label position="stacked">Esaminatore</ion-label>
+                        {{else}}
+                        <ion-checkbox name="examiner" value="true" unchecked></ion-checkbox>
+                        <ion-label position="stacked">Esaminatore</ion-label>
+                        {{/if}}
+                    </ion-col>
+                </ion-row>
+            {{/if}}
             {{#if isInRole 'operator-user'}}
-            <h5>Abilitazioni</h5>
-            {{#if profile.ability.istr}}                        
-            <input type="checkbox" name="instructor" value="true" checked>Istruttore <br>
-            {{else}}
-            <input type="checkbox" name="instructor" value="true" unchecked>Istruttore <br>
-            {{/if}}
-            {{#if profile.ability.exam}}
-            <input type="checkbox" name="examiner" value="true" checked>Esaminatore
-            {{else}}
-            <input type="checkbox" name="examiner" value="true" unchecked>Esaminatore
-            {{/if}}
+                <ion-row>
+                    <ion-col><ion-input type="text" id="rifEnac" placeholder="Rif ENAC" value="{{profile.rifEnac}}">Rif ENAC:</ion-input></ion-col>
+                </ion-row>
+                <ion-row>
+                        <ion-col><ion-input type="text" id="basi" placeholder="Rif ENAC" value="{{profile.basi}}">Basi:</ion-input></ion-col>
+                </ion-row>
+                <ion-row>
+                        <ion-col><ion-input type="text" id="p_iva" placeholder="Rif ENAC" value="{{profile.p_iva}}">P. IVA:</ion-input></ion-col>
+                </ion-row>
             {{/if}}
         </ion-grid>
         {{/with}}
@@ -99,7 +121,9 @@
             <ion-row>
                 <ion-col>
                     <ion-button expand="block" color="primary" class= "submit">Salva</ion-button>
-                    <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
+                    <br>
+                    <br>
+                    <ion-button expand="block" color="danger" class="logout">Logout</ion-button>
                 </ion-col>
             </ion-row>
         </ion-grid>                                               
