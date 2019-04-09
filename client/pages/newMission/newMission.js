@@ -230,6 +230,12 @@ Template.newMission.events({
         var weatherVar = template.find('#weather').innerHTML;
         var takeOffTimeVar = template.find('#take_off_time').value;
         var landingTimeVar = template.find('#landing_time').value;
+        //CALCOLO DURATA MISSIONE
+        end = moment(landingTimeVar)
+        start = moment(takeOffTimeVar)
+        timeMission = moment.duration(end.diff(start))
+        timeMission= moment.duration(timeMission, "minutes").humanize()
+        ///
         var rpasVar = template.find('#rpas').value;
         var battery1Var = template.find('#battery1').value;
         var simulation = Session.get("simulation");
