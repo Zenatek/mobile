@@ -16,9 +16,19 @@
                     </ion-item-sliding>
                 {{/each}}
             </ion-list>
-            {{/if}}
-            <br>
-            <ion-button expand="block" color="primary" class= "newDrone">Nuovo</ion-button>
+        <br>
+        <ion-button expand="block" color="primary" class= "newDrone">Nuovo</ion-button>
+        {{/if}}
+        {{#if isInRole 'pilot-user'}}
+        <ion-text color="primary"><h1 class="page-title">Droni</h1></ion-text>
+        <ion-list>
+            {{#each drone}}
+                <ion-item>
+                    <ion-label>{{rpas}} | {{model}}</ion-label>
+                </ion-item>
+            {{/each}}
+        </ion-list>
+        {{/if}}
 </template>
 
 

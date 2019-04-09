@@ -71,3 +71,60 @@
             </table>
 {{/if}}
 </template>
+
+<template name="printLOG">
+    {{#if currentUser}}
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+      .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+      </style>
+      <table class="tg">
+        <tr>
+          <th class="tg-0pky" rowspan="2"><span style="background-color:rgb(255, 255, 255)">logo</span></th>
+          <td class="tg-0pky">Logbook del pilota {{user.profile.firstname}} {{user.profile.lastname}}</td>
+          <td class="tg-0pky" colspan="2">Aereomobile</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky">ID Missione: {{mission.flightNumber}}</td>
+          <td class="tg-0pky" colspan="2">Marca: {{drone.constructor}}<br>Modello: {{drone.model}}</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky" colspan="2">Dati missione</td>
+          <td class="tg-0pky" colspan="2">Targhe</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky">Tipologia<br>B: {{#if mission.certB}}X {{/if}}<br>C: {{#if mission.certC}}X {{/if}}</td>
+          <td class="tg-0pky">Luogo: {{mission.place}}<br>Data: {{mission.flightDate}}<br>Ora decollo: {{formatTakeOff}}<br>Ora atterraggio: {{formatLanding}}</td>
+          <td class="tg-0pky" colspan="2">APR: {{mission.rpas}}<br>SPR: {{drone.radiocommand}}</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky">Regole</td>
+          <td class="tg-0pky">Volume</td>
+          <td class="tg-0pky" colspan="2">Durata missione</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky">VLOS: {{#if mission.vlos}}X {{/if}}<br>BLOS: {{#if mission.Blos}}X {{/if}}<br>EVLOS: {{#if mission.evlos}}X {{/if}}</td>
+          <td class="tg-0pky">V70: {{#if mission.v70}}X {{/if}}<br>V150: {{#if mission.v150}}X {{/if}}</td>
+          <td class="tg-0pky" colspan="2">{{mission.timeMission}}</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky" colspan="4">Condizioni atmosferiche</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky" colspan="2">Meteo: {{mission.weather}}</td>
+          <td class="tg-0pky" colspan="2">Tempo di volo totale: {{user.profile.hoursFly}}h:{{user.profile.minsFly}}m </td>
+        </tr>
+        <tr>
+          <td class="tg-0pky" rowspan="3">Vento: {{mission.wind}}</td>
+          <td class="tg-0pky" rowspan="3">Direzione: {{#if mission.n}}N {{/if}}{{#if mission.ne}}NE {{/if}}{{#if mission.e}}E {{/if}}{{#if mission.se}}SE {{/if}}{{#if mission.s}}S {{/if}}{{#if mission.sw}}SW {{/if}}{{#if mission.w}}W {{/if}}{{#if mission.nw}}NW {{/if}}</td>
+          <td class="tg-0pky" colspan="2" rowspan="3">Firma</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+      </table>
+  {{/if}}
+  </template>

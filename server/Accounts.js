@@ -26,3 +26,15 @@ Meteor.methods({
         Meteor.users.remove({ _id: pilotID });
     }
 });
+
+Meteor.methods({
+    updateHoursFly : function(pilot_id, hoursFly, minsFly){
+        Meteor.users.update({_id:pilot_id},
+            {$inc:
+                {"profile.hoursFly":  hoursFly,
+                "profile.minsFly":  minsFly,
+            }}
+                
+        );
+    }
+});

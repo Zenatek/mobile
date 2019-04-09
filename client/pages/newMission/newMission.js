@@ -208,6 +208,10 @@ Template.newMission.events({
         Session.set("blos", false);
         Session.set("evlos", false);
         pilotsList = []
+
+        //RESET TIMER AFTER BACKBUTTON
+        Session.set("resetTimer", true);
+
         delete Session.keys['editSession']
         delete Session.keys['editPilots']
         delete Session.keys['missionId']
@@ -309,6 +313,7 @@ Template.newMission.events({
                     "weather" : weatherVar,
                     "takeOffTime" : takeOffTimeVar,
                     "landingTime" : landingTimeVar,
+                    "timeMission" : timeMission,
                     "rpas" : rpasVar,
                     "battery1" : battery1Var,
                     "pilotsID" : pilotsID,
@@ -347,6 +352,7 @@ Template.newMission.events({
         var weatherVar = template.find('#weather').innerHTML;
         var takeOffTimeVar = template.find('#take_off_time').value;
         var landingTimeVar = template.find('#landing_time').value;
+        var timeMission = template.find(".countdown").innerHTML
         var battery1Var = template.find('#battery1').value;
         var simulation = Session.get("simulation");
         var v70 = Session.get("v70");
@@ -365,6 +371,8 @@ Template.newMission.events({
         var sw = Session.get("sw");
         var w = Session.get("w");
         var nw = Session.get("nw");
+        var hoursFly = Session.get("hoursFly");
+        var minsFly = Session.get("minsFly");
                 
 
         var pilotsID = [];
@@ -376,6 +384,7 @@ Template.newMission.events({
             pilotsLName.push(element.profile.lastname);
             console.log(pilotsFName);
         });
+        Meteor.call("updateHoursFly", Meteor.userId(), hoursFly, minsFly);
         Missions.update({_id : missionId},
             {$set:
                 {
@@ -391,6 +400,7 @@ Template.newMission.events({
                 "weather" : weatherVar,
                 "takeOffTime" : takeOffTimeVar,
                 "landingTime" : landingTimeVar,
+                "timeMission" : timeMission,
                 "battery1" : battery1Var,
                 "simulation" : simulation,
                 "v70" : v70,
@@ -404,6 +414,21 @@ Template.newMission.events({
             }
                 
         );
+        //RESET TIMER AFTER UPDATE
+        Session.set("resetTimer", true);
+
+        pilotsList = []
+        delete Session.keys['editSession']
+        delete Session.keys['editPilots']
+        delete Session.keys['missionId']
+        delete Session.keys['certB']
+        delete Session.keys['certC']
+        delete Session.keys['v70']
+        delete Session.keys['v150']
+        delete Session.keys['vlos']
+        delete Session.keys['blos']
+        delete Session.keys['evlos']
+        FlowRouter.go('/operator/missionsList');
     },
     'ionChange': function(event, template) {
         if ($(event.target).prop("name") == "simulation"){

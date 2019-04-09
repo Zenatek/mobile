@@ -8,10 +8,10 @@ Template.missionsList.helpers({
     mission : function(){
         return Missions.find();
     },
-    missionPilot : function(){
+/*     missionPilot : function(){
         console.log(Meteor.userId())
         return Missions.find({pilotsID : Meteor.userId()})
-    }
+    } */
 });
 
 Template.missionsList.events({
