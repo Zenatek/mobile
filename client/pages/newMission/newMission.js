@@ -259,7 +259,6 @@ Template.newMission.events({
             pilotsID.push(element._id);
             pilotsFName.push(element.profile.firstname);
             pilotsLName.push(element.profile.lastname);
-            console.log(pilotsFName);
         });
         if(!missionId){
         Missions.insert({createdAt : new Date(),
@@ -352,7 +351,12 @@ Template.newMission.events({
         var weatherVar = template.find('#weather').innerHTML;
         var takeOffTimeVar = template.find('#take_off_time').value;
         var landingTimeVar = template.find('#landing_time').value;
-        var timeMission = template.find(".countdown").innerHTML
+        //CALCOLO DURATA MISSIONE
+        end = moment(landingTimeVar)
+        start = moment(takeOffTimeVar)
+        timeMission = moment.duration(end.diff(start))
+        timeMission= moment.duration(timeMission, "minutes").humanize()
+        /* var timeMission = template.find(".countdown").innerHTML */
         var battery1Var = template.find('#battery1').value;
         var simulation = Session.get("simulation");
         var v70 = Session.get("v70");
@@ -414,6 +418,7 @@ Template.newMission.events({
             }
                 
         );
+        
         //RESET TIMER AFTER UPDATE
         Session.set("resetTimer", true);
 
