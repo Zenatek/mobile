@@ -361,7 +361,7 @@ Template.newMission.events({
         end = moment(landingTimeVar)
         start = moment(takeOffTimeVar)
         timeMission = moment.duration(end.diff(start))
-        timeMission= moment.duration(timeMission, "minutes").humanize()
+        /* timeMission= moment.duration(timeMission, "minutes").humanize() va messo nell'helper della visualizzazione/*
         /* var timeMission = template.find(".countdown").innerHTML */
         var battery1Var = template.find('#battery1').value;
         var simulation = Session.get("simulation");
@@ -394,9 +394,6 @@ Template.newMission.events({
             pilotsLName.push(element.profile.lastname);
             console.log(pilotsFName);
         });
-        //UPDATE TEMPO DI VOLO TOTALE PILOTA
-        Meteor.call("updateHoursFly", Meteor.userId(), hoursFly, minsFly);
-        ///////////////////////////////////////////////////////////////////
         Missions.update({_id : missionId},
             {$set:
                 {

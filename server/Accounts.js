@@ -7,7 +7,7 @@ var postSignUp = function (userId, info) {
         Roles.addUsersToRoles(userId, ['operator-user', info.profile.profession]);      
     }else{
         Roles.addUsersToRoles(userId, ['pilot-user', info.profile.profession]);
-        Meteor.users.update({_id:userId},{$set:{"profile.operator_id":  operatorID}});
+        Meteor.users.update({_id:userId},{$set:{"profile.operator_id":  operatorID, "profile.timeFly" : PT0M }});
     }  
 }
 
@@ -28,11 +28,10 @@ Meteor.methods({
 });
 
 Meteor.methods({
-    updateHoursFly : function(pilot_id, hoursFly, minsFly){
+    updateHoursFly : function(pilot_id, timeFly){
         Meteor.users.update({_id:pilot_id},
-            {$inc:
-                {"profile.hoursFly":  hoursFly,
-                "profile.minsFly":  minsFly,
+            {$set:
+                {"profile.timeFly":  timeFly
             }}
                 
         );

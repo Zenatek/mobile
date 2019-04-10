@@ -7,11 +7,7 @@ Template.missionsList.onCreated(function () {
 Template.missionsList.helpers({
     mission : function(){
         return Missions.find();
-    },
-/*     missionPilot : function(){
-        console.log(Meteor.userId())
-        return Missions.find({pilotsID : Meteor.userId()})
-    } */
+    }
 });
 
 Template.missionsList.events({
@@ -35,32 +31,17 @@ Template.missionsList.events({
                 {
                 "completed" : true
                 }
-            }
-                
+            }   
         );
+        pilot =  Meteor.users.findOne({_id : Meteor.userId()})
+        oldTime = moment.duration(pilot.profile.timeFly);
+        newTime = moment.duration(this.timeMission)
+        timeFly = oldTime.add(newTime)
+        //UPDATE TEMPO DI VOLO TOTALE PILOTA
+        Meteor.call("updateHoursFly", Meteor.userId(), timeFly);
+        ///////////////////////////////////////////////////////////////////
+        //UPDATE TEMPO DI VOLO TOTALE DRONE
+        //Meteor.call("updateHoursFly", Meteor.userId(), hoursFly, minsFly);
+        ///////////////////////////////////////////////////////////////////
     },
 });
-
-    /* 'click .deleteButton': function() {
-        Session.set('missionId', this._id);
-        missionId = Session.get('missionId')
-        swal({
-            title: "Sei sicuro?",
-            text: "Se elimini questa missioni cancellerai anche il qtb e il logbook associat",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Si, cancella!",
-            closeOnConfirm: false,
-            html: false
-          },function(isConfirm){
-                if (isConfirm) {
-                    Missions.remove({ _id: missionId });
-                    swal("Cancellata!",
-                        "La tua missione è stata eliminata",
-                        "success");
-          }
-          else{return;}
-        });
-        delete Session.keys['missionId']
-    } */

@@ -10,6 +10,12 @@ Template.profile.helpers({
         return Meteor.users.findOne({_id : pilotID})
         
     },
+    timeFly : function (){
+        pilotID = Session.get('pilotId')
+        thisUser = Meteor.users.findOne({_id : pilotID})
+        timeFly = moment.duration(thisUser.profile.timeFly, "minutes").humanize()
+        return timeFly;
+    },
 });
 
 Template.profile.events({

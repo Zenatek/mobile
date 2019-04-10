@@ -36,10 +36,20 @@ Template.printLOG.helpers({
         thisUser = Meteor.users.findOne({_id : Meteor.userId()})
         return thisUser;
     },
+    timeFly : function (){
+        thisUser = Meteor.users.findOne({_id : Meteor.userId()})
+        timeFly = moment.duration(thisUser.profile.timeFly, "minutes").humanize()
+        return timeFly;
+    },
     mission : function(){
         missionId = Session.get('missionId')
         thisMission = Missions.findOne({_id : missionId})
         return Missions.findOne({_id : missionId})
+    },
+    timeMission : function(){
+        missionId = Session.get('missionId')
+        thisMission = Missions.findOne({_id : missionId})
+        return moment.duration(thisMission.timeMission, "minutes").humanize()
     },
     drone : function(){
         return Drones.findOne({rpas : thisMission.rpas});
