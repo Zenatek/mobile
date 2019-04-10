@@ -20,8 +20,8 @@
                 <ion-col><ion-input type="text" id="intNum" placeholder="Interno" value="{{profile.address.intNum}}">Int:</ion-input></ion-col>
             </ion-row>
             <ion-row>
-                <ion-col><ion-input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}"></ion-input></ion-col>
-                <ion-col><ion-input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}"></ion-input></ion-col>
+                <ion-col><ion-input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}">Cap:</ion-input></ion-col>
+                <ion-col><ion-input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}">Tel:</ion-input></ion-col>
             </ion-row>
             <ion-row>
                 <ion-col>
@@ -45,6 +45,18 @@
                         {{else}}
                         <ion-checkbox name="certC" value="true" unchecked></ion-checkbox>
                         <ion-label>C</ion-label>
+                        {{/if}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-label>Classe</ion-label><br>
+                        {{#if profile.certification.certH}}
+                        <ion-checkbox name="certH" value="true" checked></ion-checkbox>
+                        <ion-label>H</ion-label>
+                        {{else}}
+                        <ion-checkbox name="certH" value="true" unchecked></ion-checkbox>
+                        <ion-label>H</ion-label>
                         {{/if}}
                         {{#if profile.certification.certL}}
                         <ion-checkbox name="certL" value="true" checked></ion-checkbox>
@@ -70,15 +82,17 @@
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <ion-label>Data di rilascio:</ion-label><ion-datetime id="release_date" display-format="MMM DD, YYYY" value="{{profile.brevetto.release_date}}"></ion-datetime>
+                        <ion-label position="stacked">Data di rilascio</ion-label>
+                        <input id="release_date" placeholder="Seleziona data volo" type="date" value="{{profile.brevetto.release_date}}">
                     </ion-col>
                 </ion-row>
             {{/if}}
             <ion-row>
-                    <ion-col>
-                        <ion-label>Data scadenza:</ion-label><ion-datetime id="expiration_date" display-format="MMM DD, YYYY"  value="{{profile.brevetto.exp_date}}"></ion-datetime>
-                    </ion-col>
-                </ion-row>
+                <ion-col>
+                    <ion-label position="stacked">Data Scadenza</ion-label>
+                    <input id="expiration_date" placeholder="Seleziona data volo" type="date" value="{{profile.brevetto.expiration_date}}">
+                </ion-col>
+            </ion-row>
             {{#if isInRole 'operator-user'}}
             <h5>Abilitazioni</h5>
             {{#if profile.ability.istr}}                        

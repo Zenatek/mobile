@@ -223,7 +223,6 @@ Template.newMission.events({
     'click .insert': function(event, template){
         event.preventDefault();
         Session.set('editSession',false)
-        var flightNumberVar = template.find('#flight_number').value;
         var placeVar = template.find('#place').value;
         var flightDateVar = template.find('#flight_date').value;
         var windVar = template.find('#wind').innerHTML;
@@ -269,7 +268,6 @@ Template.newMission.events({
         if(!missionId){
             Missions.insert({createdAt : new Date(),
                 owner : userID,
-                flightNumber : flightNumberVar,
                 place : placeVar,
                 flightDate : flightDateVar,
                 wind : windVar,
@@ -303,7 +301,6 @@ Template.newMission.events({
             Missions.update({_id : missionId},
                 {$set:
                     {
-                    "flightNumber" : flightNumberVar,
                     "place" : placeVar,
                     "flightDate" : flightDateVar,
                     "wind" : windVar,

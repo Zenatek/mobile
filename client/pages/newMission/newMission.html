@@ -42,10 +42,6 @@
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    <ion-label position="stacked">Missione</ion-label>
-                    <ion-input type="text" id="flight_number" placeholder="ID volo"></ion-input>
-                </ion-col>
-                <ion-col>
                     <ion-label position="stacked">Luogo</ion-label>
                     <ion-input type="text" id="place" placeholder="Luogo"></ion-input>
                 </ion-col>
@@ -136,7 +132,6 @@
         <ion-grid>
                 {{#if isInRole 'operator-user'}}
                     <ion-row>
-                        <ion-col><ion-input type="text" id="flight_number" placeholder="Num volo" value="{{flightNumber}}"></ion-input></ion-col>
                         <ion-col><ion-input type="text" id="place" placeholder="Luogo" value="{{place}}"></ion-input></ion-col>
                         <ion-col><input type="date" id="flight_date" placeholder="Seleziona data volo" value="{{flightDate}}"></ion-col>
                     </ion-row>
@@ -304,7 +299,9 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    {{> timer}}
+                    <div class="timer">
+                        {{> timer}}
+                    </div>
                 </ion-col>
             </ion-row>
         </ion-grid>

@@ -20,8 +20,8 @@
                 <ion-col><ion-input type="text" id="intNum" placeholder="Interno" value="{{profile.address.intNum}}">Int:</ion-input></ion-col>
             </ion-row>
             <ion-row>
-                <ion-col><ion-input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}"></ion-input></ion-col>
-                <ion-col><ion-input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}"></ion-input></ion-col>
+                <ion-col><ion-input type="text" id="capNum" placeholder="CAP" value="{{profile.address.capNum}}">Cap:</ion-input></ion-col>
+                <ion-col><ion-input type="text" id="telephone" placeholder="0101112233" value="{{profile.telephone}}">Tel:</ion-input></ion-col>
             </ion-row>
             {{#if isInRole 'pilot-user'}}
                 <ion-row>
@@ -45,6 +45,18 @@
                         {{else}}
                         <ion-checkbox name="certC" value="true" unchecked></ion-checkbox>
                         <ion-label>C</ion-label>
+                        {{/if}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-label>Classe</ion-label><br>
+                        {{#if profile.certification.certH}}
+                        <ion-checkbox name="certH" value="true" checked></ion-checkbox>
+                        <ion-label>H</ion-label>
+                        {{else}}
+                        <ion-checkbox name="certH" value="true" unchecked></ion-checkbox>
+                        <ion-label>H</ion-label>
                         {{/if}}
                         {{#if profile.certification.certL}}
                         <ion-checkbox name="certL" value="true" checked></ion-checkbox>
@@ -80,7 +92,7 @@
                 <ion-row>
                     <ion-col>
                         <ion-label position="stacked">Data Scadenza</ion-label>
-                        <input id="expiration_date" placeholder="Seleziona data volo" type="date" value="{{profile.brevetto.exp_date}}">
+                        <input id="expiration_date" placeholder="Seleziona data volo" type="date" value="{{profile.brevetto.expiration_date}}">
                     </ion-col>
                 </ion-row>
                 <ion-row>

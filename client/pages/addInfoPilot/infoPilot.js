@@ -28,6 +28,11 @@ Template.infoPilot.events({
             Session.set("certC", certC);
             console.log(Session.get("certC"));
         }
+        if ($(event.target).prop("name") == "certH"){
+            var certH = event.target.checked;
+            Session.set("certH", certH);
+            console.log(Session.get("certH"));
+        }
         if ($(event.target).prop("name") == "certL"){
             var certL = event.target.checked;
             Session.set("certL", certL);
@@ -67,6 +72,7 @@ Template.infoPilot.events({
         var exp_date = template.find('#expiration_date').value;
         var certB = Session.get("certB");
         var certC = Session.get("certC");
+        var certH = Session.get("certH");
         var certL = Session.get("certL");
         var certVL = Session.get("certVL");
         var istr = Session.get("istr");
@@ -74,7 +80,7 @@ Template.infoPilot.events({
 
         pilotID = Session.get('pilotId')
 
-        Meteor.call("updatePilot", pilotID, firstname, lastname, state, comune, reference, civNum, intNum, capNum, telephone, numBrev, luogoBrev, release_date, exp_date, certB, certC, certL, certVL, istr, exam);
+        Meteor.call("updatePilot", pilotID, firstname, lastname, state, comune, reference, civNum, intNum, capNum, telephone, numBrev, luogoBrev, release_date, exp_date, certB, certC, certH, certL, certVL, istr, exam);
 
         FlowRouter.go('/operator/pilots');
     },

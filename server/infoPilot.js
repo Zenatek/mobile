@@ -1,7 +1,7 @@
 Meteor.methods({
     updatePilot : function(pilotID, firstname, lastname, state, comune,
         reference, civNum, intNum, capNum, telephone, numBrev, luogoBrev, release_date, 
-        exp_date, certB, certC, certL, certVL, istr, exam){
+        exp_date, certB, certC, certH, certL, certVL, istr, exam){
         Meteor.users.update({_id:pilotID},
             {$set:
                 {"profile.firstname":  firstname,
@@ -19,6 +19,7 @@ Meteor.methods({
                 "profile.brevetto.expiration_date": exp_date,
                 "profile.certification.certB": certB,
                 "profile.certification.certC": certC,
+                "profile.certification.certH": certH,
                 "profile.certification.certL": certL,
                 "profile.certification.certVL": certVL,
                 "profile.ability.istr": istr,
