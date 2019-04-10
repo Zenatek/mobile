@@ -28,6 +28,11 @@ Template.qtbLogbook.helpers({
     },
     formatLanding : function(){
         return moment(thisMission.landingTime).format('hh:mm a');
+    },
+    flightHours : function (){
+        drone = Drones.findOne({rpas : thisMission.rpas})
+        timeFly = moment.duration(drone.flightHours, "minutes").humanize()
+        return timeFly;
     }
 });
 

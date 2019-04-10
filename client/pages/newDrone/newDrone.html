@@ -2,13 +2,15 @@
         <ion-text color="primary"><h1 class="page-title">Nuovo drone</h1></ion-text>
     <form>
         <h5>Scheda tecnica</h5>
+         <!-- MODIFICA INSERIMENTO -->  
         {{#if editSession}}
-            {{#with drones}}
+            
                 <ion-grid>
+                        {{#with drones}}
                     <ion-row>
                         <ion-col>
                             <ion-label position="stacked">Marca</ion-label><br>
-                            <ion-input type="text" id="constructor" placeholder="Marca" value="{{constructor}}"></ion-input>
+                            <ion-input type="text" id="marca" placeholder="Marca" value="{{marca}}"></ion-input>
                         </ion-col>
                         <ion-col>
                             <ion-label position="stacked">Modello</ion-label><br>
@@ -29,16 +31,18 @@
                             <ion-input type="text" id="battery1" placeholder="id batteria" value="{{idBattery1}}"></ion-input>
                         </ion-col>
                     </ion-row>
+                    {{/with}}
                     <ion-row>
                         <ion-col>
                             <ion-label position="stacked" for="weight">Peso in kg</ion-label><br>
-                            <ion-input type="number" id="weight" placeholder="10" value="{{weight}}"></ion-input>
+                            <ion-input type="number" id="weight" placeholder="10" value="{{drones.weight}}"></ion-input>
                         </ion-col>
                         <ion-col>
                             <ion-label position="stacked" for="flight_hours">Ore di volo</ion-label><br>
-                            <ion-input type="text" id="flight_hours" placeholder="2" value="{{flightHours}}"></ion-input>
+                            <label id="flight_hours">{{flightHours}}</label>
                         </ion-col>
                     </ion-row>
+                    {{#with drones}}
                     <ion-row>
                         <ion-col>
                             <ion-label position="stacked">Assicurazione</ion-label><br>
@@ -214,14 +218,15 @@
                             {{/if}}
                         </ion-col>
                     </ion-row>
+                    {{/with}}
                 </ion-grid>
-            {{/with}}
+        <!-- NUOVO INSERIMENTO -->   
         {{else}}
             <ion-grid>
                 <ion-row>
                     <ion-col>
                         <ion-label position="stacked">Marca</ion-label><br>
-                        <ion-input type="text" id="constructor" placeholder="Marca"></ion-input>
+                        <ion-input type="text" id="marca" placeholder="Marca"></ion-input>
                     </ion-col>
                     <ion-col>
                         <ion-label position="stacked">Modello</ion-label><br>
@@ -333,7 +338,7 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button expand="block" color="primary" class= "insert">Nuovo</ion-button>
+                <ion-button expand="block" color="primary" class= "insert">Salva</ion-button>
                 <ion-button expand="block" color="danger" class="back">Annulla</ion-button>
             </ion-col>
         </ion-row>

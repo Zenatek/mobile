@@ -70,7 +70,13 @@ Template.newDrone.helpers({
     },
     editPilots : function(){
         return  Session.get('editPilots')
+    },
+    flightHours : function(){
+        droneId = Session.get('droneId')
+        drone = Drones.findOne({_id : droneId})
+        return moment.duration(drone.flightHours, "minutes").humanize()
     }
+
 });
 
 Template.newDrone.events({
@@ -82,7 +88,7 @@ Template.newDrone.events({
             var radiocommandVar = template.find('#radiocommand').value;
             var battery1 = template.find('#battery1').value;
             var weightVar = template.find('#weight').value;
-            var flightHoursVar = template.find('#flight_hours').value;
+/*             var flightHoursVar = template.find('#flight_hours').value; */
             var deadlineInsuranceVar = template.find('#deadline_insurance').value;
             var insuranceVar = Session.get("insurance");
             var certB = Session.get("certB");
@@ -103,7 +109,7 @@ Template.newDrone.events({
             var s7 = Session.get("s7");            
             var userID = Meteor.userId();
             var droneId = Session.get('droneId');
-            var constructor = template.find('#constructor').value;
+            var marca = template.find('#marca').value;
 
             var pilotsID = [];
             var pilotsFName = [];
@@ -115,10 +121,11 @@ Template.newDrone.events({
                 console.log(pilotsFName);
             });
             if(!droneId){
+                flightHoursVar = "PT0M"
                 Drones.insert({createdAt : new Date(),
                     owner : userID,
                     model:  model,
-                    constructor : constructor,
+                    marca : marca,
                     rpas : rpas,
                     radiocommand : radiocommandVar,
                     idBattery1 : battery1,               
@@ -150,12 +157,12 @@ Template.newDrone.events({
                 Drones.update({_id:droneId},
                     {$set:
                         {"model":  model,
-                        "constructor": constructor,
+                        "marca": marca,
                         "rpas":  rpas,
                         "radiocommand":  radiocommandVar,
                         "idBattery1": battery1,
                         "weight": weightVar,
-                        "flightHours" : flightHoursVar,
+                        /* "flightHours" : flightHoursVar, */
                         "insurance" : insuranceVar,
                         "deadlineInsurance" : deadlineInsuranceVar,
                         "s1":s1,

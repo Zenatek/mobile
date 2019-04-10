@@ -1,6 +1,7 @@
 Template.missionsList.onCreated(function () {
     this.autorun(()=> {
         this.subscribe('allMissions');
+        this.subscribe('allDrones');
     });
 });
 
@@ -33,15 +34,25 @@ Template.missionsList.events({
                 }
             }   
         );
+        //UPDATE TEMPO DI VOLO TOTALE PILOTA
         pilot =  Meteor.users.findOne({_id : Meteor.userId()})
         oldTime = moment.duration(pilot.profile.timeFly);
         newTime = moment.duration(this.timeMission)
         timeFly = oldTime.add(newTime)
-        //UPDATE TEMPO DI VOLO TOTALE PILOTA
+        
         Meteor.call("updateHoursFly", Meteor.userId(), timeFly);
         ///////////////////////////////////////////////////////////////////
         //UPDATE TEMPO DI VOLO TOTALE DRONE
-        //Meteor.call("updateHoursFly", Meteor.userId(), hoursFly, minsFly);
+        drone =  Drones.findOne({rpas : this.rpas})
+        oldTime = moment.duration(drone.flightHours);
+        timeFly = oldTime.add(newTime)
+        Drones.update({_id : drone._id},
+            {$set:
+                {
+                "flightHours" : timeFly
+                }
+            }   
+        );
         ///////////////////////////////////////////////////////////////////
     },
 });

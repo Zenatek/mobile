@@ -234,7 +234,7 @@ Template.newMission.events({
         end = moment(landingTimeVar)
         start = moment(takeOffTimeVar)
         timeMission = moment.duration(end.diff(start))
-        timeMission= moment.duration(timeMission, "minutes").humanize()
+        /* timeMission= moment.duration(timeMission, "minutes").humanize() */
         ///
         var rpasVar = template.find('#rpas').value;
         var battery1Var = template.find('#battery1').value;
@@ -381,8 +381,6 @@ Template.newMission.events({
         var sw = Session.get("sw");
         var w = Session.get("w");
         var nw = Session.get("nw");
-        var hoursFly = Session.get("hoursFly");
-        var minsFly = Session.get("minsFly");
                 
 
         var pilotsID = [];
