@@ -101,6 +101,7 @@ Template.timer.events({
     Session.set("timerEnd", endTimer);
     Session.set("timerStart", startTimer);
     Session.set("timerUsed",true);
+    //SESSIONI PER CALCOLO ORE TOTALI PILOTA
     Session.set("hoursFly",timestamp.getHours()-1);
     Session.set("minsFly", timestamp.getMinutes());
   },
