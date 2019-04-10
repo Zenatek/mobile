@@ -267,39 +267,39 @@ Template.newMission.events({
             pilotsLName.push(element.profile.lastname);
         });
         if(!missionId){
-        Missions.insert({createdAt : new Date(),
-            owner : userID,
-            flightNumber : flightNumberVar,
-            place : placeVar,
-            flightDate : flightDateVar,
-            wind : windVar,
-            weather : weatherVar,
-            takeOffTime : takeOffTimeVar,
-            landingTime : landingTimeVar,
-            rpas : rpasVar,
-            battery1 : battery1Var,
-            pilotsID : pilotsID,
-            pilotsFName : pilotsFName,
-            pilotsLName : pilotsLName,
-            simulation : simulation,
-            v70 : v70,
-            v150 : v150,
-            vlos : vlos,
-            blos : blos,
-            evlos : evlos,
-            certB : certB,
-            certC : certC,
-            n : n,
-            ne : ne,
-            e : e,
-            se : se,
-            s : s,
-            sw : sw,
-            w : w,
-            nw : nw,
-            completed : false
-        });
-    }else {
+            Missions.insert({createdAt : new Date(),
+                owner : userID,
+                flightNumber : flightNumberVar,
+                place : placeVar,
+                flightDate : flightDateVar,
+                wind : windVar,
+                weather : weatherVar,
+                takeOffTime : takeOffTimeVar,
+                landingTime : landingTimeVar,
+                rpas : rpasVar,
+                battery1 : battery1Var,
+                pilotsID : pilotsID,
+                pilotsFName : pilotsFName,
+                pilotsLName : pilotsLName,
+                simulation : simulation,
+                v70 : v70,
+                v150 : v150,
+                vlos : vlos,
+                blos : blos,
+                evlos : evlos,
+                certB : certB,
+                certC : certC,
+                n : n,
+                ne : ne,
+                e : e,
+                se : se,
+                s : s,
+                sw : sw,
+                w : w,
+                nw : nw,
+                completed : false
+            });
+        }else {
             Missions.update({_id : missionId},
                 {$set:
                     {
@@ -335,8 +335,8 @@ Template.newMission.events({
                     }
                 }
                     
-            );
-    }
+            ); 
+        }
         pilotsList = []
         delete Session.keys['editSession']
         delete Session.keys['editPilots']
