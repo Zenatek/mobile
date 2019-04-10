@@ -28,5 +28,11 @@ Template.printQTB.helpers({
     },
     formatLanding : function(){
         return moment(thisMission.landingTime).format('hh:mm a');
+    },
+    flightHours : function(){
+        missionId = Session.get('missionId')
+        thisMission = Missions.findOne({_id : missionId})
+        drone = Drones.findOne({rpas : thisMission.rpas})
+        return moment.duration(drone.flightHours, "minutes").humanize()
     }
 });
