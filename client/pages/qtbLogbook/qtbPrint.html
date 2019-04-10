@@ -19,7 +19,7 @@
               </tr>
               <tr>
                 <td class="tg-vfn0">ID Missione: {{mission._id}}</td>
-                <td class="tg-vfn0" colspan="2">Marca: {{drone.constructor}}<br>Modello: {{drone.model}}</td>
+                <td class="tg-vfn0" colspan="2">Marca: {{drone.marca}}<br>Modello: {{drone.model}}</td>
               </tr>
               <tr>
                 <td class="tg-f7v4" colspan="2">Dati missione</td>
@@ -88,7 +88,7 @@
         </tr>
         <tr>
           <td class="tg-0pky">ID Missione: {{mission._id}}</td>
-          <td class="tg-0pky" colspan="2">Marca: {{drone.constructor}}<br>Modello: {{drone.model}}</td>
+          <td class="tg-0pky" colspan="2">Marca: {{drone.marca}}<br>Modello: {{drone.model}}</td>
         </tr>
         <tr>
           <td class="tg-0pky" colspan="2">Dati missione</td>
@@ -107,14 +107,14 @@
         <tr>
           <td class="tg-0pky">VLOS: {{#if mission.vlos}}X {{/if}}<br>BLOS: {{#if mission.Blos}}X {{/if}}<br>EVLOS: {{#if mission.evlos}}X {{/if}}</td>
           <td class="tg-0pky">V70: {{#if mission.v70}}X {{/if}}<br>V150: {{#if mission.v150}}X {{/if}}</td>
-          <td class="tg-0pky" colspan="2">{{mission.timeMission}}</td>
+          <td class="tg-0pky" colspan="2">{{timeMission}}</td>
         </tr>
         <tr>
           <td class="tg-0pky" colspan="4">Condizioni atmosferiche</td>
         </tr>
         <tr>
           <td class="tg-0pky" colspan="2">Meteo: {{mission.weather}}</td>
-          <td class="tg-0pky" colspan="2">Tempo di volo totale: {{user.profile.hoursFly}}h:{{user.profile.minsFly}}m </td>
+          <td class="tg-0pky" colspan="2">Tempo di volo totale: {{timeFly}} </td>
         </tr>
         <tr>
           <td class="tg-0pky" rowspan="3">Vento: {{mission.wind}}</td>

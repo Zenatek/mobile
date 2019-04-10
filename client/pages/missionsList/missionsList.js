@@ -1,17 +1,14 @@
 Template.missionsList.onCreated(function () {
     this.autorun(()=> {
         this.subscribe('allMissions');
+        this.subscribe('allDrones');
     });
 });
 
 Template.missionsList.helpers({
     mission : function(){
         return Missions.find();
-    },
-/*     missionPilot : function(){
-        console.log(Meteor.userId())
-        return Missions.find({pilotsID : Meteor.userId()})
-    } */
+    }
 });
 
 Template.missionsList.events({
@@ -35,32 +32,27 @@ Template.missionsList.events({
                 {
                 "completed" : true
                 }
-            }
-                
+            }   
         );
+        //UPDATE TEMPO DI VOLO TOTALE PILOTA
+        pilot =  Meteor.users.findOne({_id : Meteor.userId()})
+        oldTime = moment.duration(pilot.profile.timeFly);
+        newTime = moment.duration(this.timeMission)
+        timeFly = oldTime.add(newTime)
+        
+        Meteor.call("updateHoursFly", Meteor.userId(), timeFly);
+        ///////////////////////////////////////////////////////////////////
+        //UPDATE TEMPO DI VOLO TOTALE DRONE
+        drone =  Drones.findOne({rpas : this.rpas})
+        oldTime = moment.duration(drone.flightHours);
+        timeFly = oldTime.add(newTime)
+        Drones.update({_id : drone._id},
+            {$set:
+                {
+                "flightHours" : timeFly
+                }
+            }   
+        );
+        ///////////////////////////////////////////////////////////////////
     },
 });
-
-    /* 'click .deleteButton': function() {
-        Session.set('missionId', this._id);
-        missionId = Session.get('missionId')
-        swal({
-            title: "Sei sicuro?",
-            text: "Se elimini questa missioni cancellerai anche il qtb e il logbook associat",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Si, cancella!",
-            closeOnConfirm: false,
-            html: false
-          },function(isConfirm){
-                if (isConfirm) {
-                    Missions.remove({ _id: missionId });
-                    swal("Cancellata!",
-                        "La tua missione è stata eliminata",
-                        "success");
-          }
-          else{return;}
-        });
-        delete Session.keys['missionId']
-    } */
