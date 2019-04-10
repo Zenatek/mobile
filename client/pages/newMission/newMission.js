@@ -394,7 +394,9 @@ Template.newMission.events({
             pilotsLName.push(element.profile.lastname);
             console.log(pilotsFName);
         });
+        //UPDATE TEMPO DI VOLO TOTALE PILOTA
         Meteor.call("updateHoursFly", Meteor.userId(), hoursFly, minsFly);
+        ///////////////////////////////////////////////////////////////////
         Missions.update({_id : missionId},
             {$set:
                 {
