@@ -1,23 +1,51 @@
-# Level Up Tutorials Meteor Blaze Base
+# Mobile e Web App Gestionale scuola di volo
 
 
-## How To Use
+## Come avviare l'App
 
-Clone or download this repo. Browse to wherever downloaded in your terminal.
+Clona o scarica il repository e digita da terminale
 
 ```
-cd base-blaze
+cd mobile
+```
+Poi per avviare il server web
+
+```
 meteor
 ```
+Oppure per avviare l'app per dispositivi mobili
+```
+meteor run ios-device
+oppure
+meteor run android
+```
+La Web app si trova all'indirizzo http://localhost:3000 
 
-Open up http://localhost:3000 and see this.
-
-![Topics In Meteor](/public/topics.png)
-
-## What is this?
-
-This is the base repo for starting any of the Meteor Blaze Topics Tutorials 
-
-## What this is not
-
-This is not a starter theme, base theme, or UI framework.
+## Pacchetti utilizzati
+Routing:
+```
+kadira:flow-router
+```
+Templating engine:
+```
+kadira:blaze-layout
+```
+Database:
+```
+mongo
+```
+Gestione accounts:
+```
+accounts-base
+accounts-password
+useraccounts:unstyled 
+useraccounts:flow-routing
+```
+Permessi:
+```
+alanning:roles
+```
+Campi speciali con ricerca in DB:
+```
+mizzao:autocomplete
+```
