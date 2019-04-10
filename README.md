@@ -1,5 +1,10 @@
-# Mobile e Web App Gestionale scuola di volo
+# Mobile e Web App per la gestione di una scuola di volo
 
+## Framework e CSS
+
+L'App è basata sulla versione del framework Meteor 1.8.0.2 - https://www.meteor.com/
+Segue le regole CSS del framework mobile Ionic - https://ionicframework.com/
+Le icone sono state prese dal sito ionicons.com versione 4.5.5 - https://ionicons.com/
 
 ## Come avviare l'App
 
