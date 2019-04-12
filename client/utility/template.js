@@ -28,7 +28,7 @@ Template.selectDrone.helpers({
 Template.autoCompleteOperators.helpers({
   settings: function() {
     return {
-      position: "bottom",
+      position: "top",
       limit: 20,
       rules: [
         {

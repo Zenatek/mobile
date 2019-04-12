@@ -1,14 +1,20 @@
 <template name="autoCompleteOperators">
     {{#if CampoVisibile}}
-        <div class="well">
-            <p>Select operator</p>
-            {{> inputAutocomplete settings=settings id="operatorSelect" class="form-control" name="operatorSelect" placeholder="Eurodrone" }}
-        </div>
-        <!-- <pre> -->
-            {{#each operators}}
-                {{operator}}
-            {{/each}}
-        <!-- </pre> -->
+    <ion-gid>
+        <ion-row>
+            <ion-col>
+                <div class="well">
+                    <p>Select operator</p>
+                    {{> inputAutocomplete settings=settings id="operatorSelect" class="form-control" name="operatorSelect" placeholder="Eurodrone" }}
+                </div>
+                <!-- <pre> -->
+                    {{#each operators}}
+                        {{operator}}
+                    {{/each}}
+                <!-- </pre> -->
+            </ion-col>
+        </ion-row>
+    </ion-gid>  
     {{/if}}
 </template>
 
