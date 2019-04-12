@@ -71,6 +71,7 @@ Template.profile.events({
         delete Session.keys['istr']
         delete Session.keys['exam']
         delete Session.keys['insurance']
+        delete Session.keys['CampoVisibile']
         AccountsTemplates.logout();
     },
     'ionChange': function(event, template) {

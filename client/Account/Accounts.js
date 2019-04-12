@@ -34,7 +34,7 @@ AccountsTemplates.addField(
     {
         _id: "profession",
         type: "select",
-        displayName: "Tipo di account",
+        displayName: "Account type",
         select: [
             {
                 text: "Operatore",

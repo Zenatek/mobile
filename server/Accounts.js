@@ -7,7 +7,7 @@ var postSignUp = function (userId, info) {
         Roles.addUsersToRoles(userId, ['operator-user', info.profile.profession]);      
     }else{
         Roles.addUsersToRoles(userId, ['pilot-user', info.profile.profession]);
-        Meteor.users.update({_id:userId},{$set:{"profile.operator_id":  operatorID, "profile.timeFly" : PT0M }});
+        Meteor.users.update({_id:userId},{$set:{"profile.operator_id":  operatorID, "profile.timeFly" : "PT0M" }});
     }  
 }
 
