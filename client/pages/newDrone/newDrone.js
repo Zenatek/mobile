@@ -188,10 +188,19 @@ Template.newDrone.events({
                         
                 );
             }
-            delete Session.keys['editSession']
-            delete Session.keys['editPilots']
-            delete Session.keys['droneId']
+            delete Session.keys['n']
+            delete Session.keys['ne']
+            delete Session.keys['e']
+            delete Session.keys['se']
+            delete Session.keys['s']
+            delete Session.keys['sw']
+            delete Session.keys['w']
+            delete Session.keys['nw']
+            delete Session.keys['istr']
+            delete Session.keys['exam']
+            delete Session.keys['insurance']
             delete Session.keys['certB']
+            delete Session.keys['certH']
             delete Session.keys['certL']
             delete Session.keys['certVL']
             delete Session.keys['certC']
@@ -206,9 +215,14 @@ Template.newDrone.events({
             delete Session.keys['s5']
             delete Session.keys['s6']
             delete Session.keys['s7']
+            delete Session.keys['evlos']
+            delete Session.keys['vlos']
+            delete Session.keys['blos']
+            delete Session.keys['v70']
+            delete Session.keys['v150']
+            delete Session.keys['simulation']
             pilotsList = []
             FlowRouter.go('/operator/dronesList');
-            Session.set('showNewDrone', false);
     },
     'ionChange': function(event, template) {
         if ($(event.target).prop("name") == "certB"){
@@ -301,20 +315,19 @@ Template.newDrone.events({
     'click .back': function(event, template){
         event.preventDefault();
         Session.set('editSession',false)
-        Session.set('showNewDrone', false);
-        Session.set("insurance", true);
-        Session.set("certB", false);
-        Session.set("certC", false);
-        Session.set("certL", false);
-        Session.set("certVL", false);
-        Session.set("s1", false);
-        Session.set("s2", false);
-        Session.set("s3", false);
-        Session.set("s4", false);
-        Session.set("s5", false);
-        Session.set("s6", false);
-        Session.set("s7", false);
+        delete Session.keys['n']
+        delete Session.keys['ne']
+        delete Session.keys['e']
+        delete Session.keys['se']
+        delete Session.keys['s']
+        delete Session.keys['sw']
+        delete Session.keys['w']
+        delete Session.keys['nw']
+        delete Session.keys['istr']
+        delete Session.keys['exam']
+        delete Session.keys['insurance']
         delete Session.keys['certB']
+        delete Session.keys['certH']
         delete Session.keys['certL']
         delete Session.keys['certVL']
         delete Session.keys['certC']
@@ -322,10 +335,6 @@ Template.newDrone.events({
         delete Session.keys['catAP']
         delete Session.keys['catH']
         delete Session.keys['catAS']
-        pilotsList = []
-        delete Session.keys['editSession']
-        delete Session.keys['editPilots']
-        delete Session.keys['droneId']
         delete Session.keys['s1']
         delete Session.keys['s2']
         delete Session.keys['s3']
@@ -333,6 +342,13 @@ Template.newDrone.events({
         delete Session.keys['s5']
         delete Session.keys['s6']
         delete Session.keys['s7']
+        delete Session.keys['evlos']
+        delete Session.keys['vlos']
+        delete Session.keys['blos']
+        delete Session.keys['v70']
+        delete Session.keys['v150']
+        delete Session.keys['simulation']
+        pilotsList = []
         FlowRouter.go('/operator/dronesList');
     }
 });

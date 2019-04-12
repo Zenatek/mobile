@@ -4,6 +4,8 @@
 
 * Registrazione separata Operatore / Pilota
 * Login Operatore / Pilota
+* Gesture in app per modificare ed eliminare
+* Layout ottimizzato per la visualizzazione mobile
 * Operatore
 	* Pagina dati personali per gestione brevetti e anagrafica.
 	* Dashboard Operatore con gestione completa su propri piloti, droni, missioni.

@@ -94,17 +94,25 @@
                 </ion-col>
             </ion-row>
             {{#if isInRole 'operator-user'}}
-            <h5>Abilitazioni</h5>
-            {{#if profile.ability.istr}}                        
-            <input type="checkbox" name="instructor" value="true" checked>Istruttore <br>
-            {{else}}
-            <input type="checkbox" name="instructor" value="true" unchecked>Istruttore <br>
-            {{/if}}
-            {{#if profile.ability.exam}}
-            <input type="checkbox" name="examiner" value="true" checked>Esaminatore
-            {{else}}
-            <input type="checkbox" name="examiner" value="true" unchecked>Esaminatore
-            {{/if}}
+            <ion-row>
+                <ion-col>
+                    <ion-label>Abilitazioni</ion-label><br>
+                    {{#if profile.ability.istr}}                        
+                    <ion-checkbox name="instructor" value="true" checked></ion-checkbox>
+                    <ion-label>Istruttore</ion-label>
+                    {{else}}
+                    <ion-checkbox name="instructor" value="true" unchecked></ion-checkbox>
+                    <ion-label>Istruttore</ion-label>
+                    {{/if}}
+                    {{#if profile.ability.exam}}
+                    <ion-checkbox name="examiner" value="true" checked></ion-checkbox>
+                    <ion-label>Esaminatore</ion-label>
+                    {{else}}
+                    <ion-checkbox name="examiner" value="true" unchecked></ion-checkbox>
+                    <ion-label>Esaminatore</ion-label>
+                    {{/if}}
+                </ion-col>
+            </ion-row>
             {{/if}}
         </ion-grid>
         {{/with}}
